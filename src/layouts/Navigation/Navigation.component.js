@@ -1,28 +1,13 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { NavBar, NavItem, NavIcon } from "./Navigation.styles"
 import ProjectsIcon from "./../../assets/images/icon_projects.svg"
 import HobbiesIcon from "./../../assets/images/icon_camera.svg"
 import ContactIcon from "./../../assets/images/icon_phone.svg"
 import SkillsIcon from "./../../assets/images/icon_skills.svg"
 import AboutMeIcon from "./../../assets/images/icon_user.svg"
-import gsap, { Power4 } from "gsap"
-import ScrollToPlugin from "gsap/ScrollToPlugin"
-
-gsap.registerPlugin(ScrollToPlugin)
+import { scrollToSection } from "./../../utils/scrollToSection"
 
 const NavigationBar = props => {
-  const scrollToSection = hash => () => {
-    if (!hash || typeof hash !== "string") return
-
-    const target = hash
-
-    gsap.to(window, {
-      scrollTo: { y: target, offsetY: 80 },
-      duration: 1,
-      ease: Power4.easeInOut,
-    })
-  }
-
   return (
     <NavBar>
       <NavItem onClick={scrollToSection("#projects")}>

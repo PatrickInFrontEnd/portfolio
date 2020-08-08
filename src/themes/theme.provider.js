@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body{
+        width:100%;
         padding-top:80px;
         font-size: ${({ theme }) => theme.fSize.XXS};
         font-family : Montserrat, Poppins, Arial, Helvetica, sans-serif;

@@ -5,6 +5,7 @@ const NavBar = styled.nav`
   top: 0;
   left: 0;
   right: 0;
+  z-index: 10000;
   width: 100%;
   height: 80px;
   padding: 0 50px;
@@ -16,7 +17,11 @@ const NavBar = styled.nav`
 
 const NavIcon = styled.span`
   height: 100%;
-  color: ${({ theme }) => theme.color.white};
+
+  .icon_svg {
+    transition: 0.3s;
+    fill: ${({ theme }) => theme.color.white};
+  }
 `
 
 const NavItem = styled.span`
@@ -26,6 +31,11 @@ const NavItem = styled.span`
   color: ${({ theme }) => theme.color.white};
   margin: 0 60px;
   cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    transform: scale(0.9);
+  }
 
   ${NavIcon} {
     position: absolute;
