@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { flexCenter } from "./../../mixins/mixins"
 
-const BackgroundWrapper = styled.div`
+const BackgroundWrapper = styled.section`
   position: relative;
   width: 100%;
   min-height: calc(100vh - 90px);

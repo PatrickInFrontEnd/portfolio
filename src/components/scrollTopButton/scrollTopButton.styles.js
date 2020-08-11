@@ -33,6 +33,7 @@ const Arrow = styled(ArrowScroll)`
 
 const ElipseWrapper = styled.div`
   position: fixed;
+  z-index: 1000000;
   right: 50px;
   bottom: 50px;
   width: 60px;
