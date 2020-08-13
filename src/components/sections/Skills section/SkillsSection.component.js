@@ -4,38 +4,40 @@ import {
   SkillsTitle,
   IconsWrapper,
   Border,
+  WaveIcon,
 } from "./SkillsSection.styles"
-import { graphql, useStaticQuery } from "gatsby"
 import TechnologiesContainer from "./Technologies.container"
 import SkillsDescriptionBar from "./SkillsDescription.component"
+import SectionHeader from "./../../SectionHeader/SectionHeader.component"
+import SkillsIcon from "./../../../assets/images/icon_skills.svg"
 
-const queryForBgcImg = graphql`
-  {
-    file(relativePath: { eq: "wave.png" }) {
-      childImageSharp {
-        fluid(quality: 100) {
-          src
-        }
-      }
-    }
-  }
-`
+const SkillsSection = props => (
+  <>
+    <SectionHeader id="skills">
+      Skills
+      <SkillsIcon
+        style={{
+          width: "60px",
+          height: "60px",
+          right: "-120%",
+          top: "50%",
 
-const SkillsSection = props => {
-  const { file } = useStaticQuery(queryForBgcImg)
+          transform: "translate(0, -50%)",
+        }}
+      />
+    </SectionHeader>
 
-  return (
     <SkillsSectionWrapper>
       <SkillsTitle>
         my skillset
-        <Border position="top" />
         <Border position="bottom" />
       </SkillsTitle>
-      <IconsWrapper background={file.childImageSharp.fluid.src}>
+      <IconsWrapper>
+        <WaveIcon />
         <TechnologiesContainer />
       </IconsWrapper>
       <SkillsDescriptionBar />
     </SkillsSectionWrapper>
-  )
-}
+  </>
+)
 export default SkillsSection

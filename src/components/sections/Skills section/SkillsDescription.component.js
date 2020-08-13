@@ -22,7 +22,7 @@ const DescriptionBar = props => (
       I have learnt so far.
     </Paragraph>
     <DetailsWrapper>
-      <Paragraph>Details of my technology stack</Paragraph>
+      <Paragraph>Technology stack details</Paragraph>
       <ArrowIcon />
       <LinkWrapper
         href="https://www.linkedin.com/in/patryk-p%C5%82uciennik-a67176192/"

@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components"
 import { flexCenter } from "../../mixins/mixins"
 import ArrowSVG from "./../../../assets/images/icon_arrow_white.svg"
+import WaveSVG from "./../../../assets/images/wave_bgc.svg"
 
 const SkillsSectionWrapper = styled.section`
   width: 100%;
@@ -11,7 +12,7 @@ const SkillsSectionWrapper = styled.section`
 
 const Border = styled.span`
   display: block;
-  width: 100%;
+  width: 50%;
   height: 4px;
   background-color: ${({ theme }) => theme.color.white};
 
@@ -50,39 +51,36 @@ const SkillsTitle = styled.h2`
   letter-spacing: 20px;
   text-transform: uppercase;
   font-weight: ${({ theme }) => theme.fWeight.bold};
-  font-size: ${({ theme }) => theme.fSize.XXL};
+  font-size: ${({ theme }) => theme.fSize.XL};
+  font-family: Montserrat, Poppins, Arial, sans-serif;
 `
 
 const IconsWrapper = styled.div`
   position: relative;
   width: 100%;
   min-height: 900px;
-  ${({ background }) => getBackgroundUrl(background)};
   padding: 150px 300px;
   margin-bottom: 100px;
   ${flexCenter};
   justify-content: space-around;
 `
 
-function getBackgroundUrl(url) {
-  if (!url) {
-    return css`
-      background-color: #fff;
-    `
-  }
-
-  return css`
-    background-image: url(${url});
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-  `
-}
+const WaveIcon = styled(WaveSVG)`
+  position: absolute;
+  left: 50%;
+  top: -50px;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 1000px;
+  z-index: 0;
+  fill: ${({ theme }) => theme.color.mediumWhite};
+`
 
 const TechnologiesWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 500px;
+  z-index: 1;
 `
 
 const TechnologyPanel = styled.div`
@@ -111,6 +109,7 @@ const LaptopPNG = styled.img`
   display: block;
   width: 500px;
   height: 80%;
+  z-index: 1;
 `
 
 const SkillsDescriptionBar = styled.div`
@@ -234,4 +233,5 @@ export {
   LinkWrapper,
   LinkTitle,
   ArrowIcon,
+  WaveIcon,
 }

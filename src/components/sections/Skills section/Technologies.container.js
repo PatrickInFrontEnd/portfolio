@@ -3,6 +3,7 @@ import { TechnologiesWrapper } from "./SkillsSection.styles"
 import { graphql, useStaticQuery } from "gatsby"
 import TechnologyPanel from "./TechnologyPanel.component"
 import LaptopIcon from "./LaptopIcon.component"
+import { getImageNumber } from "./../../../utils/getImageNumber"
 
 const queryForImgages = graphql`
   query queryForSkillImages {
@@ -20,18 +21,6 @@ const queryForImgages = graphql`
     }
   }
 `
-
-const getImageNumber = string => {
-  const stringID = string
-    .split("_")
-    .filter((el, i, arr) => i === arr.length - 1)
-    .join("")
-    .split(".")
-    .filter((el, i, arr) => i === 0)
-    .join("")
-
-  return parseInt(stringID) || undefined
-}
 
 const TechnologiesContainer = props => {
   const {
