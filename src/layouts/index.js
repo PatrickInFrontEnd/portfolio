@@ -1,11 +1,14 @@
 import React from "react"
-import ThemeProvider from "./../themes/theme.provider"
+import ThemeProvider from "../providers/theme_provider/theme.provider"
 import NavigationBar from "./Navigation/Navigation.component"
+import NavigationProvider from "./../providers/navigation_provider/navigation.provider"
 
 const Layout = props => (
   <ThemeProvider>
-    <NavigationBar />
-    {props.children}
+    <NavigationProvider>
+      <NavigationBar />
+      {props.children}
+    </NavigationProvider>
   </ThemeProvider>
 )
 

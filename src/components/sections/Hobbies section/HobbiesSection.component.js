@@ -1,27 +1,7 @@
 import React from "react"
 import SectionHeader from "./../../SectionHeader/SectionHeader.component"
 import HobbiesIcon from "./../../../assets/images/icon_camera.svg"
-import { graphql, useStaticQuery } from "gatsby"
 import HobbyPanelsContainer from "./HobbyPanels.container"
-
-const queryForImgages = graphql`
-  query queryForBackgroundImages {
-    allFile(
-      filter: { relativePath: { regex: "/hobbiesBGC_(even|odd).(png|jpg)/" } }
-    ) {
-      edges {
-        node {
-          relativePath
-          childImageSharp {
-            fluid(quality: 100) {
-              src
-            }
-          }
-        }
-      }
-    }
-  }
-`
 
 const MyHobbiesSection = props => (
   <>
@@ -43,32 +23,3 @@ const MyHobbiesSection = props => (
 )
 
 export default MyHobbiesSection
-
-/* <HobbyPanel>
-        <IconWrapper></IconWrapper>
-        <DescriptionWrapper>
-          <Title></Title>
-          <P></P>
-        </DescriptionWrapper>
-      </HobbyPanel>
-      <HobbyPanel reversed>
-        <IconWrapper></IconWrapper>
-        <DescriptionWrapper>
-          <Title></Title>
-          <P></P>
-        </DescriptionWrapper>
-      </HobbyPanel>
-      <HobbyPanel>
-        <IconWrapper></IconWrapper>
-        <DescriptionWrapper>
-          <Title></Title>
-          <P></P>
-        </DescriptionWrapper>
-      </HobbyPanel>
-      <HobbyPanel reversed>
-        <IconWrapper></IconWrapper>
-        <DescriptionWrapper>
-          <Title></Title>
-          <P></P>
-        </DescriptionWrapper>
-      </HobbyPanel> */

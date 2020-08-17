@@ -11,7 +11,6 @@ import {
 import { graphql, useStaticQuery } from "gatsby"
 import { mapToPNGSource } from "../../../utils/mapToPNGsource"
 import { sortImagesASC } from "../../../utils/sort"
-import { getImageNumber } from "../../../utils/getImageNumber"
 import { filterById } from "../../../utils/filter"
 
 const queryForBackgroundImgages = graphql`

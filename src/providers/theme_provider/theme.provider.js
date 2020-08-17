@@ -1,6 +1,6 @@
 import React from "react"
 import { ThemeProvider, createGlobalStyle } from "styled-components"
-import theme from "./theme"
+import theme from "../../themes/theme"
 const GlobalStyle = createGlobalStyle`
     *,
     *::before,
@@ -16,7 +16,12 @@ const GlobalStyle = createGlobalStyle`
         font-size: ${({ theme }) => theme.fSize.XXS};
         font-family : Montserrat, Poppins, Arial, Helvetica, sans-serif;
         font-weight: ${({ theme }) => theme.fWeight.medium};
+        background-color: ${({ theme }) => theme.color.navyLightBlue};
         color: ${({ theme }) => theme.color.white};
+
+        @media screen and (max-width: 1020px){
+          padding-top:0;
+        }
     }
 `
 

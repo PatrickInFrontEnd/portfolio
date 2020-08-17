@@ -53,7 +53,7 @@ const Title = styled.h2`
 `
 
 const P = styled.p`
-  font-size: ${({ theme }) => theme.fSize.L};
+  font-size: ${({ theme }) => theme.fSize.S};
   font-weight: ${({ theme }) => theme.fWeight.semiBold};
   font-family: Montserrat, Poppins, Arial, sans-serif;
   text-align: justify;

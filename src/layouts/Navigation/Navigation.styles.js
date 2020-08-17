@@ -1,21 +1,14 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
+import { flexCenter } from "./../../components/mixins/mixins"
 
-const NavBar = styled.nav`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10000;
-  width: 100%;
-  height: 80px;
-  padding: 0 50px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  background-color: ${({ theme }) => theme.color.navyLightBlue};
+const NavTitle = styled.span`
+  text-decoration: none;
+  font: ${({ theme }) => `${theme.fWeight.regular} ${theme.fSize.XXS} Lobster`};
+  color: ${({ theme }) => theme.color.white};
 `
 
 const NavIcon = styled.span`
+  display: block;
   height: 100%;
 
   .icon_svg {
@@ -26,9 +19,6 @@ const NavIcon = styled.span`
 
 const NavItem = styled.span`
   position: relative;
-  text-decoration: none;
-  font: ${({ theme }) => `${theme.fWeight.regular} ${theme.fSize.XXS} Lobster`};
-  color: ${({ theme }) => theme.color.white};
   margin: 0 60px;
   cursor: pointer;
   transition: 0.3s;
@@ -45,4 +35,124 @@ const NavItem = styled.span`
   }
 `
 
-export { NavBar, NavItem, NavIcon }
+const NavBar = styled.nav`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  width: 100%;
+  height: 80px;
+  padding: 0 50px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: ${({ theme }) => theme.color.navyLightBlue};
+  transition: 0.8s;
+  opacity: 1;
+
+  @media screen and (max-width: 1300px) {
+    justify-content: center;
+  }
+
+  @media screen and (max-width: 1150px) {
+    padding: 0;
+  }
+
+  @media screen and (max-width: 1050px) {
+    padding: 0;
+  }
+
+  @media screen and (min-width: 1021px) {
+    ${({ navVisible }) => handleNavigationVisibility(navVisible)}
+  }
+
+  @media screen and (max-width: 1020px) {
+    ${flexCenter};
+    justify-content: space-around;
+    top: unset;
+    bottom: 0;
+
+    ${NavItem} {
+      height: 80%;
+      width: 90%;
+      margin: 0;
+      border-right: 1px solid #fff;
+
+      &:last-of-type {
+        border-right: none;
+      }
+    }
+
+    ${NavTitle} {
+      display: none;
+    }
+
+    .icon_svg {
+      width: 30px;
+      height: 30px;
+    }
+
+    .icon_skills,
+    .icon_projects {
+      width: 40px;
+      height: 40px;
+    }
+
+    .icon_projects {
+      transform: translateY(1px) !important;
+    }
+
+    .icon_phone {
+      transform: translateY(-1px) !important;
+    }
+
+    ${NavIcon} {
+      ${flexCenter};
+      right: 50%;
+      top: 50%;
+      transform: translate(50%, -50%);
+    }
+
+    ${({ navVisible }) => handleMobileViewNavigation(navVisible)}
+  }
+
+  @media screen and (max-width: 500px) {
+    .icon_svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .icon_skills,
+    .icon_projects {
+      width: 30px;
+      height: 30px;
+    }
+  }
+`
+
+function handleNavigationVisibility(isVisible) {
+  return isVisible
+    ? css`
+        transform: translateY(0);
+        opacity: 1;
+      `
+    : css`
+        transform: translateY(-100%);
+        opacity: 0;
+      `
+}
+
+function handleMobileViewNavigation(isVisible) {
+  return isVisible
+    ? css`
+        transform: translateY(0);
+        opacity: 1;
+      `
+    : css`
+        transform: translateY(100%);
+        opacity: 0;
+      `
+}
+
+export { NavBar, NavItem, NavIcon, NavTitle }

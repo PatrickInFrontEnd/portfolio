@@ -1,7 +1,6 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import hobbyData from "./data"
-import { getImageNumber } from "./../../../utils/getImageNumber"
 import HobbyPanel from "./HobbyPanel.component"
 import { mapToPNGSource } from "./../../../utils/mapToPNGsource"
 import { sortImagesASC } from "./../../../utils/sort"
@@ -29,7 +28,6 @@ const HobbyPanelsContainer = props => {
   } = useStaticQuery(queryForImgages)
 
   const sources = edges.map(mapToPNGSource).sort(sortImagesASC)
-  console.log(sources)
 
   return sources.map(({ src, id }, i) => {
     return (
@@ -43,4 +41,5 @@ const HobbyPanelsContainer = props => {
     )
   })
 }
+
 export default HobbyPanelsContainer

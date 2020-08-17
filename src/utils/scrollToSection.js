@@ -7,6 +7,7 @@ export const scrollToSection = (hash, offset = 80) => () => {
   if (!hash || typeof hash !== "string") return
 
   const target = document.querySelector(hash)
+
   if (!target) {
     console.error(
       `Element named ${hash} does not exist in your document. Try to write appropriate name hash.`
@@ -14,14 +15,22 @@ export const scrollToSection = (hash, offset = 80) => () => {
     return
   }
 
-  const positionY = target.getBoundingClientRect().top
-
-  const targetProps =
-    positionY < 0 ? { y: target, offsetY: offset } : { y: target }
+  const targetProps = getScrollTargetProps(target, offset)
 
   gsap.to(window, {
     scrollTo: targetProps,
-    duration: 1,
+    duration: 1.5,
     ease: Power4.easeInOut,
   })
+}
+
+function getScrollTargetProps(target, offset = 80) {
+  let targetProps
+  const positionY = target.getBoundingClientRect().top
+
+  targetProps = positionY < 0 ? { y: target, offsetY: offset } : { y: target }
+
+  if (window.innerWidth <= 1020) targetProps = { y: target }
+
+  return targetProps || undefined
 }

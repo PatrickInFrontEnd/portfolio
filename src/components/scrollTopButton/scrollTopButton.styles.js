@@ -35,7 +35,7 @@ const ElipseWrapper = styled.div`
   position: fixed;
   z-index: 1000000;
   right: 50px;
-  bottom: 50px;
+  bottom: 100px;
   width: 60px;
   height: 60px;
   cursor: pointer;
