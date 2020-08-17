@@ -13,6 +13,10 @@ const IntroductionSectionWrapper = styled.section`
   display: flex;
   min-height: calc(100vh - 80px);
   width: 100%;
+
+  @media screen and (max-width: 1020px) {
+    min-height: 100vh;
+  }
 `
 
 const BackgroundImage = styled(Image)`
