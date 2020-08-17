@@ -12,7 +12,11 @@ const FooterComponent = props => (
     <FooterTitle>
       Portfolio project - landing page &copy;2020. All rights reserved.
     </FooterTitle>
-    <DirectorLink to="https://github.com/PatrickInFrontEnd" target="_blank">
+    <DirectorLink
+      href="https://github.com/PatrickInFrontEnd"
+      target="_blank"
+      rel="noreferrer"
+    >
       Site created by Patryk Płuciennik
       <GithubIcon />
     </DirectorLink>

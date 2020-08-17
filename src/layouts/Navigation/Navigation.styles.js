@@ -2,6 +2,7 @@ import styled, { css } from "styled-components"
 import { flexCenter } from "./../../components/mixins/mixins"
 
 const NavTitle = styled.span`
+  display: block;
   text-decoration: none;
   font: ${({ theme }) => `${theme.fWeight.regular} ${theme.fSize.XXS} Lobster`};
   color: ${({ theme }) => theme.color.white};
@@ -23,15 +24,16 @@ const NavItem = styled.span`
   cursor: pointer;
   transition: 0.3s;
 
-  &:hover {
-    transform: scale(0.9);
-  }
-
   ${NavIcon} {
+    transition: 0.3s;
     position: absolute;
     right: -15px;
     top: 50%;
     transform: translate(100%, -50%);
+  }
+
+  &:hover {
+    transform: scale(0.9);
   }
 `
 
@@ -77,7 +79,7 @@ const NavBar = styled.nav`
       height: 80%;
       width: 90%;
       margin: 0;
-      border-right: 1px solid #fff;
+      border-right: 2px solid #fff;
 
       &:last-of-type {
         border-right: none;
@@ -128,6 +130,10 @@ const NavBar = styled.nav`
       width: 30px;
       height: 30px;
     }
+  }
+
+  @media screen and (max-width: 400px) {
+    height: 70px;
   }
 `
 

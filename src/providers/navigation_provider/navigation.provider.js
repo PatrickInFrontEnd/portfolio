@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { useScrollPosition } from "@n8tb1t/use-scroll-position"
 import { useDebouncedState } from "./../../utils/useDebounce"
 import NavigationContext from "./../../contexts/navigation.context"
@@ -16,9 +16,6 @@ const NavigationProvider = ({ children }) => {
     if (currPos.y === 0) setCurrentY(currPos.y)
     else setCurrentY(-currPos.y)
   })
-
-  /* DEV DEBBUGING */
-  useEffect(() => console.log(debouncedCurrY), [debouncedCurrY])
 
   return (
     <NavigationContext.Provider

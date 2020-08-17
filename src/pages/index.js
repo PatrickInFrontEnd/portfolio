@@ -10,18 +10,20 @@ import Footer from "./../components/Footer/Footer.component"
 import ScrollTopButton from "../components/scrollTopButton/scrollTopButton.component"
 import MainPageWrapper from "./../components/MainPageWrapper.styles"
 
-const IndexPage = () => (
-  <MainPageWrapper>
-    <SEO lang="EN" title="Patryk Płuciennik | Portfolio" />
-    <IntroductionSection />
-    <ProjectsSection />
-    <SkillsSection />
-    <AboutMeSection />
-    <MyHobbiesSection />
-    <ContactSection />
-    <Footer />
-    <ScrollTopButton />
-  </MainPageWrapper>
-)
+const IndexPage = () => {
+  return (
+    <MainPageWrapper>
+      <SEO lang="EN" title="Patryk Płuciennik | Portfolio" />
+      <IntroductionSection />
+      <ProjectsSection />
+      <SkillsSection />
+      <AboutMeSection />
+      <MyHobbiesSection />
+      <ContactSection />
+      <Footer />
+      <ScrollTopButton />
+    </MainPageWrapper>
+  )
+}
 
 export default IndexPage

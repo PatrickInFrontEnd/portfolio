@@ -1,31 +1,22 @@
-import styled, { css } from "styled-components"
-import Image from "gatsby-image"
-
-const flexColumnCenter = css`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-`
+import styled from "styled-components"
+import { getBackgroundUrl, flexCenter } from "./../../mixins/mixins"
 
 const IntroductionSectionWrapper = styled.section`
   position: relative;
   display: flex;
   min-height: calc(100vh - 80px);
   width: 100%;
+  ${({ backgroundUrl }) => getBackgroundUrl(backgroundUrl) || ""};
+  background-size: cover;
+  background-attachment: fixed;
 
   @media screen and (max-width: 1020px) {
     min-height: 100vh;
   }
-`
 
-const BackgroundImage = styled(Image)`
-  position: absolute !important;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -2;
+  @media screen and (max-width: 1220px) {
+    flex-direction: column-reverse;
+  }
 `
 
 const ShadowElement = styled.div`
@@ -35,14 +26,22 @@ const ShadowElement = styled.div`
   width: 100%;
   height: 100%;
   background-color: ${({ theme }) => theme.color.lightBlackAlpha};
-  z-index: -1;
+  z-index: 1;
 `
+/* Left bar starts */
 
 const IntroductionWrapper = styled.div`
   width: 60vw;
   height: 100%;
   padding: 40px 50px;
-  ${flexColumnCenter};
+  ${flexCenter};
+  flex-direction: column;
+  z-index: 2;
+
+  @media screen and (max-width: 1220px) {
+    width: 100%;
+    padding: 0;
+  }
 `
 
 const IntroductionHeader = styled.header`
@@ -55,6 +54,15 @@ const IntroductionHeader = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media screen and (max-width: 1220px) {
+    max-width: unset;
+    min-width: unset;
+  }
+
+  @media screen and (max-width: 480px) {
+    flex-wrap: wrap;
+  }
 `
 
 const IntroductionText = styled.span`
@@ -66,9 +74,25 @@ const IntroductionText = styled.span`
   &:last-of-type {
     margin-right: 0;
   }
+
+  @media screen and (max-width: 720px) {
+    font-size: ${({ theme }) => theme.fSize.L};
+  }
+
+  @media screen and (max-width: 560px) {
+    font-size: ${({ theme }) => theme.fSize.M};
+  }
+
+  @media screen and (max-width: 430px) {
+    &:last-of-type {
+      position: relative;
+      right: 6px;
+    }
+  }
 `
 
 const IntroductionContent = styled.div`
+  position: relative;
   width: 100%;
   max-width: 600px;
   min-height: 620px;
@@ -76,20 +100,66 @@ const IntroductionContent = styled.div`
   padding: 45px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   background-color: ${({ theme }) => theme.color.black};
   border: 2px solid ${({ theme }) => theme.color.navyLightBlue};
+
+  @media screen and (max-width: 1220px) {
+    max-width: unset;
+    border-top: none;
+    padding: 50px 100px;
+    margin-top: 0;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  @media screen and (max-width: 800px) {
+    align-items: center;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 670px) {
+    padding: 50px;
+  }
+
+  @media screen and (max-width: 560px) {
+    padding: 50px 20px;
+  }
 `
 
 const ContentHeader = styled.h3`
   font-weight: ${({ theme }) => theme.fWeight.semiBold};
   font-size: ${({ theme }) => theme.fSize.XL};
+
+  @media screen and (max-width: 1220px) {
+    font-size: ${({ theme }) => theme.fSize.XXL};
+  }
+
+  @media screen and (max-width: 560px) {
+    font-size: ${({ theme }) => theme.fSize.XL};
+  }
+
+  @media screen and (max-width: 400px) {
+    font-size: ${({ theme }) => theme.fSize.L};
+  }
 `
 
 const ContentMiniHeader = styled.h4`
   margin-top: 60px;
   font-weight: ${({ theme }) => theme.fWeight.medium};
   font-size: ${({ theme }) => theme.fSize.S};
+
+  @media screen and (max-width: 1220px) {
+    font-size: ${({ theme }) => theme.fSize.M};
+  }
+
+  @media screen and (max-width: 560px) {
+    font-size: ${({ theme }) => theme.fSize.S};
+  }
+
+  @media screen and (max-width: 400px) {
+    font-size: ${({ theme }) => theme.fSize.XS};
+  }
 `
 
 const ContentParagraph = styled.p`
@@ -98,6 +168,20 @@ const ContentParagraph = styled.p`
   font-size: ${({ theme }) => theme.fSize.XXS};
   max-width: 340px;
   line-height: 140%;
+
+  @media screen and (max-width: 1220px) {
+    max-width: 400px;
+    padding: 0;
+    font-size: ${({ theme }) => theme.fSize.S};
+  }
+
+  @media screen and (max-width: 560px) {
+    font-size: ${({ theme }) => theme.fSize.XXS};
+  }
+
+  @media screen and (max-width: 400px) {
+    font-size: ${({ theme }) => theme.fSize.XXXS};
+  }
 `
 
 const IntroductionLinksWrapper = styled.div`
@@ -108,6 +192,35 @@ const IntroductionLinksWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media screen and (max-width: 1220px) {
+    position: absolute;
+    top: 30%;
+    right: -25%;
+    transform: translateY(-50%);
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: 900px) {
+    right: -30%;
+  }
+
+  @media screen and (max-width: 800px) {
+    right: -35%;
+    padding: 0 20px;
+  }
+
+  @media screen and (max-width: 800px) {
+    position: static;
+    flex-direction: row;
+    top: unset;
+    right: unset;
+  }
+
+  @media screen and (max-width: 400px) {
+    justify-content: space-between;
+    padding: 0;
+  }
 `
 
 const IntroductionLinkWrapper = styled.div`
@@ -119,6 +232,22 @@ const IntroductionLinkWrapper = styled.div`
   &:hover {
     span > svg {
       stroke: ${({ theme }) => theme.color.lightBlue};
+    }
+  }
+
+  @media screen and (max-width: 1220px) {
+    margin-bottom: 150px;
+
+    svg {
+      margin-top: 15px;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    margin-bottom: 0;
+
+    svg {
+      margin-top: 0;
     }
   }
 `
@@ -139,24 +268,51 @@ const IntroductionLink = styled.p`
     position: absolute;
     bottom: 0;
     left: 50%;
-    transform: translate(-50%, 100%);
+    transform: translate(-70%, 100%);
 
     svg {
       transition: 0.3s;
       stroke: ${({ theme }) => theme.color.white};
     }
   }
-`
 
+  @media screen and (max-width: 400px) {
+    font-size: ${({ theme }) => theme.fSize.miniS};
+    text-align: center;
+
+    ~ span svg {
+      height: 25px;
+    }
+  }
+`
+/* Right bar starts */
 const DescriptionWrapper = styled.div`
   width: 40vw;
   max-width: 750px;
   min-height: calc(100vh - 80px);
   padding-top: 12vh;
-  ${flexColumnCenter};
+  ${flexCenter};
+  flex-direction: column;
   justify-content: space-between;
   background-color: ${({ theme }) => theme.color.lightBlackAlpha};
-  z-index: -1;
+  border-left: 2px solid ${({ theme }) => theme.color.navyLightBlue};
+  z-index: 2;
+
+  @media screen and (max-width: 1220px) {
+    width: 100%;
+    padding-top: 90px;
+    max-width: unset;
+    margin: 0 auto;
+    border-right: 2px solid ${({ theme }) => theme.color.navyLightBlue};
+  }
+
+  @media screen and (max-width: 720px) {
+    padding-top: 50px;
+  }
+
+  @media screen and (max-width: 720px) and (orientation: landscape) {
+    padding-top: 20px;
+  }
 `
 
 const DescriptionPhotoWrapper = styled.div`
@@ -168,6 +324,28 @@ const DescriptionPhotoWrapper = styled.div`
   border-radius: 50%;
   overflow: hidden;
   background-color: ${({ theme }) => theme.color.white};
+
+  @media screen and (max-width: 720px) {
+    width: 300px;
+    height: 300px;
+  }
+
+  @media screen and (max-width: 720px) and (orientation: landscape) {
+    width: 250px;
+    height: 250px;
+    margin-top: 0px;
+  }
+
+  @media screen and (max-width: 400px) {
+    width: 280px;
+    height: 280px;
+  }
+
+  @media screen and (max-width: 360px) {
+    height: 250px;
+    width: 250px;
+    margin-top: 50px;
+  }
 `
 
 const DescriptionBorder = styled.span`
@@ -193,24 +371,37 @@ const DescriptionPhoto = styled.div`
   position: absolute;
   left: 50%;
   top: 20%;
-  transform: translateX(-45%);
+  transform: translateX(-40%);
   z-index: 1;
   width: 80%;
   height: 80%;
-  ${({ src }) => (src ? `background-image: url(${src})` : "")};
+  ${({ src }) => getBackgroundUrl(src)};
   background-repeat: no-repeat;
   background-size: cover;
 `
 
 const DescriptionParagraphWrapper = styled.div`
-  display: flex;
+  ${flexCenter};
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   height: 40%;
   max-height: 250px;
   background-color: ${({ theme }) => theme.color.black};
+
+  @media screen and (max-width: 1220px) {
+    max-height: unset;
+    height: 300px;
+    background-color: ${({ theme }) => theme.color.black};
+  }
+
+  @media screen and (max-width: 720px) {
+    height: 370px;
+    margin-top: 50px;
+  }
+
+  @media screen and (max-width: 400px) {
+    height: 300px;
+  }
 `
 
 const DescriptionP = styled.p`
@@ -221,11 +412,28 @@ const DescriptionP = styled.p`
   &:last-of-type {
     margin-bottom: 0;
   }
+
+  @media screen and (max-width: 1220px) {
+    font-size: ${({ theme }) => theme.fSize.XL};
+    font-weight: ${({ theme }) => theme.fWeight.semiBold};
+  }
+
+  @media screen and (max-width: 720px) {
+    margin-bottom: 50px;
+    font-size: ${({ theme }) => theme.fSize.L};
+  }
+
+  @media screen and (max-width: 360px) {
+    font-size: ${({ theme }) => theme.fSize.M};
+  }
+
+  @media screen and (max-width: 320px) {
+    font-size: ${({ theme }) => theme.fSize.S};
+  }
 `
 
 export {
   IntroductionSectionWrapper,
-  BackgroundImage,
   ShadowElement,
   IntroductionWrapper,
   IntroductionHeader,

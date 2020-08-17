@@ -19,12 +19,12 @@ const FooterTitle = styled.h3`
   font-weight: ${({ theme }) => theme.fWeight.medium};
 `
 
-const DirectorLink = styled(Link)`
+const DirectorLink = styled.a`
   position: relative;
   font-size: ${({ theme }) => theme.fSize.XXXS};
   font-weight: ${({ theme }) => theme.fWeight.medium};
-  color: ${({ theme }) => theme.color.white} !important;
-  text-decoration: none !important;
+  color: ${({ theme }) => theme.color.white};
+  text-decoration: none;
 
   svg {
     position: absolute;

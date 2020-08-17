@@ -1,5 +1,4 @@
 import React from "react"
-import { useTheme } from "styled-components"
 import {
   DescriptionWrapper,
   DescriptionParagraphWrapper,
@@ -8,8 +7,6 @@ import {
 import ProfilePhotoComponent from "./ProfilePhoto.component"
 
 const DescriptionContainer = props => {
-  const theme = useTheme()
-
   return (
     <DescriptionWrapper>
       <ProfilePhotoComponent />

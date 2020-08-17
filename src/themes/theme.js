@@ -30,6 +30,10 @@ const theme = {
     XS: "26px",
     XXS: "24px",
     XXXS: "22px",
+    miniS: "18px",
+    miniXS: "16px",
+    miniXXS: "14px",
+    miniXXXS: "12px",
   },
   fWeight: {
     thin: "100",
