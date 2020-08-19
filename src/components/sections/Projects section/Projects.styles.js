@@ -293,7 +293,8 @@ const TechnologyPanel = styled(ButtonsPanel)`
   ${flexCenter};
   justify-content: flex-start;
   flex-direction: row;
-  overflow: auto;
+  flex-wrap: wrap;
+  overflow-x: auto;
   grid-area: technologypanel;
 
   @media screen and (max-width: 1220px) {
