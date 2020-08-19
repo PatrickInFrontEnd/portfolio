@@ -217,8 +217,8 @@ const IntroductionLinksWrapper = styled.div`
     right: unset;
   }
 
-  @media screen and (max-width: 400px) {
-    justify-content: space-between;
+  @media screen and (max-width: 560px) {
+    justify-content: space-around;
     padding: 0;
   }
 `
@@ -306,6 +306,10 @@ const DescriptionWrapper = styled.div`
     border-right: 2px solid ${({ theme }) => theme.color.navyLightBlue};
   }
 
+  @media screen and (max-width: 1220px) and (orientation: landscape) {
+    padding-top: 50px;
+  }
+
   @media screen and (max-width: 720px) {
     padding-top: 50px;
   }
@@ -391,7 +395,7 @@ const DescriptionParagraphWrapper = styled.div`
   @media screen and (max-width: 1220px) {
     max-height: unset;
     height: 300px;
-    background-color: ${({ theme }) => theme.color.black};
+    background-color: ${({ theme }) => theme.color.lightBlackAlpha};
   }
 
   @media screen and (max-width: 720px) {

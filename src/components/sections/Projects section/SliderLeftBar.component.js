@@ -9,14 +9,13 @@ import {
   ButtonsPanel,
   ButtonsWrapper,
   SlidesCounter,
-  UsedTechnologiesPanel,
 } from "./Projects.styles"
 import ArrowIconLeft from "./../../../assets/images/icon_arrow_left.svg"
 import ArrowIconRight from "./../../../assets/images/icon_arrow_right.svg"
 
 const LeftBarContainer = props => (
   <LeftBarWrapper>
-    <SliderPanel>
+    <SliderPanel id="slider_title">
       <Title>Vacation booking</Title>
     </SliderPanel>
 
@@ -34,9 +33,6 @@ const LeftBarContainer = props => (
       </ButtonsWrapper>
       <SlidesCounter>1</SlidesCounter>
     </ButtonsPanel>
-    <UsedTechnologiesPanel>
-      <DescriptionTitle>Used Technologies</DescriptionTitle>
-    </UsedTechnologiesPanel>
   </LeftBarWrapper>
 )
 export default LeftBarContainer

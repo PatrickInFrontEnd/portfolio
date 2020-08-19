@@ -13,6 +13,10 @@ const BackgroundWrapper = styled.section`
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+
+  @media screen and (max-width: 1080px) {
+    padding: 50px 0;
+  }
 `
 const ProjectsHeader = styled.header`
   width: 60%;
@@ -21,6 +25,16 @@ const ProjectsHeader = styled.header`
   background-color: ${({ theme }) => theme.color.skyBlueAlpha};
   border-radius: 20px;
   margin-bottom: 100px;
+
+  @media screen and (max-width: 1220px) {
+    width: 80%;
+  }
+
+  @media screen and (max-width: 1080px) {
+    width: 100%;
+    border-radius: 0px;
+    margin-bottom: 50px;
+  }
 `
 
 const ProjectsHeaderTitle = styled.h2`
@@ -29,16 +43,34 @@ const ProjectsHeaderTitle = styled.h2`
   font-family: Poppins, Montserrat, Arial, sans-serif;
   letter-spacing: 10px;
   text-transform: uppercase;
-`
 
-/* NOTE: slider left panel*/
+  @media screen and (max-width: 800px) {
+    font-size: ${({ theme }) => theme.fSize.M};
+  }
+
+  @media screen and (max-width: 560px) {
+    font-size: ${({ theme }) => theme.fSize.S};
+  }
+
+  @media screen and (max-width: 400px) {
+    font-size: ${({ theme }) => theme.fSize.XS};
+    font-weight: ${({ theme }) => theme.fWeight.semiBold};
+    letter-spacing: 5px;
+  }
+`
 
 const SliderWrapper = styled.div`
   width: 100%;
-  height: 850px;
+  height: 730px;
   display: flex;
   justify-content: space-between;
+
+  @media screen and (max-width: 1080px) {
+    height: 80vh;
+  }
 `
+
+/* NOTE: slider left panel*/
 
 const LeftBarWrapper = styled.div`
   display: flex;
@@ -47,6 +79,15 @@ const LeftBarWrapper = styled.div`
   min-width: 400px;
   width: 400px;
   height: 100%;
+
+  @media screen and (max-width: 1220px) {
+    min-width: 300px;
+    width: 300px;
+  }
+
+  @media screen and (max-width: 1080px) {
+    height: 100%;
+  }
 `
 
 const SliderPanel = styled.div`
@@ -61,11 +102,28 @@ const SliderPanel = styled.div`
   &:last-of-type {
     margin-bottom: 0;
   }
+
+  @media screen and (max-width: 1080px) {
+    margin: 0;
+
+    &:nth-of-type(1) {
+      padding: 0;
+    }
+  }
 `
 
 const Title = styled.h2`
   font-size: ${({ theme }) => theme.fSize.L};
   font-weight: ${({ theme }) => theme.fWeight.medium};
+
+  @media screen and (max-width: 1220px) {
+    text-align: center;
+  }
+
+  @media screen and (max-width: 1080px) {
+    padding-bottom: 20px;
+    border-bottom: 1px solid ${({ theme }) => theme.color.white};
+  }
 `
 
 const SliderDescription = styled(SliderPanel)`
@@ -73,17 +131,34 @@ const SliderDescription = styled(SliderPanel)`
   justify-content: space-around;
   align-items: flex-start;
   padding: 30px;
+
+  @media screen and (max-width: 1080px) {
+    padding: 0;
+    max-height: 390px;
+  }
 `
 
 const DescriptionTitle = styled.h2`
   font-size: ${({ theme }) => theme.fSize.M};
   font-weight: ${({ theme }) => theme.fWeight.medium};
+
+  @media screen and (max-width: 1080px) {
+    margin: 0 auto 50px;
+  }
 `
 
 const DescriptionParagraph = styled.p`
   font-size: ${({ theme }) => theme.fSize.XXXS};
   font-weight: ${({ theme }) => theme.fWeight.medium};
   padding: 0 20px 0 0;
+
+  @media screen and (max-width: 1080px) {
+    text-align: center;
+    line-height: 150%;
+    padding: 0;
+    padding-bottom: 40px;
+    border-bottom: 1px solid ${({ theme }) => theme.color.white};
+  }
 `
 
 const ButtonsPanel = styled(SliderPanel)`
@@ -91,6 +166,10 @@ const ButtonsPanel = styled(SliderPanel)`
   justify-content: space-between;
   flex-direction: row;
   padding: 0 40px;
+
+  @media screen and (max-width: 1220px) {
+    padding: 0 30px 0 10px;
+  }
 `
 
 const ButtonsWrapper = styled.div`
@@ -111,6 +190,10 @@ const ButtonsWrapper = styled.div`
       fill: ${({ theme }) => theme.color.white};
     }
   }
+
+  @media screen and (max-width: 1220px) {
+    justify-content: space-around;
+  }
 `
 
 const SlidesCounter = styled.span`
@@ -122,22 +205,26 @@ const SlidesCounter = styled.span`
   background-color: ${({ theme }) => theme.color.black};
 `
 
-const UsedTechnologiesPanel = styled(ButtonsPanel)`
-  justify-content: center;
-`
-
 /* NOTE: slider right panel */
 
 const SliderImageWrapper = styled.div`
   position: relative;
   width: 100%;
   height: 730px;
-  margin: 0 0 20px 20px;
-  ${({ src }) =>
-    src ? `background-image: url(${src});` : `background-color:#fff`};
+  margin: 0 0 0 20px;
+  ${({ src, theme }) =>
+    src
+      ? `background-image: url(${src});`
+      : `background-color:${theme.color.white};`};
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+
+  @media screen and (max-width: 1080px) {
+    height: 100%;
+    margin: 0;
+    border-left: 1px solid ${({ theme }) => theme.color.white};
+  }
 `
 
 const LinkP = styled.p`
@@ -148,6 +235,10 @@ const LinkP = styled.p`
   width: 100%;
   height: 100%;
   transition: 0.3s;
+
+  @media screen and (max-width: 1080px) {
+    display: none;
+  }
 `
 
 const LinkIcon = styled.span`
@@ -161,6 +252,11 @@ const LinkIcon = styled.span`
     fill: ${({ theme }) => theme.color.mediumLightBlue};
     animation: 1.5s bounce infinite;
     transition: 0.3s;
+  }
+
+  @media screen and (max-width: 1080px) {
+    border: none;
+    width: 100%;
   }
 
   @keyframes bounce {
@@ -212,6 +308,71 @@ const LinkButton = styled.a`
       color: ${({ theme }) => theme.color.white};
     }
   }
+
+  @media screen and (max-width: 1400px) {
+    &:nth-of-type(1) {
+      right: unset;
+      left: 50px;
+    }
+
+    &:nth-of-type(2) {
+      right: 50px;
+    }
+  }
+
+  @media screen and (max-width: 1080px) {
+    width: 60px;
+    justify-content: center;
+    &:nth-of-type(1) {
+      left: unset;
+      bottom: 100px;
+    }
+
+    &:nth-of-type(1),
+    &:nth-of-type(2) {
+      right: 30px;
+    }
+  }
+`
+const TechnologyWrapper = styled.div`
+  height: 100px;
+  width: 100%;
+  ${flexCenter};
+  justify-content: space-between;
+  margin-top: 20px;
+
+  @media screen and (max-width: 1080px) {
+    margin: 0;
+    border-top: 2px solid ${({ theme }) => theme.color.white};
+  }
+`
+
+const UsedTechnologiesPanel = styled(ButtonsPanel)`
+  justify-content: center;
+  min-width: 400px;
+  max-width: 400px;
+  min-height: 100%;
+  margin: 0 20px 0 0;
+
+  @media screen and (max-width: 1220px) {
+    padding: 0;
+    align-items: center;
+
+    ${DescriptionTitle} {
+      font-size: ${({ theme }) => theme.fSize.XS};
+    }
+  }
+
+  @media screen and (max-width: 1220px) {
+    min-width: 300px;
+    max-width: 300px;
+  }
+
+  @media screen and (max-width: 1080px) {
+    ${DescriptionTitle} {
+      margin: 0;
+    }
+  }
 `
 
 const TechnologyPanel = styled(ButtonsPanel)`
@@ -219,9 +380,15 @@ const TechnologyPanel = styled(ButtonsPanel)`
   ${flexCenter};
   justify-content: flex-start;
   flex-direction: row;
-  position: absolute;
-  bottom: -120px;
-  left: 0;
+  overflow: auto;
+
+  @media screen and (max-width: 1220px) {
+    padding: 0 40px;
+  }
+
+  @media screen and (max-width: 1080px) {
+    border-left: 1px solid ${({ theme }) => theme.color.white};
+  }
 `
 
 const TechnologyIcon = styled.span`
@@ -257,6 +424,7 @@ export {
   ButtonsPanel,
   ButtonsWrapper,
   SlidesCounter,
+  TechnologyWrapper,
   UsedTechnologiesPanel,
   SliderImageWrapper,
   TechnologyPanel,

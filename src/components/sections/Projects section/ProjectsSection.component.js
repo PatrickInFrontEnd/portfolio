@@ -10,6 +10,7 @@ import SliderLeftBar from "./SliderLeftBar.component"
 import SliderRightBar from "./SliderRightBar.component"
 import SectionHeader from "./../../SectionHeader/SectionHeader.component"
 import ProjectsIcon from "./../../../assets/images/icon_projects.svg"
+import TechnologiesPanel from "./UsedTechnologies.component"
 
 const queryForBgcImg = graphql`
   {
@@ -50,6 +51,7 @@ const ProjectsSection = props => {
           <SliderLeftBar />
           <SliderRightBar />
         </SliderWrapper>
+        <TechnologiesPanel />
       </BackgroundWrapper>
     </>
   )

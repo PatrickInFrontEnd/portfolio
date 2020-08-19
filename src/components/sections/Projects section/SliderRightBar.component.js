@@ -1,8 +1,6 @@
 import React from "react"
 import {
   SliderImageWrapper,
-  TechnologyPanel,
-  TechnologyIcon,
   LinkP,
   LinkIcon,
   LinkButton,
@@ -28,9 +26,6 @@ const RightBarContainer = props => {
 
   return (
     <SliderImageWrapper src={file.childImageSharp.fluid.src}>
-      <TechnologyPanel>
-        <TechnologyIcon />
-      </TechnologyPanel>
       <LinkButton bottom="30px" right="350px">
         <LinkP>LIVE</LinkP>
         <LinkIcon>
