@@ -8,31 +8,45 @@ import {
 import { graphql, useStaticQuery } from "gatsby"
 import LiveIcon from "./../../../assets/images/icon_live.svg"
 import CodeGithubIcon from "./../../../assets/images/icon_code_github.svg"
+import { mapToPNGSource } from "./../../../utils/mapToPNGsource"
+import { sortImagesASC } from "./../../../utils/sort"
+import { filterById } from "./../../../utils/filter"
 
-const queryForBgcImg = graphql`
+const queryForSlideImages = graphql`
   {
-    file(relativePath: { eq: "slider_2.png" }) {
-      childImageSharp {
-        fluid {
-          src
+    allFile(filter: { relativePath: { regex: "/slider_[1-9].(png|jpg)/" } }) {
+      edges {
+        node {
+          relativePath
+          childImageSharp {
+            fluid(quality: 100) {
+              src
+            }
+          }
         }
       }
     }
   }
 `
 
-const RightBarContainer = props => {
-  const { file } = useStaticQuery(queryForBgcImg)
+const RightBarContainer = ({ slideId, liveUrl, codeUrl }) => {
+  const {
+    allFile: { edges },
+  } = useStaticQuery(queryForSlideImages)
+
+  const sources = edges.map(mapToPNGSource).sort(sortImagesASC)
+  const [sliderSrc] = sources.filter(filterById(slideId))
+  const source = sliderSrc.src
 
   return (
-    <SliderImageWrapper src={file.childImageSharp.fluid.src}>
-      <LinkButton bottom="30px" right="350px">
+    <SliderImageWrapper src={source}>
+      <LinkButton bottom="30px" right="350px" href={liveUrl || ""}>
         <LinkP>LIVE</LinkP>
         <LinkIcon>
           <LiveIcon />
         </LinkIcon>
       </LinkButton>
-      <LinkButton bottom="30px" right="100px">
+      <LinkButton bottom="30px" right="100px" href={codeUrl || ""}>
         <LinkP>CODE</LinkP>
         <LinkIcon>
           <CodeGithubIcon />

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext, useEffect } from "react"
 import {
   BackgroundWrapper,
   ProjectsHeader,
@@ -11,10 +11,8 @@ import {
   DescriptionParagraph,
   ButtonsPanel,
   ButtonsWrapper,
-  SlidesCounter,
+  SlideId,
   UsedTechnologiesPanel,
-  TechnologyPanel,
-  TechnologyIcon,
 } from "./Projects.styles"
 import { graphql, useStaticQuery } from "gatsby"
 import SliderRightBar from "./SliderRightBar.component"
@@ -22,6 +20,8 @@ import SectionHeader from "./../../SectionHeader/SectionHeader.component"
 import ProjectsIcon from "./../../../assets/images/icon_projects.svg"
 import ArrowIconLeft from "./../../../assets/images/icon_arrow_left.svg"
 import ArrowIconRight from "./../../../assets/images/icon_arrow_right.svg"
+import TechnologiesPanel from "./UsedTechnologiesPanel.component"
+import SliderContext from "./../../../contexts/slider.context"
 
 const queryForBgcImg = graphql`
   {
@@ -37,6 +37,12 @@ const queryForBgcImg = graphql`
 
 const ProjectsSection = props => {
   const { file } = useStaticQuery(queryForBgcImg)
+
+  const {
+    nextSlide,
+    prevSlide,
+    currentSlide: { id, title, description, codeUrl, liveUrl, technologies },
+  } = useContext(SliderContext)
 
   return (
     <>
@@ -60,35 +66,33 @@ const ProjectsSection = props => {
         </ProjectsHeader>
         <SliderWrapper>
           <SliderPanel id="title">
-            <Title>ZLP platform</Title>
+            <Title>{title}</Title>
           </SliderPanel>
 
           <SliderDescription>
             <DescriptionTitle>Description :</DescriptionTitle>
 
-            <DescriptionParagraph>
-              Gaming platform created for school tournament.
-            </DescriptionParagraph>
+            <DescriptionParagraph>{description}</DescriptionParagraph>
           </SliderDescription>
 
           <ButtonsPanel>
             <ButtonsWrapper>
-              <ArrowIconLeft />
-              <ArrowIconRight />
+              <ArrowIconLeft onClick={prevSlide} />
+              <ArrowIconRight onClick={nextSlide} />
             </ButtonsWrapper>
 
-            <SlidesCounter>1</SlidesCounter>
+            <SlideId>{id}</SlideId>
           </ButtonsPanel>
 
-          <SliderRightBar />
+          <SliderRightBar slideId={id} codeUrl={codeUrl} liveUrl={liveUrl} />
 
           <UsedTechnologiesPanel>
             <DescriptionTitle>Used Technologies</DescriptionTitle>
           </UsedTechnologiesPanel>
 
-          <TechnologyPanel>
-            <TechnologyIcon />
-          </TechnologyPanel>
+          <TechnologiesPanel
+            iconSources={technologies.map(name => ({ name }))}
+          />
         </SliderWrapper>
       </BackgroundWrapper>
     </>
