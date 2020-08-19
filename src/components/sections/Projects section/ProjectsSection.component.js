@@ -4,13 +4,24 @@ import {
   ProjectsHeader,
   ProjectsHeaderTitle,
   SliderWrapper,
+  SliderPanel,
+  Title,
+  SliderDescription,
+  DescriptionTitle,
+  DescriptionParagraph,
+  ButtonsPanel,
+  ButtonsWrapper,
+  SlidesCounter,
+  UsedTechnologiesPanel,
+  TechnologyPanel,
+  TechnologyIcon,
 } from "./Projects.styles"
 import { graphql, useStaticQuery } from "gatsby"
-import SliderLeftBar from "./SliderLeftBar.component"
 import SliderRightBar from "./SliderRightBar.component"
 import SectionHeader from "./../../SectionHeader/SectionHeader.component"
 import ProjectsIcon from "./../../../assets/images/icon_projects.svg"
-import TechnologiesPanel from "./UsedTechnologies.component"
+import ArrowIconLeft from "./../../../assets/images/icon_arrow_left.svg"
+import ArrowIconRight from "./../../../assets/images/icon_arrow_right.svg"
 
 const queryForBgcImg = graphql`
   {
@@ -48,10 +59,37 @@ const ProjectsSection = props => {
           <ProjectsHeaderTitle>my projects</ProjectsHeaderTitle>
         </ProjectsHeader>
         <SliderWrapper>
-          <SliderLeftBar />
+          <SliderPanel id="title">
+            <Title>ZLP platform</Title>
+          </SliderPanel>
+
+          <SliderDescription>
+            <DescriptionTitle>Description :</DescriptionTitle>
+
+            <DescriptionParagraph>
+              Gaming platform created for school tournament.
+            </DescriptionParagraph>
+          </SliderDescription>
+
+          <ButtonsPanel>
+            <ButtonsWrapper>
+              <ArrowIconLeft />
+              <ArrowIconRight />
+            </ButtonsWrapper>
+
+            <SlidesCounter>1</SlidesCounter>
+          </ButtonsPanel>
+
           <SliderRightBar />
+
+          <UsedTechnologiesPanel>
+            <DescriptionTitle>Used Technologies</DescriptionTitle>
+          </UsedTechnologiesPanel>
+
+          <TechnologyPanel>
+            <TechnologyIcon />
+          </TechnologyPanel>
         </SliderWrapper>
-        <TechnologiesPanel />
       </BackgroundWrapper>
     </>
   )
