@@ -5,7 +5,7 @@ const BackgroundWrapper = styled.section`
   position: relative;
   width: 100%;
   min-height: calc(100vh - 90px);
-  padding: 100px 50px;
+  padding: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,7 +24,7 @@ const ProjectsHeader = styled.header`
   ${flexCenter};
   background-color: ${({ theme }) => theme.color.skyBlueAlpha};
   border-radius: 20px;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 
   @media screen and (max-width: 1220px) {
     width: 80%;
@@ -61,53 +61,76 @@ const ProjectsHeaderTitle = styled.h2`
 
 const SliderWrapper = styled.div`
   width: 100%;
-  height: 730px;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  grid-template-rows: 200px 300px 100px 100px;
+  grid-template-areas:
+    "title slide"
+    "description slide"
+    "buttonpanel slide"
+    "technologies technologypanel";
+  grid-gap: 20px;
+
+  @media screen and (max-width: 1220px) {
+    grid-gap: 0;
+  }
 
   @media screen and (max-width: 1080px) {
-    height: 80vh;
+    grid-template-columns: 300px 1fr;
+  }
+
+  @media screen and (max-width: 1000px) {
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 100px 400px 100px 100px;
+    grid-template-areas:
+      "title description"
+      "slide slide"
+      "technologies technologypanel"
+      "buttonpanel technologypanel";
+  }
+
+  @media screen and (max-width: 560px) {
+    grid-template-areas:
+      "title title"
+      "slide slide"
+      "technologies technologypanel"
+      "buttonpanel technologypanel";
+  }
+
+  @media screen and (max-width: 450px) {
+    grid-template-rows: 100px 400px 100px 100px 100px;
+    grid-template-areas:
+      "title title"
+      "slide slide"
+      "technologypanel technologypanel"
+      "technologies technologies"
+      "buttonpanel buttonpanel";
   }
 `
 
 /* NOTE: slider left panel*/
 
-const LeftBarWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-width: 400px;
-  width: 400px;
-  height: 100%;
-
-  @media screen and (max-width: 1220px) {
-    min-width: 300px;
-    width: 300px;
-  }
-
-  @media screen and (max-width: 1080px) {
-    height: 100%;
-  }
-`
-
 const SliderPanel = styled.div`
   ${flexCenter};
   flex-direction: column;
   width: 100%;
-  height: 200px;
+  height: 100%;
   padding: 0 30px;
-  margin-bottom: 20px;
   background-color: ${({ theme }) => theme.color.blackAlpha};
 
-  &:last-of-type {
-    margin-bottom: 0;
+  &#title {
+    grid-area: title;
   }
 
-  @media screen and (max-width: 1080px) {
-    margin: 0;
+  @media screen and (max-width: 1220px) {
+    &#title {
+      border-bottom: 2px solid ${({ theme }) => theme.color.white};
+    }
+  }
 
-    &:nth-of-type(1) {
-      padding: 0;
+  @media screen and (max-width: 1000px) {
+    &#title {
+      border: none;
     }
   }
 `
@@ -116,25 +139,29 @@ const Title = styled.h2`
   font-size: ${({ theme }) => theme.fSize.L};
   font-weight: ${({ theme }) => theme.fWeight.medium};
 
-  @media screen and (max-width: 1220px) {
-    text-align: center;
-  }
-
-  @media screen and (max-width: 1080px) {
-    padding-bottom: 20px;
-    border-bottom: 1px solid ${({ theme }) => theme.color.white};
+  @media screen and (max-width: 1000px) {
+    font-size: ${({ theme }) => theme.fSize.S};
   }
 `
 
 const SliderDescription = styled(SliderPanel)`
-  height: 390px;
+  height: 100%;
   justify-content: space-around;
   align-items: flex-start;
-  padding: 30px;
+  padding: 0 30px;
+  grid-area: description;
 
-  @media screen and (max-width: 1080px) {
-    padding: 0;
-    max-height: 390px;
+  @media screen and (max-width: 1220px) {
+    border-bottom: 2px solid ${({ theme }) => theme.color.white};
+  }
+
+  @media screen and (max-width: 1000px) {
+    border: none;
+    border-left: 2px solid ${({ theme }) => theme.color.white};
+  }
+
+  @media screen and (max-width: 560px) {
+    display: none;
   }
 `
 
@@ -143,7 +170,11 @@ const DescriptionTitle = styled.h2`
   font-weight: ${({ theme }) => theme.fWeight.medium};
 
   @media screen and (max-width: 1080px) {
-    margin: 0 auto 50px;
+    margin: 0 auto;
+  }
+
+  @media screen and (max-width: 1000px) {
+    display: none;
   }
 `
 
@@ -157,7 +188,16 @@ const DescriptionParagraph = styled.p`
     line-height: 150%;
     padding: 0;
     padding-bottom: 40px;
-    border-bottom: 1px solid ${({ theme }) => theme.color.white};
+  }
+
+  @media screen and (max-width: 1000px) {
+    padding: 0;
+    font-size: ${({ theme }) => theme.fSize.miniS};
+    margin: 0 auto;
+  }
+
+  @media screen and (max-width: 700px) {
+    font-size: ${({ theme }) => theme.fSize.miniXS};
   }
 `
 
@@ -166,10 +206,21 @@ const ButtonsPanel = styled(SliderPanel)`
   justify-content: space-between;
   flex-direction: row;
   padding: 0 40px;
+  grid-area: buttonpanel;
 
   @media screen and (max-width: 1220px) {
-    padding: 0 30px 0 10px;
+    border-bottom: 2px solid ${({ theme }) => theme.color.white};
   }
+
+  @media screen and (max-width: 1080px) {
+    padding: 0 25px;
+  }
+
+  /* @media screen and (max-width: 1000px) {
+    width: 300px;
+    margin: 0 auto 0 0;
+    border-right: 2px solid ${({ theme }) => theme.color.white};
+  } */
 `
 
 const ButtonsWrapper = styled.div`
@@ -191,8 +242,8 @@ const ButtonsWrapper = styled.div`
     }
   }
 
-  @media screen and (max-width: 1220px) {
-    justify-content: space-around;
+  @media screen and (max-width: 1080px) {
+    width: 120px;
   }
 `
 
@@ -205,13 +256,94 @@ const SlidesCounter = styled.span`
   background-color: ${({ theme }) => theme.color.black};
 `
 
+const UsedTechnologiesPanel = styled(ButtonsPanel)`
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin: 0 20px 0 0;
+  grid-area: technologies;
+
+  @media screen and (max-width: 1220px) {
+    padding: 0;
+    align-items: center;
+    border: none;
+
+    ${DescriptionTitle} {
+      font-size: ${({ theme }) => theme.fSize.XS};
+    }
+  }
+
+  @media screen and (max-width: 1080px) {
+    ${DescriptionTitle} {
+      margin: 0;
+    }
+  }
+
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+    border-bottom: 2px solid ${({ theme }) => theme.color.white};
+
+    ${DescriptionTitle} {
+      display: block;
+    }
+  }
+`
+
+const TechnologyPanel = styled(ButtonsPanel)`
+  ${flexCenter};
+  justify-content: flex-start;
+  flex-direction: row;
+  overflow: auto;
+  grid-area: technologypanel;
+
+  @media screen and (max-width: 1220px) {
+    padding: 0 40px;
+    border: none;
+    border-left: 2px solid ${({ theme }) => theme.color.white};
+  }
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    border-bottom: 2px solid ${({ theme }) => theme.color.white};
+    align-items: flex-start;
+  }
+
+  @media screen and (max-width: 560px) {
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media screen and (max-width: 450px) {
+    border: none;
+  }
+`
+
+const TechnologyIcon = styled.span`
+  width: 70px;
+  height: 70px;
+  margin-right: 30px;
+  border-radius: 50px;
+  border: 2px solid ${({ theme }) => theme.color.white};
+  ${({ src, theme }) =>
+    src
+      ? `background-image: url(${src})`
+      : `background-color:${theme.color.black}`};
+
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+`
+
 /* NOTE: slider right panel */
 
 const SliderImageWrapper = styled.div`
   position: relative;
   width: 100%;
-  height: 730px;
-  margin: 0 0 0 20px;
+  grid-area: slide;
   ${({ src, theme }) =>
     src
       ? `background-image: url(${src});`
@@ -220,10 +352,15 @@ const SliderImageWrapper = styled.div`
   background-repeat: no-repeat;
   background-position: center;
 
-  @media screen and (max-width: 1080px) {
-    height: 100%;
-    margin: 0;
-    border-left: 1px solid ${({ theme }) => theme.color.white};
+  @media screen and (max-width: 1220px) {
+    border-bottom: 2px solid ${({ theme }) => theme.color.white};
+    border-left: 2px solid ${({ theme }) => theme.color.white};
+  }
+
+  @media screen and (max-width: 1000px) {
+    border: none;
+    border-top: 2px solid ${({ theme }) => theme.color.white};
+    border-bottom: 2px solid ${({ theme }) => theme.color.white};
   }
 `
 
@@ -334,88 +471,12 @@ const LinkButton = styled.a`
     }
   }
 `
-const TechnologyWrapper = styled.div`
-  height: 100px;
-  width: 100%;
-  ${flexCenter};
-  justify-content: space-between;
-  margin-top: 20px;
-
-  @media screen and (max-width: 1080px) {
-    margin: 0;
-    border-top: 2px solid ${({ theme }) => theme.color.white};
-  }
-`
-
-const UsedTechnologiesPanel = styled(ButtonsPanel)`
-  justify-content: center;
-  min-width: 400px;
-  max-width: 400px;
-  min-height: 100%;
-  margin: 0 20px 0 0;
-
-  @media screen and (max-width: 1220px) {
-    padding: 0;
-    align-items: center;
-
-    ${DescriptionTitle} {
-      font-size: ${({ theme }) => theme.fSize.XS};
-    }
-  }
-
-  @media screen and (max-width: 1220px) {
-    min-width: 300px;
-    max-width: 300px;
-  }
-
-  @media screen and (max-width: 1080px) {
-    ${DescriptionTitle} {
-      margin: 0;
-    }
-  }
-`
-
-const TechnologyPanel = styled(ButtonsPanel)`
-  width: 100%;
-  ${flexCenter};
-  justify-content: flex-start;
-  flex-direction: row;
-  overflow: auto;
-
-  @media screen and (max-width: 1220px) {
-    padding: 0 40px;
-  }
-
-  @media screen and (max-width: 1080px) {
-    border-left: 1px solid ${({ theme }) => theme.color.white};
-  }
-`
-
-const TechnologyIcon = styled.span`
-  width: 70px;
-  height: 70px;
-  margin-right: 30px;
-  border-radius: 50px;
-  border: 2px solid ${({ theme }) => theme.color.white};
-  ${({ src, theme }) =>
-    src
-      ? `background-image: url(${src})`
-      : `background-color:${theme.color.black}`};
-
-  background-size: cover;
-  background-repeat: no-repeat;
-
-  &:last-of-type {
-    margin-right: 0;
-  }
-`
 
 export {
   BackgroundWrapper,
   ProjectsHeader,
   ProjectsHeaderTitle,
   SliderWrapper,
-  LeftBarWrapper,
   SliderPanel,
   Title,
   SliderDescription,
@@ -424,7 +485,6 @@ export {
   ButtonsPanel,
   ButtonsWrapper,
   SlidesCounter,
-  TechnologyWrapper,
   UsedTechnologiesPanel,
   SliderImageWrapper,
   TechnologyPanel,
