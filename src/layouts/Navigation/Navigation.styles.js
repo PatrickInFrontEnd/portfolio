@@ -38,8 +38,6 @@ const NavItem = styled.span`
 `
 
 const NavBar = styled.nav`
-  /* DEV : TODO: turn on nav again */
-  display: none !important;
   position: fixed;
   top: 0;
   left: 0;

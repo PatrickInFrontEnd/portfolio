@@ -3,6 +3,7 @@ import {
   SkillsDescriptionBar,
   Paragraph,
   DetailsWrapper,
+  LinkedInTitle,
   LinkWrapper,
   LinkTitle,
   ArrowIcon,
@@ -12,7 +13,7 @@ import LinkedInIcon from "./../../../assets/images/icon_linkedin.svg"
 
 const DescriptionBar = props => (
   <SkillsDescriptionBar>
-    <Paragraph width="50%" margin="0 100px">
+    <Paragraph>
       When I was starting my coding adventure all I was using was pure HTML, CSS
       and some JS code. With more experience came more tools. I tried to expand
       my knowledge and decided to learn more and more web technologies that
@@ -22,7 +23,7 @@ const DescriptionBar = props => (
       I have learnt so far.
     </Paragraph>
     <DetailsWrapper>
-      <Paragraph>Technology stack details</Paragraph>
+      <LinkedInTitle>Technology stack details</LinkedInTitle>
       <ArrowIcon />
       <LinkWrapper
         href="https://www.linkedin.com/in/patryk-p%C5%82uciennik-a67176192/"

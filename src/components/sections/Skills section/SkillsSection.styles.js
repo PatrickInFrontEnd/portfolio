@@ -8,6 +8,10 @@ const SkillsSectionWrapper = styled.section`
   min-height: 100vh;
   padding: 60px 0;
   background-color: ${({ theme }) => theme.color.mediumDarkBlue};
+
+  @media screen and (max-width: 1200px) {
+    padding: 60px 0 0;
+  }
 `
 
 const Border = styled.span`
@@ -17,6 +21,14 @@ const Border = styled.span`
   background-color: ${({ theme }) => theme.color.white};
 
   ${({ position }) => getBorderPosition(position)};
+
+  @media screen and (max-width: 1500px) {
+    width: 70%;
+  }
+
+  @media screen and (max-width: 1000px) {
+    display: none;
+  }
 `
 
 function getBorderPosition(pos) {
@@ -53,6 +65,35 @@ const SkillsTitle = styled.h2`
   font-weight: ${({ theme }) => theme.fWeight.bold};
   font-size: ${({ theme }) => theme.fSize.XL};
   font-family: Montserrat, Poppins, Arial, sans-serif;
+
+  @media screen and (max-width: 1500px) {
+    margin: 30px auto 40px;
+  }
+
+  @media screen and (max-width: 1400px) {
+    margin: 30px auto 0px;
+  }
+
+  @media screen and (max-width: 1100px) {
+    font-size: ${({ theme }) => theme.fSize.L};
+  }
+
+  @media screen and (max-width: 1000px) {
+    margin: 0px auto 50px;
+  }
+
+  @media screen and (max-width: 800px) {
+    letter-spacing: 10px;
+  }
+
+  @media screen and (max-width: 450px) {
+    font-size: ${({ theme }) => theme.fSize.M};
+    text-align: center;
+  }
+
+  @media screen and (max-width: 400px) {
+    font-size: ${({ theme }) => theme.fSize.S};
+  }
 `
 
 const IconsWrapper = styled.div`
@@ -63,6 +104,32 @@ const IconsWrapper = styled.div`
   margin-bottom: 100px;
   ${flexCenter};
   justify-content: space-around;
+
+  @media screen and (max-width: 1100px) {
+    justify-content: space-between;
+    padding: 150px 100px;
+  }
+
+  @media screen and (max-width: 1000px) {
+    justify-content: space-between;
+    padding: 150px 50px;
+    min-height: unset;
+    height: 650px;
+    background-color: #fff;
+  }
+
+  @media screen and (max-width: 900px) {
+    justify-content: center;
+    padding: 0;
+  }
+
+  @media screen and (max-width: 500px) {
+    height: 550px;
+  }
+
+  @media screen and (max-width: 400px) {
+    height: 450px;
+  }
 `
 
 const WaveIcon = styled(WaveSVG)`
@@ -74,6 +141,14 @@ const WaveIcon = styled(WaveSVG)`
   height: 1000px;
   z-index: 0;
   fill: ${({ theme }) => theme.color.mediumWhite};
+
+  @media screen and (max-width: 1300px) {
+    width: 120%;
+  }
+
+  @media screen and (max-width: 1000px) {
+    display: none;
+  }
 `
 
 const TechnologiesWrapper = styled.div`
@@ -92,6 +167,14 @@ const TechnologyPanel = styled.div`
   &:last-of-type {
     margin-bottom: 0;
   }
+
+  @media screen and (max-width: 500px) {
+    margin-bottom: 20px;
+  }
+
+  @media screen and (max-width: 400px) {
+    margin-bottom: 0px;
+  }
 `
 
 const TechnologyIcon = styled.img`
@@ -103,6 +186,22 @@ const TechnologyIcon = styled.img`
   &:last-of-type {
     margin-right: 0;
   }
+
+  @media screen and (max-width: 1100px) {
+    width: 80px;
+    height: 80%;
+  }
+
+  @media screen and (max-width: 500px) {
+    width: 70px;
+    height: 70px;
+    margin-right: 20px;
+  }
+
+  @media screen and (max-width: 400px) {
+    width: 60px;
+    height: 60px;
+  }
 `
 
 const LaptopPNG = styled.img`
@@ -110,6 +209,20 @@ const LaptopPNG = styled.img`
   width: 500px;
   height: 80%;
   z-index: 1;
+
+  @media screen and (max-width: 1100px) {
+    width: 400px;
+    height: 60%;
+  }
+
+  @media screen and (max-width: 1000px) {
+    width: 400px;
+    height: 400px;
+  }
+
+  @media screen and (max-width: 900px) {
+    display: none;
+  }
 `
 
 const SkillsDescriptionBar = styled.div`
@@ -120,38 +233,70 @@ const SkillsDescriptionBar = styled.div`
   background-color: ${({ theme }) => theme.color.mediumDarkBlue};
   padding: 30px 30px 0 30px;
   border-top: 4px solid ${({ theme }) => theme.color.white};
+
+  @media screen and (max-width: 1200px) {
+    flex-direction: column;
+    height: unset;
+    min-height: 400px;
+    padding: 30px 0;
+  }
 `
 const Paragraph = styled.p`
   font-size: ${({ theme }) => theme.fSize.XXS};
   font-weight: ${({ theme }) => theme.fWeight.bold};
   text-align: justify;
   line-height: 180%;
+  width: 60%;
+  margin: 0 100px 0 0px;
 
-  ${({ width, height, margin }) => {
-    if (width) {
-      return css`
-        width: ${width};
-      `
-    }
-    if (height) {
-      return css`
-        height: ${height};
-      `
-    }
-    if (margin) {
-      return css`
-        margin: ${margin};
-      `
-    }
-    return ""
-  }}
+  @media screen and (max-width: 1500px) {
+    line-height: 150%;
+  }
+
+  @media screen and (max-width: 1400px) {
+    line-height: 130%;
+  }
+
+  @media screen and (max-width: 1500px) {
+    font-size: ${({ theme }) => theme.fSize.XXXS};
+    font-weight: ${({ theme }) => theme.fWeight.semibold};
+    line-height: 150%;
+    width: 100%;
+    margin: 0 60px 0 10px;
+  }
+
+  @media screen and (max-width: 1200px) {
+    margin: 0px 20px 30px;
+    padding: 0 40px 20px;
+    border-bottom: 4px solid ${({ theme }) => theme.color.white};
+    text-align-last: center;
+  }
+
+  @media screen and (max-width: 600px) {
+    font-size: ${({ theme }) => theme.fSize.miniS};
+    padding: 0 30px 20px;
+  }
 `
 const DetailsWrapper = styled.div`
   ${flexCenter};
   flex-direction: column;
-  width: 400px;
+  min-width: 400px;
   height: 100%;
   margin-left: 150px;
+
+  @media screen and (max-width: 1500px) {
+    margin: 0 20px;
+  }
+`
+
+const LinkedInTitle = styled.p`
+  font-size: ${({ theme }) => theme.fSize.XXS};
+  font-weight: ${({ theme }) => theme.fWeight.bold};
+  text-align: center;
+
+  @media screen and (max-width: 400px) {
+    font-size: ${({ theme }) => theme.fSize.XXXS};
+  }
 `
 
 const ArrowIcon = styled(ArrowSVG)`
@@ -187,6 +332,10 @@ const LinkTitle = styled.span`
     height: 50px;
     fill: ${({ theme }) => theme.color.mediumDarkBlue};
   }
+
+  @media screen and (max-width: 500px) {
+    font-size: ${({ theme }) => theme.fSize.XS};
+  }
 `
 
 const LinkWrapper = styled.a`
@@ -216,6 +365,14 @@ const LinkWrapper = styled.a`
       fill: ${({ theme }) => theme.color.white};
     }
   }
+
+  @media screen and (max-width: 500px) {
+    width: 300px;
+  }
+
+  @media screen and (max-width: 400px) {
+    width: 280px;
+  }
 `
 
 export {
@@ -230,6 +387,7 @@ export {
   SkillsDescriptionBar,
   Paragraph,
   DetailsWrapper,
+  LinkedInTitle,
   LinkWrapper,
   LinkTitle,
   ArrowIcon,

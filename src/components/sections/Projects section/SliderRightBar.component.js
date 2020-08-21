@@ -29,30 +29,45 @@ const queryForSlideImages = graphql`
   }
 `
 
-const RightBarContainer = ({ slideId, liveUrl, codeUrl }) => {
-  const {
-    allFile: { edges },
-  } = useStaticQuery(queryForSlideImages)
+const RightBarContainer = React.forwardRef(
+  ({ slideId, liveUrl, codeUrl }, ref) => {
+    const {
+      allFile: { edges },
+    } = useStaticQuery(queryForSlideImages)
 
-  const sources = edges.map(mapToPNGSource).sort(sortImagesASC)
-  const [sliderSrc] = sources.filter(filterById(slideId))
-  const source = sliderSrc.src
+    const sources = edges.map(mapToPNGSource).sort(sortImagesASC)
+    const [sliderSrc] = sources.filter(filterById(slideId))
+    const source = sliderSrc.src
 
-  return (
-    <SliderImageWrapper src={source}>
-      <LinkButton bottom="30px" right="350px" href={liveUrl || ""}>
-        <LinkP>LIVE</LinkP>
-        <LinkIcon>
-          <LiveIcon />
-        </LinkIcon>
-      </LinkButton>
-      <LinkButton bottom="30px" right="100px" href={codeUrl || ""}>
-        <LinkP>CODE</LinkP>
-        <LinkIcon>
-          <CodeGithubIcon />
-        </LinkIcon>
-      </LinkButton>
-    </SliderImageWrapper>
-  )
-}
+    return (
+      <SliderImageWrapper ref={ref} src={source}>
+        <LinkButton
+          bottom="30px"
+          right="350px"
+          href={liveUrl || ""}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <LinkP>LIVE</LinkP>
+          <LinkIcon>
+            <LiveIcon />
+          </LinkIcon>
+        </LinkButton>
+        <LinkButton
+          bottom="30px"
+          right="100px"
+          href={codeUrl || ""}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <LinkP>CODE</LinkP>
+          <LinkIcon>
+            <CodeGithubIcon />
+          </LinkIcon>
+        </LinkButton>
+      </SliderImageWrapper>
+    )
+  }
+)
+
 export default RightBarContainer

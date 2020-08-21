@@ -284,7 +284,8 @@ const TechnologyPanel = styled(ButtonsPanel)`
   justify-content: center;
   flex-wrap: wrap;
   padding: 0 30px;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: visible;
   grid-area: technologypanel;
   scroll-snap-type: x mandatory;
 

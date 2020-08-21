@@ -25,7 +25,7 @@ const queryForIconImages = graphql`
   }
 `
 
-const TechnologiesPanel = ({ iconSources }) => {
+const TechnologiesPanel = React.forwardRef(({ iconSources }, ref) => {
   const {
     allFile: { edges },
   } = useStaticQuery(queryForIconImages)
@@ -35,19 +35,19 @@ const TechnologiesPanel = ({ iconSources }) => {
     src: node.childImageSharp.fluid.src,
   }))
 
-  return (
-    <TechnologyPanel>
-      {Array.isArray(iconSources)
-        ? iconSources.map(({ name }, i) => {
-            if (!name) return null
-            const [icon] = namedImages.filter(filterByName(name))
+  const technologyIcons = () => {
+    return Array.isArray(iconSources)
+      ? iconSources.map(({ name, id }) => {
+          if (!name || typeof name !== "string") return null
+          const [icon] = namedImages.filter(filterByName(name))
 
-            const source = icon.src
+          const source = icon.src
 
-            return <TechnologyIcon key={i} src={source || ""} />
-          })
-        : null}
-    </TechnologyPanel>
-  )
-}
+          return <TechnologyIcon key={id} src={source || ""} />
+        })
+      : null
+  }
+
+  return <TechnologyPanel ref={ref}>{technologyIcons()}</TechnologyPanel>
+})
 export default TechnologiesPanel

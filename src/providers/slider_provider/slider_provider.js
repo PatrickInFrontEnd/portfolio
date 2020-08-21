@@ -4,7 +4,7 @@ import sliderData from "./sliderData"
 import { filterById } from "./../../utils/filter"
 
 const SliderProvider = props => {
-  const [data, setSliderData] = useState(sliderData)
+  const [data] = useState(sliderData)
   const [currentSlide, setCurrentSlide] = useState(data[0])
   const [currentIndex, setCurrentIndex] = useState(1)
   const [isAnimating, setAnimationStatus] = useState(false)
@@ -13,14 +13,12 @@ const SliderProvider = props => {
     setAnimationStatus(prevStatus => !prevStatus)
 
   const nextSlide = () => {
-    if (isAnimating) return
     setCurrentIndex(prevIndex => {
       return prevIndex >= data.length ? 1 : prevIndex + 1
     })
   }
 
   const prevSlide = () => {
-    if (isAnimating) return
     setCurrentIndex(prevIndex => {
       return prevIndex <= 1 ? data.length : prevIndex - 1
     })
