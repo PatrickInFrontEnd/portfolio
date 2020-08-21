@@ -9,18 +9,28 @@ import ContactSection from "../components/sections/Contact section/ContactSectio
 import Footer from "./../components/Footer/Footer.component"
 import ScrollTopButton from "../components/scrollTopButton/scrollTopButton.component"
 import MainPageWrapper from "./../components/MainPageWrapper.styles"
+import SliderProvider from "./../providers/slider_provider/slider_provider"
 
 const IndexPage = () => {
   return (
     <MainPageWrapper>
       <SEO lang="EN" title="Patryk Płuciennik | Portfolio" />
       <IntroductionSection />
-      <ProjectsSection />
+
+      <SliderProvider>
+        <ProjectsSection />
+      </SliderProvider>
+
       <SkillsSection />
+
       <AboutMeSection />
+
       <MyHobbiesSection />
+
       <ContactSection />
+
       <Footer />
+
       <ScrollTopButton />
     </MainPageWrapper>
   )

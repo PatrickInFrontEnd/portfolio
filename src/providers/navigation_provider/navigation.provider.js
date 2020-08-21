@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useScrollPosition } from "@n8tb1t/use-scroll-position"
-import { useDebouncedState } from "./../../utils/useDebounce"
+import { useDebouncedState } from "./../../hooks/useDebounce"
 import NavigationContext from "./../../contexts/navigation.context"
 
 const NavigationProvider = ({ children }) => {

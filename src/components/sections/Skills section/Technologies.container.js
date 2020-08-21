@@ -7,7 +7,11 @@ import { getImageNumber } from "./../../../utils/getImageNumber"
 
 const queryForImgages = graphql`
   query queryForSkillImages {
-    allFile(filter: { relativePath: { regex: "/skills_[1-9]|1[0-2].png/" } }) {
+    allFile(
+      filter: {
+        relativePath: { regex: "/[1-9a-zA-Z_-]{0,}skills_[1-9]|1[0-2].png/" }
+      }
+    ) {
       edges {
         node {
           relativePath

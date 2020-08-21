@@ -1,3 +1,5 @@
 const filterById = id => data => data.id === id
 
-export { filterById }
+const filterByName = name => data => data.name === name
+
+export { filterById, filterByName }

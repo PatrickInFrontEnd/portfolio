@@ -13,6 +13,7 @@ const BackgroundWrapper = styled.section`
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-position: center;
 
   @media screen and (max-width: 1080px) {
     padding: 50px 0;
@@ -89,22 +90,15 @@ const SliderWrapper = styled.div`
       "buttonpanel technologypanel";
   }
 
-  @media screen and (max-width: 560px) {
-    grid-template-areas:
-      "title title"
-      "slide slide"
-      "technologies technologypanel"
-      "buttonpanel technologypanel";
-  }
-
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 650px) {
+    grid-template-columns: 1fr;
     grid-template-rows: 100px 400px 100px 100px 100px;
     grid-template-areas:
-      "title title"
-      "slide slide"
-      "technologypanel technologypanel"
-      "technologies technologies"
-      "buttonpanel buttonpanel";
+      "title"
+      "slide"
+      "technologypanel"
+      "technologies"
+      "buttonpanel";
   }
 `
 
@@ -138,6 +132,7 @@ const SliderPanel = styled.div`
 const Title = styled.h2`
   font-size: ${({ theme }) => theme.fSize.L};
   font-weight: ${({ theme }) => theme.fWeight.medium};
+  text-align: center;
 
   @media screen and (max-width: 1000px) {
     font-size: ${({ theme }) => theme.fSize.S};
@@ -160,7 +155,7 @@ const SliderDescription = styled(SliderPanel)`
     border-left: 2px solid ${({ theme }) => theme.color.white};
   }
 
-  @media screen and (max-width: 560px) {
+  @media screen and (max-width: 650px) {
     display: none;
   }
 `
@@ -215,12 +210,6 @@ const ButtonsPanel = styled(SliderPanel)`
   @media screen and (max-width: 1080px) {
     padding: 0 25px;
   }
-
-  /* @media screen and (max-width: 1000px) {
-    width: 300px;
-    margin: 0 auto 0 0;
-    border-right: 2px solid ${({ theme }) => theme.color.white};
-  } */
 `
 
 const ButtonsWrapper = styled.div`
@@ -247,7 +236,7 @@ const ButtonsWrapper = styled.div`
   }
 `
 
-const SlidesCounter = styled.span`
+const SlideId = styled.span`
   ${flexCenter};
   width: 50px;
   height: 50px;
@@ -290,12 +279,15 @@ const UsedTechnologiesPanel = styled(ButtonsPanel)`
 `
 
 const TechnologyPanel = styled(ButtonsPanel)`
-  ${flexCenter};
-  justify-content: flex-start;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
+  padding: 0 30px;
   overflow-x: auto;
+  overflow-y: visible;
   grid-area: technologypanel;
+  scroll-snap-type: x mandatory;
 
   @media screen and (max-width: 1220px) {
     padding: 0 40px;
@@ -305,37 +297,47 @@ const TechnologyPanel = styled(ButtonsPanel)`
   @media screen and (max-width: 1000px) {
     width: 100%;
     height: 100%;
-    padding: 20px;
+    padding: 0 20px;
     border-bottom: 2px solid ${({ theme }) => theme.color.white};
-    align-items: flex-start;
-  }
-
-  @media screen and (max-width: 560px) {
-    justify-content: center;
     align-items: center;
+    justify-content: space-around;
   }
 
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 650px) {
+    align-items: center;
+    padding: 15px 15px 0 15px;
     border: none;
   }
 `
 
 const TechnologyIcon = styled.span`
+  display: block;
   width: 70px;
   height: 70px;
   margin-right: 30px;
   border-radius: 50px;
   border: 2px solid ${({ theme }) => theme.color.white};
+  background-color: ${({ theme }) => theme.color.black};
   ${({ src, theme }) =>
     src
       ? `background-image: url(${src})`
       : `background-color:${theme.color.black}`};
 
-  background-size: cover;
+  background-size: 60% 60%;
   background-repeat: no-repeat;
+  background-position: center;
+  scroll-snap-align: start;
 
-  &:last-of-type {
-    margin-right: 0;
+  :last-of-type {
+    margin-right: 100%;
+  }
+
+  @media screen and (max-width: 1000px) {
+    margin: 0 20px 0 0;
+
+    :last-of-type {
+      margin-right: 0;
+    }
   }
 `
 
@@ -430,6 +432,7 @@ const LinkButton = styled.a`
   overflow: hidden;
   cursor: pointer;
   transition: 0.3s all;
+  text-decoration: none;
 
   &:hover {
     border: 2px solid ${({ theme }) => theme.color.white};
@@ -485,7 +488,7 @@ export {
   DescriptionParagraph,
   ButtonsPanel,
   ButtonsWrapper,
-  SlidesCounter,
+  SlideId,
   UsedTechnologiesPanel,
   SliderImageWrapper,
   TechnologyPanel,
