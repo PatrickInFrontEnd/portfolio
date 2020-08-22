@@ -105,6 +105,10 @@ const IconsWrapper = styled.div`
   ${flexCenter};
   justify-content: space-around;
 
+  @media screen and (max-width: 1500px) {
+    margin-bottom: 0;
+  }
+
   @media screen and (max-width: 1100px) {
     justify-content: space-between;
     padding: 150px 100px;
@@ -272,8 +276,8 @@ const Paragraph = styled.p`
     text-align-last: center;
   }
 
-  @media screen and (max-width: 600px) {
-    font-size: ${({ theme }) => theme.fSize.miniS};
+  @media screen and (max-width: 700px) {
+    font-size: ${({ theme }) => theme.fSize.miniXS};
     padding: 0 30px 20px;
   }
 `
@@ -282,7 +286,6 @@ const DetailsWrapper = styled.div`
   flex-direction: column;
   min-width: 400px;
   height: 100%;
-  margin-left: 150px;
 
   @media screen and (max-width: 1500px) {
     margin: 0 20px;

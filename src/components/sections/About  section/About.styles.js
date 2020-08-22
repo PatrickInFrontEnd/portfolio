@@ -15,6 +15,15 @@ const AboutMeWrapper = styled.div`
   ${({ backgroundUrl }) => getBackgroundUrl(backgroundUrl)};
   background-size: cover;
   background-attachment: fixed;
+
+  @media screen and (max-width: 1500px) {
+    padding: 50px 0;
+  }
+
+  @media screen and (max-width: 1400px) {
+    padding: 0;
+    flex-direction: column-reverse;
+  }
 `
 
 const PhotosWrapper = styled.div`
@@ -22,28 +31,64 @@ const PhotosWrapper = styled.div`
   width: 900px;
   height: 1400px;
   ${flexCenter};
+
+  @media screen and (max-width: 1400px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 1000px) {
+    height: 1200px;
+  }
+
+  @media screen and (max-width: 800px) {
+    height: 800px;
+  }
 `
 
 const ShadowBackground = styled(ShadowElement)`
   height: 80%;
   ${absoluteCenter};
   z-index: 0;
+
+  @media screen and (max-width: 1400px) {
+    width: 101%;
+    height: 100%;
+    background-color: ${({ theme }) => theme.color.mediumBlackAlpha};
+  }
 `
 const PhotoWrapper = styled.div`
   position: relative;
   width: 700px;
   height: 100%;
+
+  @media screen and (max-width: 1000px) {
+    width: 600px;
+  }
 `
 
 const Photo = styled.div`
   ${absoluteCenter};
   display: block;
   width: 100%;
-  height: 45%;
+  height: 500px;
 
   ${({ backgroundUrl }) => getBackgroundUrl(backgroundUrl)};
   background-size: cover;
   background-position: top center;
+
+  @media screen and (max-width: 800px) {
+    height: 300px;
+    width: 400px;
+  }
+
+  @media screen and (max-width: 500px) {
+    background-size: contain;
+  }
+
+  @media screen and (max-width: 400px) {
+    width: 100%;
+    height: 300px;
+  }
 `
 
 const DescriptionWrapper = styled.div`
@@ -52,6 +97,12 @@ const DescriptionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.color.black};
+
+  @media screen and (max-width: 1400px) {
+    width: 100%;
+    min-height: unset;
+    padding: 20px 0 0px;
+  }
 `
 
 const DescriptionHeader = styled.header`
@@ -67,6 +118,22 @@ const Title = styled.h2`
   font-size: ${({ theme }) => theme.fSize.XXL};
   font-weight: ${({ theme }) => theme.fWeight.regular};
   text-align: center;
+
+  @media screen and (max-width: 1000px) {
+    font-size: ${({ theme }) => theme.fSize.XL};
+  }
+
+  @media screen and (max-width: 800px) {
+    font-size: ${({ theme }) => theme.fSize.L};
+  }
+
+  @media screen and (max-width: 500px) {
+    font-size: ${({ theme }) => theme.fSize.M};
+  }
+
+  @media screen and (max-width: 400px) {
+    font-size: ${({ theme }) => theme.fSize.S};
+  }
 `
 
 const ParagraphsWrapper = styled.div`
@@ -76,6 +143,28 @@ const ParagraphsWrapper = styled.div`
   height: 100%;
   padding: 0 80px;
   margin: auto 0;
+
+  @media screen and (max-width: 1400px) {
+    padding: 50px 80px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(200px, 1fr);
+    grid-gap: 40px;
+  }
+
+  @media screen and (max-width: 1100px) {
+    grid-auto-rows: unset;
+    grid-template-columns: 50%;
+    padding: 50px;
+  }
+
+  @media screen and (max-width: 900px) {
+    grid-template-columns: 70%;
+  }
+
+  @media screen and (max-width: 650px) {
+    grid-template-columns: 100%;
+  }
 `
 
 const P = styled.p`
@@ -88,6 +177,33 @@ const P = styled.p`
 
   &:last-of-type {
     margin-bottom: 0;
+  }
+
+  @media screen and (max-width: 1500px) {
+    font-size: ${({ theme }) => theme.fSize.XS};
+  }
+
+  @media screen and (max-width: 1400px) {
+    margin-bottom: 0;
+    padding: 20px 40px;
+    width: 100%;
+    height: 100%;
+    text-align: justify;
+    text-align-last: center;
+    border: 2px solid #fff;
+  }
+
+  @media screen and (max-width: 1100px) {
+    text-align: center;
+    width: unset;
+    height: unset;
+    padding: 20px;
+    display: block;
+    font-size: ${({ theme }) => theme.fSize.XXXS};
+  }
+
+  @media screen and (max-width: 400px) {
+    font-size: ${({ theme }) => theme.fSize.miniS};
   }
 `
 export {
