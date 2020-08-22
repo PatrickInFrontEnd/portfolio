@@ -8,6 +8,10 @@ const ContactWrapper = styled.div`
   ${flexCenter};
   flex-direction: column;
   justify-content: space-around;
+
+  @media screen and (max-width: 1300px) {
+    min-height: unset;
+  }
 `
 
 const ContactTitle = styled.h2`
@@ -16,11 +20,28 @@ const ContactTitle = styled.h2`
   font-family: Baloo Thambi, Montserrat, Poppins, Arial, sans-serif;
   text-align: center;
   margin-top: 50px;
+
+  @media screen and (max-width: 600px) {
+    font-size: ${({ theme }) => theme.fSize.L};
+  }
+
+  @media screen and (max-width: 450px) {
+    font-size: ${({ theme }) => theme.fSize.M};
+  }
 `
 const SocialMediaWrapper = styled.div`
   min-height: 400px;
   width: 100%;
   ${flexCenter};
+
+  @media screen and (max-width: 700px) {
+    min-height: 300px;
+  }
+
+  @media screen and (max-width: 450px) {
+    flex-direction: column;
+    padding: 0 50px;
+  }
 `
 
 const Description = styled.span`
@@ -34,6 +55,10 @@ const Description = styled.span`
   opacity: 0;
   transition: 1s;
   transform: translateY(-100px);
+
+  @media screen and (max-width: 1300px) {
+    display: none;
+  }
 `
 
 const Media = styled.div`
@@ -55,6 +80,32 @@ const Media = styled.div`
     width: 100px;
     height: 100px;
     fill: ${({ theme }) => theme.color.mediumLightBlue};
+  }
+
+  @media screen and (max-width: 800px) {
+    svg {
+      width: 90px;
+      height: 90px;
+    }
+  }
+
+  @media screen and (max-width: 700px) {
+    height: 200px;
+    width: 150px;
+
+    svg {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    min-height: 300px;
+  }
+
+  @media screen and (max-width: 450px) {
+    min-height: unset;
+    height: 150px;
   }
 `
 

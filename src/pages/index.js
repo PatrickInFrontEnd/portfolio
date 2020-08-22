@@ -11,29 +11,35 @@ import ScrollTopButton from "../components/scrollTopButton/scrollTopButton.compo
 import MainPageWrapper from "./../components/MainPageWrapper.styles"
 import SliderProvider from "./../providers/slider_provider/slider_provider"
 
-const IndexPage = () => {
-  return (
-    <MainPageWrapper>
-      <SEO lang="EN" title="Patryk Płuciennik | Portfolio" />
-      <IntroductionSection />
+class IndexPage extends React.Component {
+  componentDid() {
+    window.scrollTo(0, 0)
+  }
 
-      <SliderProvider>
-        <ProjectsSection />
-      </SliderProvider>
+  render() {
+    return (
+      <MainPageWrapper>
+        <SEO lang="EN" title="Patryk Płuciennik | Portfolio" />
+        <IntroductionSection />
 
-      <SkillsSection />
+        <SliderProvider>
+          <ProjectsSection />
+        </SliderProvider>
 
-      <AboutMeSection />
+        <SkillsSection />
 
-      <MyHobbiesSection />
+        <AboutMeSection />
 
-      <ContactSection />
+        <MyHobbiesSection />
 
-      <Footer />
+        <ContactSection />
 
-      <ScrollTopButton />
-    </MainPageWrapper>
-  )
+        <Footer />
+
+        <ScrollTopButton />
+      </MainPageWrapper>
+    )
+  }
 }
 
 export default IndexPage
