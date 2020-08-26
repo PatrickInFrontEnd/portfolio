@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import SEO from "../components/seo"
 import IntroductionSection from "../components/sections/Introduction section/IntroductionSection.component"
 import ProjectsSection from "../components/sections/Projects section/ProjectsSection.component"
@@ -11,30 +11,43 @@ import ScrollTopButton from "../components/scrollTopButton/scrollTopButton.compo
 import MainPageWrapper from "./../components/MainPageWrapper.styles"
 import SliderProvider from "./../providers/slider_provider/slider_provider"
 import NavigationBar from "./../layouts/Navigation/Navigation.component"
+import SpinnerLoader from "./../components/SpinnerLoader/Spinner.component"
 
 const IndexPage = props => {
+  const [isDOMLoaded, setDOMstatus] = useState(false)
+
+  useEffect(() => {
+    setDOMstatus(true)
+  }, [])
+
   return (
     <MainPageWrapper>
       <SEO lang="EN" title="Patryk Płuciennik | Portfolio" />
-      <NavigationBar />
+      {isDOMLoaded === true ? (
+        <>
+          <NavigationBar />
 
-      <IntroductionSection />
+          <IntroductionSection />
 
-      <SliderProvider>
-        <ProjectsSection />
-      </SliderProvider>
+          <SliderProvider>
+            <ProjectsSection />
+          </SliderProvider>
 
-      <SkillsSection />
+          <SkillsSection />
 
-      <AboutMeSection />
+          <AboutMeSection />
 
-      <MyHobbiesSection />
+          <MyHobbiesSection />
 
-      <ContactSection />
+          <ContactSection />
 
-      <Footer />
+          <Footer />
 
-      <ScrollTopButton />
+          <ScrollTopButton />
+        </>
+      ) : (
+        <SpinnerLoader />
+      )}
     </MainPageWrapper>
   )
 }
