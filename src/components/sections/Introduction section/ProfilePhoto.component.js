@@ -10,7 +10,7 @@ const queryForProfileImg = graphql`
   query queryForProfileImg {
     file(relativePath: { eq: "profile.png" }) {
       childImageSharp {
-        fluid(maxWidth: 1600, maxHeight: 1400, quality: 100) {
+        fluid(maxWidth: 600, maxHeight: 525, quality: 100) {
           src
         }
       }
