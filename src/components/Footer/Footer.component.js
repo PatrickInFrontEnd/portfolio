@@ -20,7 +20,9 @@ const FooterComponent = props => (
       Site created by Patryk Płuciennik
       <GithubIcon />
     </DirectorLink>
-    <LicenseRights to="/license-rights">License rights</LicenseRights>
+    <LicenseRights href="./policies/license_rights.txt" download>
+      License rights
+    </LicenseRights>
   </FooterWrapper>
 )
 export default FooterComponent

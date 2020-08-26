@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import { flexCenter } from "./../mixins/mixins"
-import { Link } from "gatsby"
 
 const FooterWrapper = styled.div`
   position: relative;
@@ -91,7 +90,7 @@ const DirectorLink = styled.a`
   }
 `
 
-const LicenseRights = styled(Link)`
+const LicenseRights = styled.a`
   position: absolute !important;
   bottom: 40px;
   right: 60px;
