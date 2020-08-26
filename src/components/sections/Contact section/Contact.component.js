@@ -8,7 +8,7 @@ import {
 } from "./Contact.styles"
 import MailIcon from "./../../../assets/images/icon_mail.svg"
 import LinkedInIcon from "./../../../assets/images/icon_linkedin.svg"
-import FacebookIcon from "./../../../assets/images/icon_facebook.svg"
+import GithubIcon from "./../../../assets/images/icon_footer_github.svg"
 
 const ContactComponent = props => (
   <ContactWrapper>
@@ -34,11 +34,11 @@ const ContactComponent = props => (
         <a
           target="_blank"
           rel="noreferrer"
-          href="https://www.facebook.com/profile.php?id=100001872548365"
+          href="https://github.com/PatrickInFrontEnd"
         >
-          <FacebookIcon />
+          <GithubIcon />
         </a>
-        <Description>Facebook profile</Description>
+        <Description>Github profile</Description>
       </Media>
     </SocialMediaWrapper>
   </ContactWrapper>

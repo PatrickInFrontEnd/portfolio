@@ -287,7 +287,6 @@ const TechnologyPanel = styled(ButtonsPanel)`
   overflow-x: auto;
   overflow-y: visible;
   grid-area: technologypanel;
-  scroll-snap-type: x mandatory;
 
   @media screen and (max-width: 1220px) {
     padding: 0 40px;
@@ -326,7 +325,6 @@ const TechnologyIcon = styled.span`
   background-size: 60% 60%;
   background-repeat: no-repeat;
   background-position: center;
-  scroll-snap-align: start;
 
   :last-of-type {
     margin-right: 100%;

@@ -1,10 +1,11 @@
-import React from "react"
+import React, { useRef } from "react"
 import { AboutMeWrapper } from "./About.styles"
 import PhotosContainer from "./PhotosContainer.component"
 import DescriptionContainer from "./DescriptionContainer.component"
 import { graphql, useStaticQuery } from "gatsby"
 import SectionHeader from "./../../SectionHeader/SectionHeader.component"
 import AboutIcon from "./../../../assets/images/icon_user.svg"
+import { useAboutSectionLayout } from "./useAboutSectionLayout"
 
 const queryForImg = graphql`
   {
@@ -21,6 +22,8 @@ const queryForImg = graphql`
 const AboutMeSection = props => {
   const { file } = useStaticQuery(queryForImg)
 
+  const wrapperRef = useRef(null)
+  useAboutSectionLayout(wrapperRef)
   return (
     <>
       <SectionHeader id="about">
@@ -37,7 +40,10 @@ const AboutMeSection = props => {
         />
       </SectionHeader>
 
-      <AboutMeWrapper backgroundUrl={file.childImageSharp.fluid.src}>
+      <AboutMeWrapper
+        ref={wrapperRef}
+        backgroundUrl={file.childImageSharp.fluid.src}
+      >
         <PhotosContainer />
         <DescriptionContainer />
       </AboutMeWrapper>

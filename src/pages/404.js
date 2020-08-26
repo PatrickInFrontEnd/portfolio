@@ -1,5 +1,6 @@
 import React from "react"
+import PageNotFound from "./../components/Page404/Page404.component"
 
-const Page404 = props => <h1>Oups... This is the wrong route :/</h1>
+const Page404 = props => <PageNotFound />
 
 export default Page404

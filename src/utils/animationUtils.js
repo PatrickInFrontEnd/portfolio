@@ -1,5 +1,5 @@
 import gsap from "gsap"
-import { isAnObject } from "./../../../utils/isAnObject"
+import { isAnObject } from "./isAnObject"
 
 const animate = (refs, vars = undefined) => {
   let tweenVars = {
@@ -34,7 +34,7 @@ const fadeIn = (
     y: "0",
     autoAlpha: 1,
     duration: 0.5,
-    ease: "power4.easeOut",
+    ease: "power4.easeIn",
   }
 ) => animate(refs, vars)
 
@@ -45,7 +45,7 @@ const vanish = (
 
 const appear = (
   refs,
-  vars = { autoAlpha: 1, duration: 0.5, ease: "power4.easeOut", y: 0 }
+  vars = { autoAlpha: 1, duration: 0.5, ease: "power4.easeIn", y: 0 }
 ) => animate(refs, vars)
 
 export { animate, fadeOut, fadeIn, vanish, appear }

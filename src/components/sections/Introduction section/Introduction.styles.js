@@ -10,12 +10,12 @@ const IntroductionSectionWrapper = styled.section`
   background-size: cover;
   background-attachment: fixed;
 
-  @media screen and (max-width: 1020px) {
-    min-height: 100vh;
-  }
-
   @media screen and (max-width: 1220px) {
     flex-direction: column-reverse;
+  }
+
+  @media screen and (max-width: 1020px) {
+    min-height: 100vh;
   }
 `
 
@@ -100,7 +100,7 @@ const IntroductionContent = styled.div`
   padding: 45px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   background-color: ${({ theme }) => theme.color.black};
   border: 2px solid ${({ theme }) => theme.color.navyLightBlue};
 

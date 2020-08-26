@@ -16,11 +16,7 @@ const AboutMeWrapper = styled.div`
   background-size: cover;
   background-attachment: fixed;
 
-  @media screen and (max-width: 1500px) {
-    padding: 50px 0;
-  }
-
-  @media screen and (max-width: 1400px) {
+  @media screen and (max-width: 1600px) {
     padding: 0;
     flex-direction: column-reverse;
   }
@@ -29,19 +25,23 @@ const AboutMeWrapper = styled.div`
 const PhotosWrapper = styled.div`
   position: relative;
   width: 900px;
-  height: 1400px;
+  height: 1200px;
   ${flexCenter};
 
-  @media screen and (max-width: 1400px) {
+  @media screen and (max-width: 1600px) {
     width: 100%;
   }
 
   @media screen and (max-width: 1000px) {
-    height: 1200px;
+    height: 1000px;
   }
 
   @media screen and (max-width: 800px) {
     height: 800px;
+  }
+
+  @media screen and (max-width: 500px) {
+    height: 650px;
   }
 `
 
@@ -49,11 +49,11 @@ const ShadowBackground = styled(ShadowElement)`
   height: 80%;
   ${absoluteCenter};
   z-index: 0;
+  background-color: ${({ theme }) => theme.color.mediumBlackAlpha};
 
-  @media screen and (max-width: 1400px) {
+  @media screen and (max-width: 1600px) {
     width: 101%;
     height: 100%;
-    background-color: ${({ theme }) => theme.color.mediumBlackAlpha};
   }
 `
 const PhotoWrapper = styled.div`
@@ -76,13 +76,19 @@ const Photo = styled.div`
   background-size: cover;
   background-position: top center;
 
+  @media screen and (max-width: 1000px) {
+    height: 400px;
+    width: 500px;
+  }
+
   @media screen and (max-width: 800px) {
     height: 300px;
     width: 400px;
   }
 
   @media screen and (max-width: 500px) {
-    background-size: contain;
+    height: 300px;
+    width: 100%;
   }
 
   @media screen and (max-width: 400px) {
@@ -98,7 +104,7 @@ const DescriptionWrapper = styled.div`
   flex-direction: column;
   background-color: ${({ theme }) => theme.color.black};
 
-  @media screen and (max-width: 1400px) {
+  @media screen and (max-width: 1600px) {
     width: 100%;
     min-height: unset;
     padding: 20px 0 0px;
@@ -144,7 +150,7 @@ const ParagraphsWrapper = styled.div`
   padding: 0 80px;
   margin: auto 0;
 
-  @media screen and (max-width: 1400px) {
+  @media screen and (max-width: 1600px) {
     padding: 50px 80px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -183,7 +189,7 @@ const P = styled.p`
     font-size: ${({ theme }) => theme.fSize.XS};
   }
 
-  @media screen and (max-width: 1400px) {
+  @media screen and (max-width: 1600px) {
     margin-bottom: 0;
     padding: 20px 40px;
     width: 100%;

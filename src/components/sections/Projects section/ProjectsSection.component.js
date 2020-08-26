@@ -28,7 +28,7 @@ import ArrowIconLeft from "./../../../assets/images/icon_arrow_left.svg"
 import ArrowIconRight from "./../../../assets/images/icon_arrow_right.svg"
 import TechnologiesPanel from "./UsedTechnologiesPanel.component"
 import SliderContext from "./../../../contexts/slider.context"
-import { fadeOut, fadeIn, vanish, appear } from "./animation.utils"
+import { fadeOut, fadeIn, vanish, appear } from "../../../utils/animationUtils"
 import gsap from "gsap"
 
 const queryForBgcImg = graphql`

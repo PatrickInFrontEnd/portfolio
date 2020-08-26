@@ -4,6 +4,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import TechnologyPanel from "./TechnologyPanel.component"
 import LaptopIcon from "./LaptopIcon.component"
 import { getImageNumber } from "./../../../utils/getImageNumber"
+import { sortImagesASC } from "./../../../utils/sort"
 
 const queryForImgages = graphql`
   query queryForSkillImages {
@@ -36,7 +37,7 @@ const TechnologiesContainer = props => {
       src: node.childImageSharp.fluid.src,
       id: getImageNumber(node.relativePath),
     }))
-    .sort((a, b) => a.id - b.id)
+    .sort(sortImagesASC)
 
   const firstPanelSrc = sources.filter((el, i) => i < 3)
   const secondPanelSrc = sources.filter((el, i) => i >= 3 && i < 7)
@@ -57,7 +58,9 @@ const TechnologiesContainer = props => {
           <TechnologyPanel key={i} sources={srcArray} />
         ))}
       </TechnologiesWrapper>
-      <LaptopIcon />
+      <div id="laptopIcon">
+        <LaptopIcon />
+      </div>
     </>
   )
 }

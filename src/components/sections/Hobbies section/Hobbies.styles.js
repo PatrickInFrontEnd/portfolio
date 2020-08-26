@@ -1,6 +1,8 @@
 import styled, { css } from "styled-components"
 import { getBackgroundUrl, flexCenter } from "./../../mixins/mixins"
 
+const HobbyContainer = styled.div``
+
 const HobbyWrapper = styled.div`
   width: 100%;
   height: 520px;
@@ -12,6 +14,10 @@ const HobbyWrapper = styled.div`
 
   ${({ backgroundUrl }) => getBackgroundUrl(backgroundUrl)};
   background-size: cover;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
 
   @media screen and (max-width: 1100px) {
     flex-direction: column;
@@ -100,4 +106,12 @@ const P = styled.p`
     padding: 0 20px;
   }
 `
-export { HobbyWrapper, IconWrapper, Icon, DescriptionWrapper, Title, P }
+export {
+  HobbyWrapper,
+  IconWrapper,
+  Icon,
+  DescriptionWrapper,
+  Title,
+  P,
+  HobbyContainer,
+}

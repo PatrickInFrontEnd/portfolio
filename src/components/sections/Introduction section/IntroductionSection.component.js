@@ -1,11 +1,12 @@
-import React from "react"
+import React, { useRef } from "react"
 import {
   IntroductionSectionWrapper,
   ShadowElement,
 } from "./Introduction.styles"
 import { useStaticQuery, graphql } from "gatsby"
-import IntroductionHeader from "./IntroductionHeader.component"
+import IntroductionHeaderComponent from "./IntroductionHeader.component"
 import Description from "./Description.component"
+import { useIntroductionLayout } from "./useIntroductionLayout"
 
 const queryForBgcImg = graphql`
   query queryForBgcImg {
@@ -24,10 +25,18 @@ const IntroductionSection = props => {
 
   const bgcImage = file.childImageSharp.fluid.src
 
+  const wrapperRef = useRef(null)
+
+  useIntroductionLayout(wrapperRef)
+
   return (
-    <IntroductionSectionWrapper backgroundUrl={bgcImage} id="introduction">
+    <IntroductionSectionWrapper
+      backgroundUrl={bgcImage}
+      id="introduction"
+      ref={wrapperRef}
+    >
       <ShadowElement />
-      <IntroductionHeader />
+      <IntroductionHeaderComponent />
       <Description />
     </IntroductionSectionWrapper>
   )

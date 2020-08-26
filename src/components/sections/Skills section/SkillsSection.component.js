@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef } from "react"
 import {
   SkillsSectionWrapper,
   SkillsTitle,
@@ -10,34 +10,41 @@ import TechnologiesContainer from "./Technologies.container"
 import SkillsDescriptionBar from "./SkillsDescription.component"
 import SectionHeader from "./../../SectionHeader/SectionHeader.component"
 import SkillsIcon from "./../../../assets/images/icon_skills.svg"
+import { useSkillsSectionLayout } from "./useSkillsSectionLayout"
 
-const SkillsSection = props => (
-  <>
-    <SectionHeader id="skills">
-      Skills
-      <SkillsIcon
-        style={{
-          width: "60px",
-          height: "60px",
-          right: "-120%",
-          top: "50%",
+const SkillsSection = props => {
+  const wrapperRef = useRef(null)
 
-          transform: "translate(0, -50%)",
-        }}
-      />
-    </SectionHeader>
+  useSkillsSectionLayout(wrapperRef)
 
-    <SkillsSectionWrapper>
-      <SkillsTitle>
-        my skillset
-        <Border position="bottom" />
-      </SkillsTitle>
-      <IconsWrapper>
-        <WaveIcon />
-        <TechnologiesContainer />
-      </IconsWrapper>
-      <SkillsDescriptionBar />
-    </SkillsSectionWrapper>
-  </>
-)
+  return (
+    <>
+      <SectionHeader id="skills">
+        Skills
+        <SkillsIcon
+          style={{
+            width: "60px",
+            height: "60px",
+            right: "-120%",
+            top: "50%",
+
+            transform: "translate(0, -50%)",
+          }}
+        />
+      </SectionHeader>
+
+      <SkillsSectionWrapper ref={wrapperRef}>
+        <SkillsTitle>
+          my skillset
+          <Border position="bottom" />
+        </SkillsTitle>
+        <IconsWrapper>
+          <WaveIcon />
+          <TechnologiesContainer />
+        </IconsWrapper>
+        <SkillsDescriptionBar />
+      </SkillsSectionWrapper>
+    </>
+  )
+}
 export default SkillsSection

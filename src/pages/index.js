@@ -10,36 +10,33 @@ import Footer from "./../components/Footer/Footer.component"
 import ScrollTopButton from "../components/scrollTopButton/scrollTopButton.component"
 import MainPageWrapper from "./../components/MainPageWrapper.styles"
 import SliderProvider from "./../providers/slider_provider/slider_provider"
+import NavigationBar from "./../layouts/Navigation/Navigation.component"
 
-class IndexPage extends React.Component {
-  componentDid() {
-    window.scrollTo(0, 0)
-  }
+const IndexPage = props => {
+  return (
+    <MainPageWrapper>
+      <SEO lang="EN" title="Patryk Płuciennik | Portfolio" />
+      <NavigationBar />
 
-  render() {
-    return (
-      <MainPageWrapper>
-        <SEO lang="EN" title="Patryk Płuciennik | Portfolio" />
-        <IntroductionSection />
+      <IntroductionSection />
 
-        <SliderProvider>
-          <ProjectsSection />
-        </SliderProvider>
+      <SliderProvider>
+        <ProjectsSection />
+      </SliderProvider>
 
-        <SkillsSection />
+      <SkillsSection />
 
-        <AboutMeSection />
+      <AboutMeSection />
 
-        <MyHobbiesSection />
+      <MyHobbiesSection />
 
-        <ContactSection />
+      <ContactSection />
 
-        <Footer />
+      <Footer />
 
-        <ScrollTopButton />
-      </MainPageWrapper>
-    )
-  }
+      <ScrollTopButton />
+    </MainPageWrapper>
+  )
 }
 
 export default IndexPage

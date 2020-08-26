@@ -8,7 +8,11 @@ const ScrollTopButton = props => {
 
   return (
     <ElipseWrapper
-      isButtonVisible={window.scrollY >= 100 && isNavigationVisible}
+      isButtonVisible={
+        typeof window !== "undefined" &&
+        window.scrollY >= 100 &&
+        isNavigationVisible
+      }
       onClick={scrollToSection("#introduction", 80)}
     >
       <Elipse />
