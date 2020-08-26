@@ -9,3 +9,14 @@
 <h4 align="center"> npm run clean - cleans the cache of gatsby</h4>
 
 <p align="center">Project created for job purposes - showing my skillset.</p>
+
+<h1 align="center">💻 Used technologies :</h1>
+<ul align="center">
+  <li>Gatsby</li>
+  <li>React</li>
+  <li>Styled-Components</li>
+  <li>GraphQl</li>
+  <li>HTML</li>
+  <li>CSS</li>
+  <li>JavaScript</li>
+</ul>
