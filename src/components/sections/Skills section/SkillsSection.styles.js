@@ -14,30 +14,6 @@ const SkillsSectionWrapper = styled.section`
   }
 `
 
-function getBorderPosition(pos) {
-  switch (pos) {
-    case "top": {
-      return css`
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-      `
-    }
-    case "bottom": {
-      return css`
-        position: absolute;
-        bottom: 0;
-        right: 50%;
-        transform: translateX(50%);
-      `
-    }
-    default: {
-      return ""
-    }
-  }
-}
-
 const SkillsTitle = styled.h2`
   position: relative;
   ${flexCenter};

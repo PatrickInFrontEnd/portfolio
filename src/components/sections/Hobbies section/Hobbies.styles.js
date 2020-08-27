@@ -9,8 +9,6 @@ const HobbyWrapper = styled.div`
   ${flexCenter};
   justify-content: space-around;
   ${({ reversed }) => (reversed ? reverseHobbyPanel() : "")};
-  border-bottom: 4px solid
-    ${({ reversed }) => (reversed ? "#0089b7" : "#00588c")};
 
   ${({ backgroundUrl }) => getBackgroundUrl(backgroundUrl)};
   background-size: cover;
