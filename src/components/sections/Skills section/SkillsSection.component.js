@@ -3,7 +3,6 @@ import {
   SkillsSectionWrapper,
   SkillsTitle,
   IconsWrapper,
-  Border,
   WaveIcon,
 } from "./SkillsSection.styles"
 import TechnologiesContainer from "./Technologies.container"
@@ -34,10 +33,7 @@ const SkillsSection = props => {
       </SectionHeader>
 
       <SkillsSectionWrapper ref={wrapperRef}>
-        <SkillsTitle>
-          my skillset
-          <Border position="bottom" />
-        </SkillsTitle>
+        <SkillsTitle>my skillset</SkillsTitle>
         <IconsWrapper>
           <WaveIcon />
           <TechnologiesContainer />

@@ -14,23 +14,6 @@ const SkillsSectionWrapper = styled.section`
   }
 `
 
-const Border = styled.span`
-  display: block;
-  width: 50%;
-  height: 4px;
-  background-color: ${({ theme }) => theme.color.white};
-
-  ${({ position }) => getBorderPosition(position)};
-
-  @media screen and (max-width: 1500px) {
-    width: 70%;
-  }
-
-  @media screen and (max-width: 1000px) {
-    display: none;
-  }
-`
-
 function getBorderPosition(pos) {
   switch (pos) {
     case "top": {
@@ -385,7 +368,6 @@ export {
   TechnologyPanel,
   TechnologyIcon,
   TechnologiesWrapper,
-  Border,
   LaptopPNG,
   SkillsDescriptionBar,
   Paragraph,
