@@ -11,7 +11,7 @@ const IntroductionSectionWrapper = styled.section`
   background-attachment: fixed;
 
   @media screen and (max-width: 1220px) {
-    flex-direction: column-reverse;
+    flex-direction: column;
   }
 
   @media screen and (max-width: 1020px) {
@@ -195,10 +195,11 @@ const IntroductionLinksWrapper = styled.div`
 
   @media screen and (max-width: 1220px) {
     position: absolute;
-    top: 30%;
+    top: 20%;
     right: -25%;
     transform: translateY(-50%);
     flex-direction: column;
+    justify-content: space-between;
   }
 
   @media screen and (max-width: 900px) {
@@ -215,11 +216,13 @@ const IntroductionLinksWrapper = styled.div`
     flex-direction: row;
     top: unset;
     right: unset;
+    margin-bottom: 50px;
   }
 
   @media screen and (max-width: 560px) {
     justify-content: space-around;
     padding: 0;
+    margin-bottom: 0;
   }
 `
 

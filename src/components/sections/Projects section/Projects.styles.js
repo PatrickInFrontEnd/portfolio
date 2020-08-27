@@ -73,32 +73,12 @@ const SliderWrapper = styled.div`
   grid-gap: 20px;
 
   @media screen and (max-width: 1220px) {
-    grid-gap: 0;
-  }
-
-  @media screen and (max-width: 1080px) {
-    grid-template-columns: 300px 1fr;
-  }
-
-  @media screen and (max-width: 1000px) {
-    grid-template-columns: 300px 1fr;
-    grid-template-rows: 100px 400px 100px 100px;
+    grid-template-rows: 60vh 100px 100px;
+    grid-template-columns: 400px 1fr;
     grid-template-areas:
-      "title description"
       "slide slide"
-      "technologies technologypanel"
-      "buttonpanel technologypanel";
-  }
-
-  @media screen and (max-width: 650px) {
-    grid-template-columns: 1fr;
-    grid-template-rows: 100px 400px 100px 100px 100px;
-    grid-template-areas:
-      "title"
-      "slide"
-      "technologypanel"
-      "technologies"
-      "buttonpanel";
+      "buttonpanel title"
+      "technologies technologypanel";
   }
 `
 
@@ -114,18 +94,6 @@ const SliderPanel = styled.div`
 
   &#title {
     grid-area: title;
-  }
-
-  @media screen and (max-width: 1220px) {
-    &#title {
-      border-bottom: 2px solid ${({ theme }) => theme.color.white};
-    }
-  }
-
-  @media screen and (max-width: 1000px) {
-    &#title {
-      border: none;
-    }
   }
 `
 
@@ -147,12 +115,7 @@ const SliderDescription = styled(SliderPanel)`
   grid-area: description;
 
   @media screen and (max-width: 1220px) {
-    border-bottom: 2px solid ${({ theme }) => theme.color.white};
-  }
-
-  @media screen and (max-width: 1000px) {
-    border: none;
-    border-left: 2px solid ${({ theme }) => theme.color.white};
+    display: none;
   }
 
   @media screen and (max-width: 650px) {
@@ -202,10 +165,6 @@ const ButtonsPanel = styled(SliderPanel)`
   flex-direction: row;
   padding: 0 40px;
   grid-area: buttonpanel;
-
-  @media screen and (max-width: 1220px) {
-    border-bottom: 2px solid ${({ theme }) => theme.color.white};
-  }
 
   @media screen and (max-width: 1080px) {
     padding: 0 25px;
@@ -270,7 +229,6 @@ const UsedTechnologiesPanel = styled(ButtonsPanel)`
 
   @media screen and (max-width: 1000px) {
     width: 100%;
-    border-bottom: 2px solid ${({ theme }) => theme.color.white};
 
     ${DescriptionTitle} {
       display: block;
@@ -290,14 +248,12 @@ const TechnologyPanel = styled(ButtonsPanel)`
 
   @media screen and (max-width: 1220px) {
     padding: 0 40px;
-    border: none;
-    border-left: 2px solid ${({ theme }) => theme.color.white};
   }
+
   @media screen and (max-width: 1000px) {
     width: 100%;
     height: 100%;
     padding: 0 20px;
-    border-bottom: 2px solid ${({ theme }) => theme.color.white};
     align-items: center;
     justify-content: space-around;
   }
@@ -352,17 +308,6 @@ const SliderImageWrapper = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-
-  @media screen and (max-width: 1220px) {
-    border-bottom: 2px solid ${({ theme }) => theme.color.white};
-    border-left: 2px solid ${({ theme }) => theme.color.white};
-  }
-
-  @media screen and (max-width: 1000px) {
-    border: none;
-    border-top: 2px solid ${({ theme }) => theme.color.white};
-    border-bottom: 2px solid ${({ theme }) => theme.color.white};
-  }
 `
 
 const LinkP = styled.p`
