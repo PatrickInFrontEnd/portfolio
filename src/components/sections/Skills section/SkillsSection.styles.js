@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 import { flexCenter } from "../../mixins/mixins"
 import ArrowSVG from "./../../../assets/images/icon_arrow_white.svg"
 import WaveSVG from "./../../../assets/images/wave_bgc.svg"

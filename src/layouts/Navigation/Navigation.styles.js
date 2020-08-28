@@ -74,6 +74,7 @@ const NavBar = styled.nav`
     justify-content: space-around;
     top: unset;
     bottom: 0;
+    opacity: 0;
 
     ${NavItem} {
       height: 80%;
