@@ -16,7 +16,11 @@ const BackgroundWrapper = styled.section`
   background-position: center;
 
   @media screen and (max-width: 1080px) {
-    padding: 50px 0;
+    padding: 40px;
+  }
+
+  @media screen and (max-width: 980px) {
+    padding: 40px 0;
   }
 `
 const ProjectsHeader = styled.header`
@@ -32,7 +36,7 @@ const ProjectsHeader = styled.header`
   }
 
   @media screen and (max-width: 1080px) {
-    width: 100%;
+    width: 100vw;
     border-radius: 0px;
     margin-bottom: 50px;
   }
@@ -73,12 +77,40 @@ const SliderWrapper = styled.div`
   grid-gap: 20px;
 
   @media screen and (max-width: 1220px) {
-    grid-template-rows: 60vh 100px 100px;
     grid-template-columns: 400px 1fr;
+    grid-template-rows: 60vh 100px 100px;
     grid-template-areas:
       "slide slide"
       "buttonpanel title"
       "technologies technologypanel";
+  }
+
+  @media screen and (max-width: 1080px) {
+    grid-template-columns: 400px 1fr;
+    grid-template-rows: 50vh 100px 100px;
+    grid-template-areas:
+      "slide slide"
+      "buttonpanel title"
+      "technologies technologypanel";
+    grid-gap: 0;
+  }
+
+  @media screen and (max-width: 980px) {
+    grid-template-rows: minmax(320px, 50vh) 120px 80px 100px;
+    grid-template-areas:
+      "slide slide"
+      "technologypanel technologypanel"
+      "technologies technologies"
+      "buttonpanel buttonpanel";
+  }
+
+  @media screen and (max-width: 550px) {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "slide"
+      "technologypanel"
+      "technologies"
+      "buttonpanel ";
   }
 `
 
@@ -94,6 +126,18 @@ const SliderPanel = styled.div`
 
   &#title {
     grid-area: title;
+  }
+
+  @media screen and (max-width: 1080px) {
+    &#title {
+      border-bottom: 1px solid ${({ theme }) => theme.color.white};
+    }
+  }
+
+  @media screen and (max-width: 980px) {
+    &#title {
+      display: none;
+    }
   }
 `
 
@@ -167,7 +211,17 @@ const ButtonsPanel = styled(SliderPanel)`
   grid-area: buttonpanel;
 
   @media screen and (max-width: 1080px) {
-    padding: 0 25px;
+    justify-content: center;
+    border-bottom: 1px solid ${({ theme }) => theme.color.white};
+  }
+
+  @media screen and (max-width: 980px) {
+    border-top: 1px solid ${({ theme }) => theme.color.white};
+    border-bottom: none;
+  }
+
+  @media screen and (max-width: 400px) {
+    padding: 0;
   }
 `
 
@@ -189,10 +243,6 @@ const ButtonsWrapper = styled.div`
       fill: ${({ theme }) => theme.color.white};
     }
   }
-
-  @media screen and (max-width: 1080px) {
-    width: 120px;
-  }
 `
 
 const SlideId = styled.span`
@@ -202,6 +252,10 @@ const SlideId = styled.span`
   border-radius: 50%;
   border: 2px solid ${({ theme }) => theme.color.white};
   background-color: ${({ theme }) => theme.color.black};
+
+  @media screen and (max-width: 1080px) {
+    margin-left: 80px;
+  }
 `
 
 const UsedTechnologiesPanel = styled(ButtonsPanel)`
@@ -245,23 +299,24 @@ const TechnologyPanel = styled(ButtonsPanel)`
   overflow-x: auto;
   overflow-y: visible;
   grid-area: technologypanel;
+  height: 100%;
 
   @media screen and (max-width: 1220px) {
     padding: 0 40px;
   }
 
-  @media screen and (max-width: 1000px) {
-    width: 100%;
-    height: 100%;
-    padding: 0 20px;
+  @media screen and (max-width: 1080px) {
     align-items: center;
-    justify-content: space-around;
+    border-bottom: none;
   }
 
-  @media screen and (max-width: 650px) {
-    align-items: center;
-    padding: 15px 15px 0 15px;
-    border: none;
+  @media screen and (max-width: 980px) {
+    border-top: none;
+    border-bottom: none;
+  }
+
+  @media screen and (max-width: 850px) {
+    padding: 0 15px;
   }
 `
 
@@ -286,7 +341,7 @@ const TechnologyIcon = styled.span`
     margin-right: 100%;
   }
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1080px) {
     margin: 0 20px 0 0;
 
     :last-of-type {
@@ -319,7 +374,7 @@ const LinkP = styled.p`
   height: 100%;
   transition: 0.3s;
 
-  @media screen and (max-width: 1080px) {
+  @media screen and (max-width: 1220px) {
     display: none;
   }
 `
@@ -404,7 +459,7 @@ const LinkButton = styled.a`
     }
   }
 
-  @media screen and (max-width: 1080px) {
+  @media screen and (max-width: 1220px) {
     width: 60px;
     justify-content: center;
     &:nth-of-type(1) {

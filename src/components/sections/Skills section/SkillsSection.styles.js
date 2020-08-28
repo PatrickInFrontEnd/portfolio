@@ -73,12 +73,15 @@ const IconsWrapper = styled.div`
     padding: 150px 100px;
   }
 
+  @media screen and (max-width: 1200px) {
+    background-color: ${({ theme }) => theme.color.mediumWhite};
+  }
+
   @media screen and (max-width: 1000px) {
     justify-content: space-between;
     padding: 150px 50px;
     min-height: unset;
     height: 650px;
-    background-color: #fff;
   }
 
   @media screen and (max-width: 900px) {
@@ -109,7 +112,7 @@ const WaveIcon = styled(WaveSVG)`
     width: 120%;
   }
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1200px) {
     display: none;
   }
 `
@@ -201,7 +204,8 @@ const SkillsDescriptionBar = styled.div`
     flex-direction: column;
     height: unset;
     min-height: 400px;
-    padding: 30px 0;
+    padding: 40px 0;
+    border-top: none;
   }
 `
 const Paragraph = styled.p`
@@ -229,9 +233,8 @@ const Paragraph = styled.p`
   }
 
   @media screen and (max-width: 1200px) {
-    margin: 0px 20px 30px;
+    margin: 0px 20px 40px;
     padding: 0 40px 20px;
-    border-bottom: 4px solid ${({ theme }) => theme.color.white};
     text-align-last: center;
   }
 
@@ -257,7 +260,7 @@ const LinkedInTitle = styled.p`
   text-align: center;
 
   @media screen and (max-width: 400px) {
-    font-size: ${({ theme }) => theme.fSize.XXXS};
+    font-size: ${({ theme }) => theme.fSize.miniS};
   }
 `
 
@@ -279,6 +282,11 @@ const ArrowIcon = styled(ArrowSVG)`
       transform: translateY(0);
     }
   }
+
+  @media screen and (max-width: 400px) {
+    width: 50px;
+    height: 50px;
+  }
 `
 
 const LinkTitle = styled.span`
@@ -296,7 +304,12 @@ const LinkTitle = styled.span`
   }
 
   @media screen and (max-width: 500px) {
-    font-size: ${({ theme }) => theme.fSize.XS};
+    font-size: ${({ theme }) => theme.fSize.XXS};
+
+    ~ svg {
+      width: 40px;
+      height: 40px;
+    }
   }
 `
 
@@ -329,11 +342,15 @@ const LinkWrapper = styled.a`
   }
 
   @media screen and (max-width: 500px) {
-    width: 300px;
+    width: 280px;
+    height: 80px;
+    padding-right: 30px;
   }
 
   @media screen and (max-width: 400px) {
-    width: 280px;
+    width: 250px;
+    height: 70px;
+    border-radius: 15px;
   }
 `
 

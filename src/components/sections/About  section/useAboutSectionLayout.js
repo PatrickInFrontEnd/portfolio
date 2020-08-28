@@ -29,11 +29,11 @@ export const useAboutSectionLayout = wrapperRef =>
 
     function handlePcLayout() {
       //NOTE: setting basic styles before animation
-      gsap.set([shadowElement, photoElements, descriptionElement], {
+      gsap.set([shadowElement, photoElements], {
         autoAlpha: 0,
       })
 
-      const tl = gsap.timeline({
+      const photosTimeline = gsap.timeline({
         scrollTrigger: {
           trigger: wrapper,
           start: "10% center",
@@ -41,36 +41,55 @@ export const useAboutSectionLayout = wrapperRef =>
         defaults: defaultVars,
       })
 
-      tl.fromTo(
-        shadowElement,
-        { y: "150%", autoAlpha: 0 },
-        { y: "0%", autoAlpha: 1 }
-      )
+      photosTimeline
+        .fromTo(
+          shadowElement,
+          { y: "150%", autoAlpha: 0 },
+          { y: "0%", autoAlpha: 1 }
+        )
         .fromTo(
           photoElements,
           { x: "-200%", autoAlpha: 0 },
-          { x: "0%", autoAlpha: 1 }
+          { x: "0%", autoAlpha: 1, delay: 0.3 }
         )
-        .to(photoElements[1], { y: "52%" })
-        .to(photoElements[0], { y: "-52%" })
-        .fromTo(
-          descriptionElement,
-          { translateX: "200%", autoAlpha: 0 },
-          { translateX: "0", autoAlpha: 1 }
-        )
+
+      setDescriptionTimeline()
     }
 
     function handleMobileLayout() {
       //NOTE: initial styles before animating
+
+      gsap.set(shadowElement, { autoAlpha: 0 })
+      gsap.set(photoElements, { autoAlpha: 0 })
+      gsap.set(photoElements[1], { y: "30%" })
+      gsap.set(photoElements[0], { y: "-30%" })
+
+      setDescriptionTimeline()
+
+      const photosTimeline = gsap.timeline({
+        defaults: defaultVars,
+        scrollTrigger: {
+          trigger: photosWrapper,
+          start: "20% center",
+        },
+      })
+
+      photosTimeline
+        .fromTo(
+          shadowElement,
+          { x: "-150%", autoAlpha: 0 },
+          { x: "0%", autoAlpha: 1 }
+        )
+        .to(photoElements, { y: "0%", autoAlpha: 1, delay: 0.2 })
+    }
+
+    function setDescriptionTimeline() {
       gsap.set(descriptionHeader, {
         x: "-150%",
         autoAlpha: 0,
         scale: 0.1,
         borderBottom: "4px solid transparent",
       })
-      gsap.set(shadowElement, { autoAlpha: 0 })
-      gsap.set(photoElements, { autoAlpha: 0 })
-
       const descriptionHeaderTl = gsap.timeline({
         defaults: defaultVars,
         scrollTrigger: {
@@ -110,27 +129,5 @@ export const useAboutSectionLayout = wrapperRef =>
           }
         )
       })
-
-      const photosTimeline = gsap.timeline({
-        defaults: defaultVars,
-        scrollTrigger: {
-          trigger: photosWrapper,
-          start: "20% center",
-        },
-      })
-
-      photosTimeline
-        .fromTo(
-          shadowElement,
-          { x: "-150%", autoAlpha: 0 },
-          { x: "0%", autoAlpha: 1 }
-        )
-        .fromTo(
-          photoElements,
-          { x: "-200%", autoAlpha: 0 },
-          { x: "0%", autoAlpha: 1 }
-        )
-        .to(photoElements[1], { y: "52%" })
-        .to(photoElements[0], { y: "-52%" })
     }
   }, [wrapperRef])

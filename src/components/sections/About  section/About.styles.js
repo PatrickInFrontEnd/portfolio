@@ -9,8 +9,8 @@ import { ShadowElement } from "../Introduction section/Introduction.styles"
 const AboutMeWrapper = styled.div`
   width: 100%;
   min-height: 100vh;
-  padding: 50px 30px;
   ${flexCenter};
+  flex-direction: column;
 
   ${({ backgroundUrl }) => getBackgroundUrl(backgroundUrl)};
   background-size: cover;
@@ -24,29 +24,17 @@ const AboutMeWrapper = styled.div`
 
 const PhotosWrapper = styled.div`
   position: relative;
-  width: 900px;
-  height: 1200px;
+  width: 100%;
+  padding: 100px 0;
   ${flexCenter};
 
-  @media screen and (max-width: 1600px) {
-    width: 100%;
-  }
-
-  @media screen and (max-width: 1000px) {
-    height: 1000px;
-  }
-
-  @media screen and (max-width: 800px) {
-    height: 800px;
-  }
-
-  @media screen and (max-width: 500px) {
-    height: 650px;
+  @media screen and (max-width: 860px) {
+    padding: 0;
   }
 `
 
 const ShadowBackground = styled(ShadowElement)`
-  height: 80%;
+  height: 100%;
   ${absoluteCenter};
   z-index: 0;
   background-color: ${({ theme }) => theme.color.mediumBlackAlpha};
@@ -58,37 +46,57 @@ const ShadowBackground = styled(ShadowElement)`
 `
 const PhotoWrapper = styled.div`
   position: relative;
-  width: 700px;
+  width: 100%;
   height: 100%;
+  ${flexCenter};
+  justify-content: space-around;
 
-  @media screen and (max-width: 1000px) {
-    width: 600px;
+  @media screen and (max-width: 860px) {
+    min-height: 800px;
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: 500px) {
+    justify-content: center;
   }
 `
 
 const Photo = styled.div`
-  ${absoluteCenter};
   display: block;
   width: 100%;
+  max-width: 700px;
   height: 500px;
 
   ${({ backgroundUrl }) => getBackgroundUrl(backgroundUrl)};
   background-size: cover;
   background-position: top center;
 
-  @media screen and (max-width: 1000px) {
-    height: 400px;
-    width: 500px;
+  @media screen and (max-width: 1600px) {
+    width: 600px;
+    height: 500px;
   }
 
-  @media screen and (max-width: 800px) {
-    height: 300px;
+  @media screen and (max-width: 1300px) {
+    width: 500px;
+    height: 400px;
+  }
+
+  @media screen and (max-width: 1180px) {
     width: 400px;
+    height: 300px;
+  }
+
+  @media screen and (max-width: 860px) {
+    width: 450px;
+    height: 350px;
   }
 
   @media screen and (max-width: 500px) {
     height: 300px;
     width: 100%;
+    &:nth-of-type(1) {
+      margin-bottom: 40px;
+    }
   }
 
   @media screen and (max-width: 400px) {
@@ -98,8 +106,7 @@ const Photo = styled.div`
 `
 
 const DescriptionWrapper = styled.div`
-  width: 800px;
-  min-height: 1300px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.color.black};
@@ -143,33 +150,30 @@ const Title = styled.h2`
 `
 
 const ParagraphsWrapper = styled.div`
-  ${flexCenter};
-  flex-direction: column;
+  padding: 50px 80px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(200px, 1fr);
+  grid-gap: 40px;
   width: 100%;
   height: 100%;
-  padding: 0 80px;
-  margin: auto 0;
+  padding: 120px 80px;
 
   @media screen and (max-width: 1600px) {
-    padding: 50px 80px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: minmax(200px, 1fr);
-    grid-gap: 40px;
+    grid-auto-rows: unset;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    padding: 50px;
   }
 
-  @media screen and (max-width: 1100px) {
+  @media screen and (max-width: 1300px) {
     grid-auto-rows: unset;
-    grid-template-columns: 50%;
+    grid-template-columns: 1fr 1fr;
     padding: 50px;
   }
 
   @media screen and (max-width: 900px) {
-    grid-template-columns: 70%;
-  }
-
-  @media screen and (max-width: 650px) {
-    grid-template-columns: 100%;
+    grid-template-columns: 1fr;
   }
 `
 
@@ -177,39 +181,39 @@ const P = styled.p`
   ${flexCenter};
   font-weight: ${({ theme }) => theme.fWeight.medium};
   font-size: ${({ theme }) => theme.fSize.S};
-
-  margin-bottom: 50px;
+  text-align: center;
   line-height: 160%;
+  padding: 30px 50px;
+  border: 2px solid ${({ theme }) => theme.color.white};
 
   &:last-of-type {
     margin-bottom: 0;
+  }
+
+  @media screen and (max-width: 1600px) {
+    margin-bottom: 0;
+    padding: 20px 40px;
+    width: 350px;
+    height: 100%;
   }
 
   @media screen and (max-width: 1500px) {
     font-size: ${({ theme }) => theme.fSize.XS};
   }
 
-  @media screen and (max-width: 1600px) {
-    margin-bottom: 0;
-    padding: 20px 40px;
-    width: 100%;
-    height: 100%;
-    text-align: justify;
-    text-align-last: center;
-    border: 2px solid #fff;
-  }
-
   @media screen and (max-width: 1100px) {
-    text-align: center;
-    width: unset;
-    height: unset;
     padding: 20px;
-    display: block;
     font-size: ${({ theme }) => theme.fSize.XXXS};
   }
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 450px) {
+    padding: 15px 10px;
+    width: 90%;
     font-size: ${({ theme }) => theme.fSize.miniS};
+  }
+
+  @media screen and (max-width: 350px) {
+    width: 100%;
   }
 `
 export {

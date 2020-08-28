@@ -79,11 +79,6 @@ const NavBar = styled.nav`
       height: 80%;
       width: 90%;
       margin: 0;
-      border-right: 2px solid #fff;
-
-      &:last-of-type {
-        border-right: none;
-      }
     }
 
     ${NavTitle} {

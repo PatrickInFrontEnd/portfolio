@@ -64,6 +64,30 @@ const ProjectsSection = props => {
     sliderTitleElement = useRef(null),
     sliderDescriptionElement = useRef(null)
 
+  const getAnimationTargets = () => {
+    let targets
+    if (window.innerWidth >= 1220) {
+      targets = [
+        technologyIconPanel,
+        sliderImageElement,
+        sliderTitleElement,
+        sliderDescriptionElement,
+      ].map(ref => ref.current)
+    } else if (window.innerWidth <= 1220 && window.innerWidth > 980) {
+      targets = [
+        technologyIconPanel,
+        sliderTitleElement,
+        sliderImageElement,
+      ].map(ref => ref.current)
+    } else if (window.innerWidth <= 980) {
+      targets = [technologyIconPanel, sliderImageElement].map(
+        ref => ref.current
+      )
+    }
+
+    return targets || null
+  }
+
   const animateNextSlide = useCallback(
     e => {
       if (animating) return
@@ -75,17 +99,7 @@ const ProjectsSection = props => {
 
       const tl = gsap.timeline({ onComplete: toggleAnimationStatus })
 
-      const targets =
-        window.innerWidth < 650
-          ? [technologyIconPanel, sliderImageElement, sliderTitleElement].map(
-              ref => ref.current
-            )
-          : [
-              technologyIconPanel,
-              sliderImageElement,
-              sliderTitleElement,
-              sliderDescriptionElement,
-            ].map(ref => ref.current)
+      let targets = getAnimationTargets()
 
       tl.add(fadeOut(targets, { stagger: 0.2 }))
         .add(vanish(sliderIdElement.current))
@@ -109,17 +123,7 @@ const ProjectsSection = props => {
 
       const tl = gsap.timeline({ onComplete: toggleAnimationStatus })
 
-      const targets =
-        window.innerWidth < 650
-          ? [technologyIconPanel, sliderImageElement, sliderTitleElement].map(
-              ref => ref.current
-            )
-          : [
-              technologyIconPanel,
-              sliderImageElement,
-              sliderTitleElement,
-              sliderDescriptionElement,
-            ].map(ref => ref.current)
+      let targets = getAnimationTargets()
 
       tl.add(fadeOut(targets, { stagger: 0.2, y: "+=100" }))
         .add(vanish(sliderIdElement.current))
