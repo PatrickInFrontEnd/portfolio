@@ -1,7 +1,7 @@
 import React from "react"
 import ContactIcon from "./../../../assets/images/icon_phone.svg"
 import SectionHeader from "./../../SectionHeader/SectionHeader.component"
-import ContactComponent from "./Contact.component"
+import ContactComponent from "./ContactIcons.component"
 
 const ContactSectionContainer = props => (
   <>
