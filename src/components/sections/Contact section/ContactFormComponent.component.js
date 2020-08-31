@@ -20,7 +20,7 @@ const ContactFormContainer = props => (
       <Header>Send me a message</Header>
       <PersonMessageIcon />
     </LeftBarWrapper>
-    <Form name="contact" method="POST" netlify action="/success/">
+    <Form name="contact" method="POST" data-netlify="true" action="/success">
       <input type="hidden" name="form-name" value="contact" />
       <InputWrapper>
         <Label>Name / Company name</Label>
@@ -37,7 +37,7 @@ const ContactFormContainer = props => (
         <MessageInput name="message" />
         <Border id="message_border" />
       </InputWrapper>
-      <SubmitButton type="submit">Submit !</SubmitButton>
+      <SubmitButton>Submit !</SubmitButton>
     </Form>
     <CirclesIcon />
     <CirclesIcon />
