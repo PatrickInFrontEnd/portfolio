@@ -30,17 +30,17 @@ const ContactFormContainer = props => (
       <input type="hidden" name="form-name" value="contact" />
       <InputWrapper>
         <Label>Name / Company name</Label>
-        <Input type="text" name="name" required />
+        <Input type="text" name="name" />
         <Border />
       </InputWrapper>
       <InputWrapper>
         <Label>Email</Label>
-        <Input type="email" name="email" required />
+        <Input type="email" name="email" />
         <Border />
       </InputWrapper>
       <InputWrapper>
         <Label>Message</Label>
-        <MessageInput name="message" required />
+        <MessageInput name="message" />
         <Border id="message_border" />
       </InputWrapper>
       <SubmitButton type="submit">Submit !</SubmitButton>
