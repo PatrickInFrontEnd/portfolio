@@ -3,7 +3,6 @@ import {
   ShadowElement,
   Photo,
   PhotosWrapper,
-  DescriptionWrapper,
   DescriptionHeader,
   P,
 } from "./About.styles"
@@ -20,7 +19,6 @@ export const useAboutSectionLayout = wrapperRef =>
     const shadowElement = wrapper.querySelector(`${ShadowElement}`)
     const photosWrapper = wrapper.querySelectorAll(`${PhotosWrapper}`)
     const photoElements = wrapper.querySelectorAll(`${Photo}`)
-    const descriptionElement = wrapper.querySelector(`${DescriptionWrapper}`)
     const descriptionHeader = wrapper.querySelector(`${DescriptionHeader}`)
     const pElements = wrapper.querySelectorAll(`${P}`)
 

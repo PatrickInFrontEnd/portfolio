@@ -1,7 +1,8 @@
 import React from "react"
 import ContactIcon from "./../../../assets/images/icon_phone.svg"
 import SectionHeader from "./../../SectionHeader/SectionHeader.component"
-import ContactComponent from "./ContactIcons.component"
+import ContactIconsComponent from "./ContactIcons.component"
+import ContactFormComponent from "./ContactFormComponent.component"
 
 const ContactSectionContainer = props => (
   <>
@@ -18,7 +19,8 @@ const ContactSectionContainer = props => (
         }}
       />
     </SectionHeader>
-    <ContactComponent />
+    <ContactIconsComponent />
+    <ContactFormComponent />
   </>
 )
 export default ContactSectionContainer
