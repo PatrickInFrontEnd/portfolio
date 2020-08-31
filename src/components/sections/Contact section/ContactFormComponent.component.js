@@ -23,7 +23,7 @@ const ContactFormContainer = props => (
     <Form
       name="contact"
       method="POST"
-      data-netlify="true"
+      netlify
       data-netlify-honeypot="bot-field"
       action="/success/"
     >
