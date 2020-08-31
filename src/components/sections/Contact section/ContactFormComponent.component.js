@@ -20,13 +20,7 @@ const ContactFormContainer = props => (
       <Header>Send me a message</Header>
       <PersonMessageIcon />
     </LeftBarWrapper>
-    <Form
-      name="contact"
-      method="POST"
-      netlify
-      data-netlify-honeypot="bot-field"
-      action="/success/"
-    >
+    <Form name="contact" method="POST" netlify action="/success/">
       <input type="hidden" name="form-name" value="contact" />
       <InputWrapper>
         <Label>Name / Company name</Label>
