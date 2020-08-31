@@ -13,6 +13,7 @@ const Wrapper = styled.div`
   ${flexCenter};
   flex-direction: column;
   background-color: ${({ theme }) => theme.color.navyBlue};
+  z-index: 10000000;
 
   @media screen and (max-width: 600px) {
     justify-content: space-around;

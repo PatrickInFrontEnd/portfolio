@@ -27,7 +27,7 @@ const ContactFormContainer = props => (
       netlify-honeypot="bot-field"
       action="/success"
     >
-      <input type="hidden" name="form-name" value="contact"></input>
+      <input type="hidden" name="form-name" value="contact" />
       <InputWrapper>
         <Label>Name / Company name</Label>
         <Input type="text" name="name" required />
