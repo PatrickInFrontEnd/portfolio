@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import gsap from "gsap"
-import { Header, FormSuccessIcon } from "./Form-success.styles"
+import { Header } from "./Form-success.styles"
 import { Button } from "./../Button/Button.styles"
 
 export const useFormSuccessLayout = wrapperRef =>
@@ -12,7 +12,6 @@ export const useFormSuccessLayout = wrapperRef =>
 
     const wrapper = wrapperRef.current
     const headerElement = wrapper.querySelector(`${Header}`)
-    const formIcon = wrapper.querySelector(`${FormSuccessIcon}`)
     const human = wrapper.querySelectorAll(`.human`)
     const formBorder = wrapper.querySelector(`.checklist.border`)
     const formTick = wrapper.querySelectorAll(`.checklist.tick`)

@@ -6,6 +6,7 @@ import { Header as H2 } from "./../Header/Header.styles"
 const Wrapper = styled.div`
   position: absolute;
   top: 0;
+  left: 0;
   width: 100%;
   min-height: 100vh;
   padding: 50px 0;
