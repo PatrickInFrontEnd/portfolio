@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { flexCenter } from "./../mixins/mixins"
 import FormSuccessSVG from "./../../assets/images/form-success.svg"
 import { Header as H2 } from "./../Header/Header.styles"
@@ -12,6 +12,13 @@ const Wrapper = styled.div`
   ${flexCenter};
   flex-direction: column;
   background-color: ${({ theme }) => theme.color.navyBlue};
+
+  ${({ isFormFailed }) =>
+    isFormFailed
+      ? css`
+          justify-content: space-around;
+        `
+      : ""}
 
   @media screen and (max-width: 600px) {
     justify-content: space-around;

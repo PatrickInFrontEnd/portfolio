@@ -27,7 +27,7 @@ export const useAboutSectionLayout = wrapperRef =>
 
     function handlePcLayout() {
       //NOTE: setting basic styles before animation
-      gsap.set([shadowElement, photoElements], {
+      gsap.set(photoElements, {
         autoAlpha: 0,
       })
 
@@ -40,11 +40,7 @@ export const useAboutSectionLayout = wrapperRef =>
       })
 
       photosTimeline
-        .fromTo(
-          shadowElement,
-          { y: "150%", autoAlpha: 0 },
-          { y: "0%", autoAlpha: 1 }
-        )
+        .from(shadowElement, { y: "150%", autoAlpha: 0 })
         .fromTo(
           photoElements,
           { x: "-200%", autoAlpha: 0 },
@@ -57,7 +53,6 @@ export const useAboutSectionLayout = wrapperRef =>
     function handleMobileLayout() {
       //NOTE: initial styles before animating
 
-      gsap.set(shadowElement, { autoAlpha: 0 })
       gsap.set(photoElements, { autoAlpha: 0 })
       gsap.set(photoElements[1], { y: "30%" })
       gsap.set(photoElements[0], { y: "-30%" })
@@ -73,11 +68,7 @@ export const useAboutSectionLayout = wrapperRef =>
       })
 
       photosTimeline
-        .fromTo(
-          shadowElement,
-          { x: "-150%", autoAlpha: 0 },
-          { x: "0%", autoAlpha: 1 }
-        )
+        .from(shadowElement, { x: "-150%", autoAlpha: 0 })
         .to(photoElements, { y: "0%", autoAlpha: 1, delay: 0.2 })
     }
 
