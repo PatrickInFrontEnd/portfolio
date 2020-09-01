@@ -4,15 +4,11 @@ import { scrollToSection } from "./../../utils/scrollToSection"
 import NavigationContext from "./../../contexts/navigation.context"
 
 const ScrollTopButton = props => {
-  const { isNavigationVisible } = useContext(NavigationContext)
+  const { isNavigationVisible, currentY } = useContext(NavigationContext)
 
   return (
     <ElipseWrapper
-      isButtonVisible={
-        typeof window !== "undefined" &&
-        window.scrollY >= 100 &&
-        isNavigationVisible
-      }
+      isButtonVisible={currentY >= 100 && isNavigationVisible}
       onClick={scrollToSection("#introduction", 80)}
     >
       <Elipse />
