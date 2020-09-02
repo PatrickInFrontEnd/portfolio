@@ -76,10 +76,11 @@ const ContactFormContainer = props => {
       </LeftBarWrapper>
       <Form name="contact" onSubmit={handleSubmit}>
         <InputWrapper>
-          <Label>Name / Company name</Label>
+          <Label htmlFor="name">Name / Company name</Label>
           <Input
             type="text"
             name="name"
+            id="name"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.name}
@@ -91,10 +92,11 @@ const ContactFormContainer = props => {
           )}
         </InputWrapper>
         <InputWrapper>
-          <Label>Email</Label>
+          <Label htmlFor="email">Email</Label>
           <Input
             type="email"
             name="email"
+            id="email"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.email}
@@ -105,9 +107,10 @@ const ContactFormContainer = props => {
           )}
         </InputWrapper>
         <InputWrapper>
-          <Label>Message</Label>
+          <Label htmlFor="message_textarea">Message</Label>
           <MessageInput
             name="message"
+            id="message_textarea"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.message}
