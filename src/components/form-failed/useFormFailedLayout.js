@@ -1,9 +1,10 @@
 import { useLayoutEffect } from "react"
 import gsap from "gsap"
-import { Header } from "./Form-success.styles"
+import { Header } from "./../form-success/Form-success.styles"
+import { FormFailedIcon } from "./form-failed.styles"
 import { Button } from "./../Button/Button.styles"
 
-export const useFormSuccessLayout = wrapperRef =>
+export const useFormFailedLayout = wrapperRef =>
   useLayoutEffect(() => {
     const defaultVars = {
       duration: 0.4,
@@ -12,10 +13,10 @@ export const useFormSuccessLayout = wrapperRef =>
 
     const wrapper = wrapperRef.current
     const headerElement = wrapper.querySelector(`${Header}`)
-    const human = wrapper.querySelectorAll(`.human`)
-    const formBorder = wrapper.querySelector(`.checklist.border`)
-    const formTick = wrapper.querySelectorAll(`.checklist.tick`)
-    const formMessages = wrapper.querySelectorAll(`.checklist.message`)
+    const formIcon = wrapper.querySelector(`${FormFailedIcon}`)
+    const human = formIcon.querySelector(`#human`)
+    const formGreyMessage = formIcon.querySelector(`#grey_message`)
+    const formRedMessage = formIcon.querySelector(`#red_message`)
     const button = wrapper.querySelector(`${Button}`)
 
     const tl = gsap.timeline({ defaults: defaultVars })
@@ -24,9 +25,7 @@ export const useFormSuccessLayout = wrapperRef =>
       .from(human, {
         opacity: 0,
       })
-      .from(formBorder, { x: "-400px", opacity: 0 })
-      .addLabel("formTick")
-      .from(formTick, { x: "-400px", opacity: 0 })
-      .from(formMessages, { x: "100px", opacity: 0 }, "formTick")
+      .from(formGreyMessage, { x: "-100px", opacity: 0 })
+      .from(formRedMessage, { x: "100px", opacity: 0 })
       .from(button, { y: "-100%", opacity: 0 })
   }, [wrapperRef])

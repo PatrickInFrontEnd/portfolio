@@ -73,7 +73,7 @@ const Title = styled.h2`
   font-weight: ${({ theme }) => theme.fWeight.regular};
   font-family: Baloo Thambi, Montserrat, Poppins, Arial, sans-serif;
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 40px;
 
   @media screen and (max-width: 1400px) {
     font-size: ${({ theme }) => theme.fSize.XXL};
@@ -90,6 +90,7 @@ const P = styled.p`
   font-family: Montserrat, Poppins, Arial, sans-serif;
   text-align: justify;
   text-align-last: center;
+  max-width: 400px;
 
   @media screen and (max-width: 1400px) {
     font-size: ${({ theme }) => theme.fSize.XXS};

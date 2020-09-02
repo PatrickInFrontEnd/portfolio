@@ -19,18 +19,18 @@ import axios from "axios"
 import { navigate } from "@reach/router"
 
 const ContactFormContainer = props => {
+  const CLOUD_URL =
+    "https://us-central1-portfolio-forms-b1509.cloudfunctions.net/sendEmail"
+
   const onSubmit = (values, { setSubmitting }) => {
     axios
-      .post(
-        "https://us-central1-portfolio-forms-b1509.cloudfunctions.net/sendEmail",
-        values
-      )
+      .post(CLOUD_URL, values)
       .then(res => {
-        console.log(res)
         navigate("/form-success")
       })
       .catch(err => {
         console.log(err)
+        navigate("/form-failed")
       })
   }
 

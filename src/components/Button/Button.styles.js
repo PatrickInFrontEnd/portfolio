@@ -1,5 +1,7 @@
+import React from "react"
 import styled from "styled-components"
 import { flexCenter } from "./../mixins/mixins"
+import { Link } from "gatsby"
 
 export const Button = styled.button`
   ${flexCenter};
@@ -47,3 +49,10 @@ export const Button = styled.button`
     width: 260px;
   }
 `
+const styledLink = { textDecoration: "none", display: "flex" }
+
+export const ButtonLink = props => (
+  <Button as={Link} {...props} style={styledLink}>
+    {props.children}
+  </Button>
+)

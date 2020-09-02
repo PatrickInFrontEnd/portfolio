@@ -33,6 +33,10 @@ const SkillsTitle = styled.h2`
     margin: 30px auto 0px;
   }
 
+  @media screen and (max-width: 1200px) {
+    margin: 30px auto 80px;
+  }
+
   @media screen and (max-width: 1100px) {
     font-size: ${({ theme }) => theme.fSize.L};
   }
