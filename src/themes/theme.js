@@ -3,6 +3,7 @@ const theme = {
     orangeHTML: "rgba(255, 99, 56, 1)",
     blueCSS: "rgba(14, 125, 194, 1)",
     yellowJS: "rgba(247, 220, 67, 1)",
+    lightRed: "rgba(255, 77, 77, 1)",
     lightBlue: "rgba(74, 206, 255, 1)",
     lowLightBlue: "rgba(36, 137, 188, 1)",
     mediumLightBlue: "rgba(31, 145, 255, 1)",
@@ -20,6 +21,7 @@ const theme = {
     black: "rgba(0, 0, 0, 1)",
     white: "rgba(255, 255, 255, 1)",
     mediumWhite: "rgba(248, 248, 248, 1)",
+    grey: "rgba(149, 165, 166,1.0)",
     darkGrey: "rgba(31, 39, 55, 1)",
   },
   fSize: {

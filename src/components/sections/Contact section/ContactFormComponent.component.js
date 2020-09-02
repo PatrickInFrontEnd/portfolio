@@ -12,40 +12,146 @@ import {
   PersonMessageIcon,
   SubmitButton,
   Border,
+  ErrorMessage,
 } from "./Contact.styles"
+import { useFormik } from "formik"
+import axios from "axios"
+import { navigate } from "@reach/router"
 
-const ContactFormContainer = props => (
-  <ContactFormWrapper>
-    <LeftBarWrapper>
-      <Header>Send me a message</Header>
-      <PersonMessageIcon />
-    </LeftBarWrapper>
-    <Form
-      name="contact"
-      method="POST"
-      data-netlify="true"
-      action="/form-success"
-    >
-      <InputWrapper>
-        <Label>Name / Company name</Label>
-        <Input type="text" name="name" required />
-        <Border />
-      </InputWrapper>
-      <InputWrapper>
-        <Label>Email</Label>
-        <Input type="email" name="email" required />
-        <Border />
-      </InputWrapper>
-      <InputWrapper>
-        <Label>Message</Label>
-        <MessageInput name="message" required />
-        <Border id="message_border" />
-      </InputWrapper>
-      <SubmitButton type="submit">Submit !</SubmitButton>
-    </Form>
-    <CirclesIcon />
-    <CirclesIcon />
-  </ContactFormWrapper>
-)
+const ContactFormContainer = props => {
+  const onSubmit = (values, { setSubmitting }) => {
+    axios
+      .post(
+        "https://us-central1-portfolio-forms-b1509.cloudfunctions.net/sendEmail",
+        values
+      )
+      .then(res => {
+        console.log(res)
+        navigate("/form-success")
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
+  const validate = values => {
+    const errors = {}
+
+    if (!values.name) {
+      errors.name = "Required"
+    }
+
+    if (!values.message) {
+      errors.message = "Required"
+    }
+
+    if (!values.email) {
+      errors.email = "Required"
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+      errors.email = "Invalid email address"
+    }
+    return errors
+  }
+
+  const {
+    handleBlur,
+    handleChange,
+    handleSubmit,
+    values,
+    errors,
+    touched,
+    isSubmitting,
+  } = useFormik({
+    initialValues: { name: "", email: "", message: "" },
+    onSubmit,
+    validate,
+    validateOnChange: true,
+  })
+
+  return (
+    <ContactFormWrapper>
+      <LeftBarWrapper>
+        <Header>Send me a message</Header>
+        <PersonMessageIcon />
+      </LeftBarWrapper>
+      <Form name="contact" onSubmit={handleSubmit}>
+        <InputWrapper>
+          <Label>Name / Company name</Label>
+          <Input
+            type="text"
+            name="name"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.name}
+            maxLength="50"
+          />
+          <Border />
+          {errors.name && touched.name && (
+            <ErrorMessage>{errors.name}</ErrorMessage>
+          )}
+        </InputWrapper>
+        <InputWrapper>
+          <Label>Email</Label>
+          <Input
+            type="email"
+            name="email"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.email}
+          />
+          <Border />
+          {errors.email && touched.email && (
+            <ErrorMessage>{errors.email}</ErrorMessage>
+          )}
+        </InputWrapper>
+        <InputWrapper>
+          <Label>Message</Label>
+          <MessageInput
+            name="message"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.message}
+          />
+          <Border id="message_border" />
+          {errors.message && touched.message && (
+            <ErrorMessage>{errors.message}</ErrorMessage>
+          )}
+        </InputWrapper>
+        <SubmitButton type="submit" disabled={isSubmitting}>
+          Submit !
+        </SubmitButton>
+      </Form>
+      <CirclesIcon />
+      <CirclesIcon />
+    </ContactFormWrapper>
+  )
+}
 
 export default ContactFormContainer
+
+/* NOTE: FORMIK
+
+<Formik
+      initialValues={}
+      onSubmit={(values, { setSubmitting }) => {
+        alert(JSON.stringify(values))
+      }}
+      validate={
+    >
+      {({
+        values,
+        errors,
+        touched,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        isSubmitting,
+      }) => (
+        
+      )}
+    </Formik>
+*/
+
+/*  */
+
+// API URL http://localhost:5001/portfolio-forms-b1509/us-central1/sendEmail

@@ -287,7 +287,6 @@ const PersonMessageIcon = styled(PersonMessageSVG)`
     bottom: -460px;
     left: 40%;
     transform: translateX(-50%);
-    /* TODO: vertical sizing */
   }
 
   @media screen and (max-width: 650px) {
@@ -360,6 +359,29 @@ const Form = styled.form`
   @media screen and (max-width: 650px) {
     width: 100%;
     margin: 0;
+  }
+`
+
+const ErrorMessage = styled.span`
+  position: absolute;
+  right: 0px;
+  bottom: -40px;
+  ${flexCenter};
+  justify-content: flex-start;
+  color: ${({ theme }) => theme.color.lightRed};
+  font-size: ${({ theme }) => theme.fSize.miniXS};
+
+  animation: slideInError 0.5s ease-in-out both;
+
+  @keyframes slideInError {
+    from {
+      opacity: 0;
+      right: -100px;
+    }
+    to {
+      opacity: 1;
+      right: 0;
+    }
   }
 `
 
@@ -483,6 +505,15 @@ const SubmitButton = styled(Button)`
     transform: translate(10px, -10px) !important;
   }
 
+  &:disabled {
+    background-color: ${({ theme }) => theme.color.grey};
+    cursor: unset;
+
+    &::before {
+      border-color: ${({ theme }) => theme.color.grey};
+    }
+  }
+
   @media screen and (max-width: 1300px) {
     height: 60px;
     width: 300px;
@@ -514,4 +545,5 @@ export {
   MessageInput,
   PersonMessageIcon,
   SubmitButton,
+  ErrorMessage,
 }
