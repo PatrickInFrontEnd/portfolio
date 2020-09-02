@@ -16,13 +16,8 @@ export const useHobbiesSectionLayout = wrapperRef =>
       const descriptionElement = panel.querySelector(`${DescriptionWrapper}`)
       const isPanelEven = i % 2 === 0
 
-      const valueFromPanel = isPanelEven ? "-140%" : "140%"
       const valueFromChildren = isPanelEven ? -150 : 150
       //NOTE: initial styles for animation
-      gsap.set(panel, {
-        x: valueFromPanel,
-        autoAlpha: 0,
-      })
       gsap.set(iconElement, {
         x: `${valueFromChildren}px`,
         autoAlpha: 0,
@@ -36,15 +31,13 @@ export const useHobbiesSectionLayout = wrapperRef =>
         defaults: defaultVars,
         scrollTrigger: {
           trigger: panel,
-          start: "top 60%",
+          start: "top 70%",
         },
       })
 
-      tl.to(panel, { x: "0", autoAlpha: 1 })
-        .to(iconElement, { x: "0", autoAlpha: 1 })
-        .to(descriptionElement, {
-          x: "0",
-          autoAlpha: 1,
-        })
+      tl.to(iconElement, { x: "0", autoAlpha: 1 }).to(descriptionElement, {
+        x: "0",
+        autoAlpha: 1,
+      })
     })
   }, [wrapperRef])
