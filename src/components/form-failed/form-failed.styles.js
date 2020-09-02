@@ -2,6 +2,7 @@ import styled from "styled-components"
 import FormFailedSVG from "./../../assets/images/form-failed.svg"
 
 const FormFailedIcon = styled(FormFailedSVG)`
+  width: 500px;
   margin: 50px 0;
 
   @media screen and (max-width: 1100px) {
