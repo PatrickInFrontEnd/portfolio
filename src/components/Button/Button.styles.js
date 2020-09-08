@@ -8,7 +8,8 @@ export const Button = styled.button`
   position: relative;
   width: 400px;
   height: 80px;
-  background-color: ${({ theme }) => theme.color.lowLightBlue};
+  background-color: ${({ theme, bgColor }) =>
+    bgColor ? bgColor : theme.color.lightGreenBlue};
   color: ${({ theme }) => theme.color.white};
   font-size: ${({ theme }) => theme.fSize.M};
   font-family: Baloo Thambi, Montserrat, Poppins, Arial, sans-serif;
@@ -22,7 +23,9 @@ export const Button = styled.button`
     content: "";
     width: 100%;
     height: 100%;
-    border: 2px solid ${({ theme }) => theme.color.lowLightBlue};
+    border: 2px solid
+      ${({ theme, bgColor }) =>
+        bgColor ? bgColor : theme.color.lightGreenBlue};
     transform: translate(-10px, 10px);
     z-index: 1;
     transition: 0.3s;

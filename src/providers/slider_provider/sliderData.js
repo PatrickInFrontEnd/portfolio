@@ -2,8 +2,8 @@ const sliderData = [
   {
     id: 1,
     title: "Chat application",
-    description:
-      "Chat platform created using Socket.io. Application developed for learning purposes.",
+    bgUrl: "./images/slider_1.png",
+    isBright: true,
     technologies: [
       { name: "html", id: 1 },
       { name: "css", id: 2 },
@@ -17,7 +17,8 @@ const sliderData = [
   {
     id: 2,
     title: "ZLP platform",
-    description: "Gaming platform created for school tournament.",
+    bgUrl: "./images/slider_2.png",
+    isBright: false,
     technologies: [
       { name: "html", id: 6 },
       { name: "css", id: 7 },
@@ -31,8 +32,8 @@ const sliderData = [
   {
     id: 3,
     title: "Flappy bird",
-    description:
-      "Game created from scratch using pure HTML, CSS, JS code - bundled by webpack.",
+    bgUrl: "./images/slider_3.png",
+    isBright: false,
     technologies: [
       { name: "html", id: 11 },
       { name: "css", id: 12 },
@@ -45,8 +46,8 @@ const sliderData = [
   {
     id: 4,
     title: "English vocabulary",
-    description:
-      "Platform created for mature exam needs. Speech synthesis API helps to pronounce words correctly.",
+    bgUrl: "./images/slider_4.png",
+    isBright: true,
     technologies: [
       { name: "html", id: 15 },
       { name: "css", id: 16 },

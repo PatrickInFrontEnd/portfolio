@@ -3,8 +3,7 @@ import { AboutMeWrapper } from "./About.styles"
 import PhotosContainer from "./PhotosContainer.component"
 import DescriptionContainer from "./DescriptionContainer.component"
 import { graphql, useStaticQuery } from "gatsby"
-import SectionHeader from "./../../SectionHeader/SectionHeader.component"
-import AboutIcon from "./../../../assets/images/icon_user.svg"
+import { SectionDividerPrimaryColor } from "../../SectionDivider/SectionDivider.component"
 import { useAboutSectionLayout } from "./useAboutSectionLayout"
 
 const queryForImg = graphql`
@@ -26,19 +25,7 @@ const AboutMeSection = props => {
   useAboutSectionLayout(wrapperRef)
   return (
     <>
-      <SectionHeader id="about">
-        About me
-        <AboutIcon
-          style={{
-            width: "50px",
-            height: "50px",
-            right: "-85%",
-            top: "50%",
-
-            transform: "translate(-50%, -50%)",
-          }}
-        />
-      </SectionHeader>
+      <SectionDividerPrimaryColor id="about" />
 
       <AboutMeWrapper
         ref={wrapperRef}

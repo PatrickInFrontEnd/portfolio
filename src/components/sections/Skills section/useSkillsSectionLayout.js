@@ -20,7 +20,7 @@ export const useSkillsSectionLayout = wrapperRef =>
     )
     const technologyIcons = wrapper.querySelectorAll(`${TechnologyIcon}`)
 
-    const laptopIcon = "#laptopIcon"
+    const laptopIcon = `#laptopIcon`
 
     //NOTE: initial styles for animation
     gsap.set(technologyIcons, {
@@ -52,7 +52,7 @@ export const useSkillsSectionLayout = wrapperRef =>
         start: "40% 80%",
       },
       defaults: {
-        duration: 0.2,
+        duration: 0.6,
         ease: "power2.easeInOut",
       },
     })
@@ -62,12 +62,10 @@ export const useSkillsSectionLayout = wrapperRef =>
         .to(technologyIcons, {
           x: 0,
           autoAlpha: 1,
-          stagger: 0.2,
         })
         .to(laptopIcon, {
           x: 0,
           autoAlpha: 1,
-          duration: 0.6,
         })
     } else {
       technologyContainerTl.to(technologyIcons, {

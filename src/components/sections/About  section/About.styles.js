@@ -4,7 +4,6 @@ import {
   absoluteCenter,
   getBackgroundUrl,
 } from "./../../mixins/mixins"
-import { ShadowElement } from "../Introduction section/Introduction.styles"
 
 const AboutMeWrapper = styled.div`
   width: 100%;
@@ -33,7 +32,7 @@ const PhotosWrapper = styled.div`
   }
 `
 
-const ShadowBackground = styled(ShadowElement)`
+const ShadowBackground = styled.div`
   height: 100%;
   ${absoluteCenter};
   z-index: 0;

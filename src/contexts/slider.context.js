@@ -1,10 +1,12 @@
 import { createContext } from "react"
 
 const SliderContext = createContext({
+  data: [],
   currentSlide: null,
   nextSlide: () => {},
-  prevSlide: () => {},
-  animating: false,
+  previousSlide: () => {},
+  setSlide: () => {},
+  isAnimating: false,
   toggleAnimationStatus: () => {},
 })
 

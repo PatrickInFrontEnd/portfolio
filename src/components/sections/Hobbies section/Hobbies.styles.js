@@ -9,9 +9,7 @@ const HobbyWrapper = styled.div`
   ${flexCenter};
   justify-content: space-around;
   ${({ reversed }) => (reversed ? reverseHobbyPanel() : "")};
-
-  ${({ backgroundUrl }) => getBackgroundUrl(backgroundUrl)};
-  background-size: cover;
+  background-color: ${({ theme }) => theme.color.darkBlue};
 
   &:last-of-type {
     border-bottom: none;

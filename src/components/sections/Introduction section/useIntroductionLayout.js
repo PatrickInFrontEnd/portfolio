@@ -1,120 +1,47 @@
 import { useLayoutEffect } from "react"
+import { IntroductionContent } from "./Introduction.styles"
+import {
+  TriangleHeader,
+  TriangleBorder,
+} from "./../../TriangleHeader/TriangleHeader.styles"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import {
-  IntroductionHeader,
-  IntroductionContent,
-  DescriptionWrapper,
-  DescriptionPhotoWrapper,
-} from "./Introduction.styles"
 
-export const useIntroductionLayout = wrapperRef =>
+export const useIntroductionSectionLayout = wrapperRef =>
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
 
+    const defaultVars = { duration: 0.6, ease: "power2.easeInOut" }
     const wrapper = wrapperRef.current
-
-    const introductionTitle = wrapper.querySelector(`${IntroductionHeader}`)
-
-    const introductionContent = wrapper.querySelector(`${IntroductionContent}`)
-
-    const introductionDescriptionWrapper = wrapper.querySelector(
-      `${DescriptionWrapper}`
+    const introductionHeader = wrapper.querySelector(`${TriangleHeader}`)
+    const introductionTriangleBorder = introductionHeader.querySelector(
+      `${TriangleBorder}`
     )
+    const iconHuman = wrapper.querySelector(`#introduction_icon_human`)
+    const iconBorder = wrapper.querySelector(`#introduction_icon_border`)
+    const iconMarks = wrapper.querySelector(`#introduction_icon_marks`)
 
-    const introductionPhoto = wrapper.querySelector(
-      `${DescriptionPhotoWrapper}`
-    )
+    const handlePcLayout = () => {
+      const tl = gsap.timeline({ defaults: defaultVars })
 
-    const tl = gsap
-      .timeline({
-        defaults: {
-          ease: "power2.easeInOut",
-          duration: 0.4,
-        },
-      })
-      .set([introductionPhoto, introductionDescriptionWrapper], {
+      gsap.set(introductionTriangleBorder, { autoAlpha: 0, x: "-50px" })
+
+      tl.from(introductionHeader, {
+        x: "100%",
         autoAlpha: 0,
       })
-      .set(introductionDescriptionWrapper, { x: "+=100%" })
-      .set(introductionPhoto, { translateX: "100%" })
-
-    if (window.innerWidth > 1220) {
-      tl.fromTo(
-        introductionTitle,
-        {
-          y: "-300px",
-          x: "-500px",
-          opacity: 0,
-          rotate: "-50deg",
-        },
-        { y: "0", x: "0", opacity: 1, rotate: "0deg" }
-      )
-        .fromTo(
-          introductionContent,
-          { x: "-300px", opacity: 0 },
-          { x: "0", opacity: 1 }
-        )
-        .from(introductionContent.children, {
-          x: "-100px",
+        .to(introductionTriangleBorder, { x: "0", autoAlpha: 1 })
+        .from(iconBorder, {
+          x: "100px",
           autoAlpha: 0,
-          stagger: 0.2,
         })
-        .to(introductionDescriptionWrapper, { x: 0, autoAlpha: 1 })
-        .to(introductionPhoto, { x: 0, autoAlpha: 1 })
-    } else {
-      tl.to(introductionDescriptionWrapper, {
-        x: 0,
-        autoAlpha: 1,
-      }).to(introductionPhoto, { x: 0, autoAlpha: 1 })
-
-      const tlIntroductionTitle = gsap.timeline({
-        scrollTrigger: {
-          trigger: introductionTitle,
-          start: "top center",
-        },
-      })
-
-      tlIntroductionTitle.fromTo(
-        introductionTitle,
-        {
-          x: "-500px",
-          opacity: 0,
-          rotate: "-50deg",
-          duration: 0.4,
-          ease: "power2.easeInOut",
-        },
-        {
-          x: "0",
-          opacity: 1,
-          rotate: "0deg",
-        }
-      )
-
-      const tlIntroductionContent = gsap.timeline({
-        scrollTrigger: {
-          trigger: introductionContent,
-          start: "10% center",
-        },
-        defaults: {
-          ease: "power2.easeInOut",
-          duration: 0.4,
-        },
-      })
-
-      tlIntroductionContent
-        .fromTo(
-          introductionContent,
-          {
-            x: "-300px",
-            opacity: 0,
-          },
-          { x: "0", opacity: 1 }
-        )
-        .from(introductionContent.children, {
-          x: "-100px",
+        .from(iconMarks, { scale: 0.1, autoAlpha: 0 })
+        .from(iconHuman, {
+          x: "100px",
+          y: "-100px",
           autoAlpha: 0,
-          stagger: 0.3,
         })
     }
+
+    handlePcLayout()
   }, [wrapperRef])

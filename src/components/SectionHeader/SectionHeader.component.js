@@ -1,9 +1,12 @@
 import React from "react"
-import { SectionHeaderWrapper, SectionTitle } from "./SectionHeader.styles"
+import { SectionHeader, Wrapper } from "./SectionHeader.styles"
+import TriangleHeader from "./../TriangleHeader/TriangleHeader.component"
 
 const SectionHeaderContainer = props => (
-  <SectionHeaderWrapper id={props.id || ""}>
-    <SectionTitle>{props.children}</SectionTitle>
-  </SectionHeaderWrapper>
+  <Wrapper>
+    <TriangleHeader {...props}>
+      <SectionHeader>{props.children}</SectionHeader>
+    </TriangleHeader>
+  </Wrapper>
 )
 export default SectionHeaderContainer

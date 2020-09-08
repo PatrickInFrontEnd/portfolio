@@ -82,7 +82,7 @@ const Media = styled.div`
   svg {
     width: 100px;
     height: 100px;
-    fill: ${({ theme }) => theme.color.mediumLightBlue};
+    fill: ${({ theme }) => theme.color.primaryBlue};
   }
 
   @media screen and (max-width: 800px) {
@@ -330,7 +330,7 @@ const Form = styled.form`
   height: 900px;
   padding: 100px 0 0;
   margin: 0 0 100px 150px;
-  background-color: ${({ theme }) => theme.color.navyMediumBlue};
+  background-color: ${({ theme }) => theme.color.darkGreenBlue};
   ${flexCenter};
   flex-direction: column;
   justify-content: flex-start;

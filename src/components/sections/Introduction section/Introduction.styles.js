@@ -1,16 +1,20 @@
 import styled from "styled-components"
-import { getBackgroundUrl, flexCenter } from "./../../mixins/mixins"
+import { flexCenter } from "./../../mixins/mixins"
+import IntroductionSVG from "./../../../assets/images/introduction_icon.svg"
+import { TriangleHeader } from "./../../TriangleHeader/TriangleHeader.styles"
 
 const IntroductionSectionWrapper = styled.section`
   position: relative;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   min-height: calc(100vh - 80px);
   width: 100%;
-  ${({ backgroundUrl }) => getBackgroundUrl(backgroundUrl) || ""};
-  background-size: cover;
+  padding-top: 20px;
+  background-color: ${({ theme }) => theme.color.darkBlue};
   background-attachment: fixed;
 
-  @media screen and (max-width: 1220px) {
+  @media screen and (max-width: 1130px) {
     flex-direction: column;
   }
 
@@ -19,16 +23,113 @@ const IntroductionSectionWrapper = styled.section`
   }
 `
 
-const ShadowElement = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+/* NOTE: Refactored left bar starts here */
+
+const LeftBarWrapper = styled.div`
+  width: 70vw;
+  min-width: 950px;
   height: 100%;
-  background-color: ${({ theme }) => theme.color.lightBlackAlpha};
-  z-index: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-direction: column;
+  margin: 0 0 0 150px;
+
+  @media screen and (max-width: 1670px) {
+    margin: 0 0 0 100px;
+  }
+
+  @media screen and (max-width: 1570px) {
+    min-width: 750px;
+    margin: 0 50px 0 100px;
+
+    ${TriangleHeader} {
+      margin: 0 auto;
+    }
+  }
+
+  @media screen and (max-width: 1440px) {
+    margin: 0 20px 0 100px;
+    min-width: 650px;
+  }
+
+  @media screen and (max-width: 1300px) {
+    margin: 0 20px 0 80px;
+    min-width: unset;
+    width: 550px;
+  }
+
+  @media screen and (max-width: 1130px) {
+    min-width: 750px;
+    margin: 50px 0 0;
+  }
+
+  @media screen and (max-width: 900px) {
+    min-width: unset;
+    width: 650px;
+  }
+
+  @media screen and (max-width: 750px) {
+    width: 550px;
+  }
+
+  @media screen and (max-width: 630px) {
+    width: 100%;
+    padding: 0 40px;
+  }
+
+  @media screen and (max-width: 400px) {
+    width: 100%;
+    padding: 0 20px;
+    margin: 25px auto;
+  }
 `
-/* Left bar starts */
+
+const IntroductionIcon = styled(IntroductionSVG)`
+  margin-top: 80px;
+
+  @media screen and (max-width: 1570px) {
+    width: 100%;
+    margin-top: 30px;
+  }
+
+  @media screen and (max-width: 1300px) {
+    margin: 0;
+  }
+
+  @media screen and (max-width: 1130px) {
+    margin-top: 30px;
+  }
+
+  @media screen and (max-width: 750px) {
+    height: 100%;
+    margin: 60px auto 50px;
+  }
+
+  @media screen and (max-width: 630px) {
+    width: 100%;
+    height: 100%;
+  }
+`
+
+const IntroductionTitle = styled.h2`
+  font-size: ${({ theme }) => theme.fSize.XL};
+  font-weight: ${({ theme }) => theme.fWeight.bold};
+
+  @media screen and (max-width: 1570px) {
+    font-size: ${({ theme }) => theme.fSize.L};
+  }
+
+  @media screen and (max-width: 600px) {
+    font-size: ${({ theme }) => theme.fSize.M};
+  }
+
+  @media screen and (max-width: 350px) {
+    font-size: ${({ theme }) => theme.fSize.S};
+  }
+`
+
+/* Right bar starts here*/
 
 const IntroductionWrapper = styled.div`
   width: 60vw;
@@ -38,9 +139,13 @@ const IntroductionWrapper = styled.div`
   flex-direction: column;
   z-index: 2;
 
-  @media screen and (max-width: 1220px) {
-    width: 100%;
+  @media screen and (max-width: 1300px) {
+    width: 40%;
     padding: 0;
+  }
+
+  @media screen and (max-width: 1130px) {
+    width: 100%;
   }
 `
 
@@ -96,21 +201,16 @@ const IntroductionContent = styled.div`
   width: 100%;
   max-width: 600px;
   min-height: 620px;
-  margin-top: 30px;
   padding: 45px;
+  margin: auto 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  background-color: ${({ theme }) => theme.color.black};
-  border: 2px solid ${({ theme }) => theme.color.navyLightBlue};
+  background-color: transparent;
 
-  @media screen and (max-width: 1220px) {
-    max-width: unset;
-    border-top: none;
-    padding: 50px 100px;
-    margin-top: 0;
-    align-items: flex-start;
-    justify-content: center;
+  @media screen and (max-width: 1130px) {
+    max-width: 800px;
+    align-items: center;
   }
 
   @media screen and (max-width: 800px) {
@@ -119,27 +219,27 @@ const IntroductionContent = styled.div`
   }
 
   @media screen and (max-width: 670px) {
-    padding: 50px;
+    padding: 0 50px;
   }
 
   @media screen and (max-width: 560px) {
-    padding: 50px 20px;
+    padding: 0 20px;
   }
 `
 
 const ContentHeader = styled.h3`
   font-weight: ${({ theme }) => theme.fWeight.semiBold};
-  font-size: ${({ theme }) => theme.fSize.XL};
+  font-size: ${({ theme }) => theme.fSize.M};
 
   @media screen and (max-width: 1220px) {
-    font-size: ${({ theme }) => theme.fSize.XXL};
+    font-size: ${({ theme }) => theme.fSize.S};
   }
 
-  @media screen and (max-width: 560px) {
+  @media screen and (max-width: 1130px) {
     font-size: ${({ theme }) => theme.fSize.XL};
   }
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 750px) {
     font-size: ${({ theme }) => theme.fSize.L};
   }
 `
@@ -150,7 +250,11 @@ const ContentMiniHeader = styled.h4`
   font-size: ${({ theme }) => theme.fSize.S};
 
   @media screen and (max-width: 1220px) {
-    font-size: ${({ theme }) => theme.fSize.M};
+    font-size: ${({ theme }) => theme.fSize.XS};
+  }
+
+  @media screen and (max-width: 1130px) {
+    font-size: ${({ theme }) => theme.fSize.L};
   }
 
   @media screen and (max-width: 560px) {
@@ -170,9 +274,15 @@ const ContentParagraph = styled.p`
   line-height: 140%;
 
   @media screen and (max-width: 1220px) {
-    max-width: 400px;
+    max-width: 300px;
     padding: 0;
-    font-size: ${({ theme }) => theme.fSize.S};
+    font-size: ${({ theme }) => theme.fSize.XXXS};
+  }
+
+  @media screen and (max-width: 1130px) {
+    font-size: ${({ theme }) => theme.fSize.XS};
+    max-width: unset;
+    text-align: center;
   }
 
   @media screen and (max-width: 560px) {
@@ -184,38 +294,39 @@ const ContentParagraph = styled.p`
   }
 `
 
-const IntroductionLinksWrapper = styled.div`
-  height: 80px;
-  width: 100%;
-  padding: 0 40px;
-  margin-top: 80px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  @media screen and (max-width: 1220px) {
+/* @media screen and (max-width: 1220px) {
     position: absolute;
     top: 20%;
     right: -25%;
     transform: translateY(-50%);
     flex-direction: column;
     justify-content: space-between;
+  } NOTE: FOR INTRODUCTIONLINKSWRAPPER */
+
+const IntroductionLinksWrapper = styled.div`
+  height: 80px;
+  width: 100%;
+  padding: 0;
+  margin-top: 80px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  @media screen and (max-width: 1220px) {
+    margin-top: 100px;
   }
 
-  @media screen and (max-width: 900px) {
-    right: -30%;
+  @media screen and (max-width: 1130px) {
+    justify-content: center;
   }
 
   @media screen and (max-width: 800px) {
-    right: -35%;
-    padding: 0 20px;
   }
 
   @media screen and (max-width: 800px) {
-    position: static;
     flex-direction: row;
-    top: unset;
-    right: unset;
+    justify-content: space-around;
+    padding: 0 20px;
     margin-bottom: 50px;
   }
 
@@ -231,10 +342,25 @@ const IntroductionLinkWrapper = styled.div`
   width: 100px;
   height: 100%;
   cursor: pointer;
+  margin-right: 200px;
+
+  @media screen and (max-width: 1220px) {
+    margin-right: 150px;
+  }
+
+  @media screen and (max-width: 1130px) {
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+
+  span > svg {
+    fill: none;
+  }
 
   &:hover {
     span > svg {
-      stroke: ${({ theme }) => theme.color.lightBlue};
+      stroke: ${({ theme }) => theme.color.extraLightBlue};
     }
   }
 
@@ -253,12 +379,16 @@ const IntroductionLinkWrapper = styled.div`
       margin-top: 0;
     }
   }
+
+  @media screen and (max-width: 700px) {
+    margin-right: 0;
+  }
 `
 
 const IntroductionLink = styled.p`
   font-size: ${({ theme }) => theme.fSize.XXXS};
   font-weight: ${({ theme }) => theme.fWeight.regular};
-  color: ${({ theme }) => theme.color.lightBlue};
+  color: ${({ theme }) => theme.color.extraLightBlue};
   width: max-content;
   height: 100%;
   display: flex;
@@ -280,11 +410,18 @@ const IntroductionLink = styled.p`
   }
 
   @media screen and (max-width: 400px) {
+    width: unset;
     font-size: ${({ theme }) => theme.fSize.miniS};
     text-align: center;
+    margin: 0;
 
     ~ span svg {
       height: 25px;
+
+      &:first-of-type {
+        position: relative;
+        right: -8px;
+      }
     }
   }
 `
@@ -320,71 +457,6 @@ const DescriptionWrapper = styled.div`
   @media screen and (max-width: 720px) and (orientation: landscape) {
     padding-top: 20px;
   }
-`
-
-const DescriptionPhotoWrapper = styled.div`
-  position: relative;
-  height: 350px;
-  width: 350px;
-  padding: 20px;
-  position: relative;
-  border-radius: 50%;
-  overflow: hidden;
-  background-color: ${({ theme }) => theme.color.white};
-
-  @media screen and (max-width: 720px) {
-    width: 300px;
-    height: 300px;
-  }
-
-  @media screen and (max-width: 720px) and (orientation: landscape) {
-    width: 250px;
-    height: 250px;
-    margin-top: 0px;
-  }
-
-  @media screen and (max-width: 400px) {
-    width: 280px;
-    height: 280px;
-  }
-
-  @media screen and (max-width: 360px) {
-    height: 250px;
-    width: 250px;
-    margin-top: 50px;
-  }
-`
-
-const DescriptionBorder = styled.span`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 92%;
-  height: 92%;
-  border-radius: 50%;
-  border: 4px solid ${({ theme }) => theme.color.black};
-  overflow: hidden;
-  transform: translate(-50%, -50%);
-  background-image: linear-gradient(
-    to bottom,
-    rgba(0, 125, 139, 1) 0%,
-    rgba(0, 156, 180, 1) 20%,
-    rgba(0, 102, 139, 1) 70%,
-    rgba(0, 63, 70, 1) 100%
-  );
-`
-
-const DescriptionPhoto = styled.div`
-  position: absolute;
-  left: 50%;
-  top: 20%;
-  transform: translateX(-40%);
-  z-index: 1;
-  width: 80%;
-  height: 80%;
-  ${({ src }) => getBackgroundUrl(src)};
-  background-repeat: no-repeat;
-  background-size: cover;
 `
 
 const DescriptionParagraphWrapper = styled.div`
@@ -441,10 +513,12 @@ const DescriptionP = styled.p`
 
 export {
   IntroductionSectionWrapper,
-  ShadowElement,
   IntroductionWrapper,
   IntroductionHeader,
   IntroductionText,
+  LeftBarWrapper,
+  IntroductionIcon,
+  IntroductionTitle,
   DescriptionWrapper,
   IntroductionContent,
   IntroductionLinksWrapper,
@@ -453,9 +527,6 @@ export {
   ContentHeader,
   ContentMiniHeader,
   ContentParagraph,
-  DescriptionPhotoWrapper,
-  DescriptionPhoto,
-  DescriptionBorder,
   DescriptionParagraphWrapper,
   DescriptionP,
 }

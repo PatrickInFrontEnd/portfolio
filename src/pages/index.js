@@ -9,7 +9,6 @@ import ContactSection from "../components/sections/Contact section/ContactSectio
 import Footer from "./../components/Footer/Footer.component"
 import ScrollTopButton from "../components/scrollTopButton/scrollTopButton.component"
 import MainPageWrapper from "./../components/MainPageWrapper.styles"
-import SliderProvider from "./../providers/slider_provider/slider_provider"
 import NavigationBar from "./../layouts/Navigation/Navigation.component"
 import SpinnerLoader from "./../components/SpinnerLoader/Spinner.component"
 
@@ -29,13 +28,11 @@ const IndexPage = props => {
 
           <IntroductionSection />
 
-          <SliderProvider>
-            <ProjectsSection />
-          </SliderProvider>
+          <ProjectsSection />
 
           <SkillsSection />
 
-          <AboutMeSection />
+          {/* <AboutMeSection /> */}
 
           <MyHobbiesSection />
 

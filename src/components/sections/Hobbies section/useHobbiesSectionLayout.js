@@ -31,13 +31,14 @@ export const useHobbiesSectionLayout = wrapperRef =>
         defaults: defaultVars,
         scrollTrigger: {
           trigger: panel,
-          start: "top 70%",
+          start: "top 60%",
         },
       })
 
-      tl.to(iconElement, { x: "0", autoAlpha: 1 }).to(descriptionElement, {
+      tl.to([iconElement, descriptionElement], {
         x: "0",
         autoAlpha: 1,
+        stagger: 0,
       })
     })
   }, [wrapperRef])

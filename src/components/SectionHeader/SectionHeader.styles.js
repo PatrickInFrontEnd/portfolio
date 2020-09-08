@@ -1,48 +1,38 @@
 import styled from "styled-components"
+import { flexCenter } from "./../mixins/mixins"
 
-const SectionHeaderWrapper = styled.section`
+const SectionHeader = styled.span`
+  font: ${({ theme: { fWeight, fSize } }) =>
+    `${fWeight.semiBold} ${fSize.XXL} Montserrat, Poppins, Arial, sans-serif`};
+  letter-spacing: 15px;
+  margin: 0 auto;
+
+  @media screen and (max-width: 1220px) {
+    font-size: ${({ theme }) => theme.fSize.XL};
+  }
+
+  @media screen and (max-width: 1080px) {
+    font-size: ${({ theme }) => theme.fSize.L};
+  }
+
+  @media screen and (max-width: 750px) {
+    font-size: ${({ theme }) => theme.fSize.XL};
+    letter-spacing: 10px;
+  }
+
+  @media screen and (max-width: 650px) {
+    letter-spacing: 5px;
+  }
+
+  @media screen and (max-width: 380px) {
+    font-size: ${({ theme }) => theme.fSize.L};
+    letter-spacing: 0;
+  }
+`
+
+const Wrapper = styled.div`
   width: 100%;
-  height: 90px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: linear-gradient(
-    to bottom,
-    #c462a7 0%,
-    #c278a7 30%,
-    #56b3dc 70%,
-    #4ac3e9 100%
-  );
+  text-align: center;
 `
 
-const SectionTitle = styled.h3`
-  position: relative;
-  right: 40px;
-  font-size: ${({ theme }) => theme.fSize.M};
-  font-weight: ${({ theme }) => theme.fWeight.regular};
-  font-family: Lobster, Montserrat, Arial, sans-serif;
-
-  svg {
-    max-height: 60px;
-    position: absolute;
-    fill: ${({ theme }) => theme.color.white};
-  }
-
-  @media screen and (max-width: 560px) {
-    font-size: ${({ theme }) => theme.fSize.S};
-
-    svg {
-      max-height: 40px;
-    }
-  }
-
-  @media screen and (max-width: 400px) {
-    right: 25px;
-    font-size: ${({ theme }) => theme.fSize.XS};
-
-    svg {
-      max-height: 30px;
-    }
-  }
-`
-export { SectionHeaderWrapper, SectionTitle }
+export { SectionHeader, Wrapper }
