@@ -32,7 +32,7 @@ const IndexPage = props => {
 
           <SkillsSection />
 
-          {/* <AboutMeSection /> */}
+          <AboutMeSection />
 
           <MyHobbiesSection />
 

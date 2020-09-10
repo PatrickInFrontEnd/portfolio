@@ -1,5 +1,4 @@
 import React from "react"
-
 import {
   HobbyWrapper,
   IconWrapper,
@@ -8,6 +7,7 @@ import {
   Title,
   P,
 } from "./Hobbies.styles"
+import TriangleHeader from "./../../TriangleHeader/TriangleHeader.component"
 
 const HobbyPanel = ({ reversed, iconSrc, title, description }) => {
   return (
@@ -16,7 +16,10 @@ const HobbyPanel = ({ reversed, iconSrc, title, description }) => {
         <Icon src={iconSrc} alt={`${title} icon`} />
       </IconWrapper>
       <DescriptionWrapper>
-        <Title>{title}</Title>
+        <TriangleHeader extraMargin="20px 0 40px">
+          <Title>{title}</Title>
+        </TriangleHeader>
+
         <P>{description}</P>
       </DescriptionWrapper>
     </HobbyWrapper>

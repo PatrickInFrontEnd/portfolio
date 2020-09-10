@@ -1,16 +1,21 @@
-import React from "react"
+import React, { useRef } from "react"
 import { ProjectsSectionWrapper, ProjectsIcon } from "./Projects.styles"
 import { SectionDividerPrimaryColor } from "../../SectionDivider/SectionDivider.component"
 import SectionHeader from "./../../SectionHeader/SectionHeader.component"
 import Slider from "./Slider.component"
 import SliderProvider from "./../../../providers/slider_provider/slider_provider"
+import { useProjectsSectionLayout } from "./useProjectsSectionLayout"
 
 const ProjectsSection = props => {
+  const wrapperRef = useRef(null)
+
+  useProjectsSectionLayout(wrapperRef)
+
   return (
     <>
       <SectionDividerPrimaryColor id="projects" />
 
-      <ProjectsSectionWrapper>
+      <ProjectsSectionWrapper ref={wrapperRef}>
         <SectionHeader noStretch>My projects</SectionHeader>
         <ProjectsIcon />
 

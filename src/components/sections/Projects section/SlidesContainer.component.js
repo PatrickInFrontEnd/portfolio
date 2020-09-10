@@ -3,6 +3,8 @@ import {
   SlidesWrapper,
   SlideContainer,
   SlideDetailsWrapper,
+  SlideDetailsContent,
+  ImagePreview,
   Title,
   IconsContainer,
   ButtonsWrapper,
@@ -29,30 +31,33 @@ const SlidesContainer = ({ slides, slideNumber }) => {
         return (
           <SlideContainer key={id} bgUrl={bgUrl}>
             <SlideDetailsWrapper>
-              <TriangleHeader>
-                <Title>{title}</Title>
-              </TriangleHeader>
+              <SlideDetailsContent>
+                <TriangleHeader extraMargin={"10px 0 0"}>
+                  <Title>{title}</Title>
+                </TriangleHeader>
 
-              <IconsContainer>
-                {technologies.map(({ id, name }) => (
-                  <TechnologyIcon key={id} name={name} />
-                ))}
-              </IconsContainer>
-              <ButtonsWrapper>
-                <a target="_blank" href={liveUrl}>
-                  <LinkIcon hint="Live link">
-                    <span>Live link</span>
-                    <LiveIcon />
-                  </LinkIcon>
-                </a>
+                <IconsContainer>
+                  {technologies.map(({ id, name }) => (
+                    <TechnologyIcon key={id} name={name} />
+                  ))}
+                </IconsContainer>
+                <ImagePreview bgUrl={bgUrl} />
+                <ButtonsWrapper>
+                  <a target="_blank" rel="noreferrer" href={liveUrl}>
+                    <LinkIcon hint="Live link">
+                      <span>Live link</span>
+                      <LiveIcon />
+                    </LinkIcon>
+                  </a>
 
-                <a target="_blank" href={codeUrl}>
-                  <LinkIcon hint="Code link">
-                    <span>Code link</span>
-                    <CodeIcon />
-                  </LinkIcon>
-                </a>
-              </ButtonsWrapper>
+                  <a target="_blank" rel="noreferrer" href={codeUrl}>
+                    <LinkIcon hint="Code link">
+                      <span>Code link</span>
+                      <CodeIcon />
+                    </LinkIcon>
+                  </a>
+                </ButtonsWrapper>
+              </SlideDetailsContent>
             </SlideDetailsWrapper>
           </SlideContainer>
         )

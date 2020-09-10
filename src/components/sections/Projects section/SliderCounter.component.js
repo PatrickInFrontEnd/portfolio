@@ -1,9 +1,5 @@
-import React, { createRef } from "react"
-import {
-  SliderCounterWrapper,
-  NumberOfSlide,
-  CounterBackground,
-} from "./Projects.styles"
+import React from "react"
+import { SliderCounterWrapper, NumberOfSlide } from "./Projects.styles"
 
 const SliderCounterContainer = ({ slideNumber }) => (
   <SliderCounterWrapper>

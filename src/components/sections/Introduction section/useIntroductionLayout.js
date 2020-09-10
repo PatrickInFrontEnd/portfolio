@@ -1,17 +1,16 @@
 import { useLayoutEffect } from "react"
-import { IntroductionContent } from "./Introduction.styles"
 import {
   TriangleHeader,
   TriangleBorder,
 } from "./../../TriangleHeader/TriangleHeader.styles"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { defaults } from "./../../../utils/animationConstants"
 
 export const useIntroductionSectionLayout = wrapperRef =>
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
 
-    const defaultVars = { duration: 0.6, ease: "power2.easeInOut" }
     const wrapper = wrapperRef.current
     const introductionHeader = wrapper.querySelector(`${TriangleHeader}`)
     const introductionTriangleBorder = introductionHeader.querySelector(
@@ -22,15 +21,13 @@ export const useIntroductionSectionLayout = wrapperRef =>
     const iconMarks = wrapper.querySelector(`#introduction_icon_marks`)
 
     const handlePcLayout = () => {
-      const tl = gsap.timeline({ defaults: defaultVars })
-
-      gsap.set(introductionTriangleBorder, { autoAlpha: 0, x: "-50px" })
+      const tl = gsap.timeline({ defaults })
 
       tl.from(introductionHeader, {
         x: "100%",
         autoAlpha: 0,
       })
-        .to(introductionTriangleBorder, { x: "0", autoAlpha: 1 })
+        .from(introductionTriangleBorder, { x: "-50px", autoAlpha: 0 })
         .from(iconBorder, {
           x: "100px",
           autoAlpha: 0,

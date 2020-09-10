@@ -10,9 +10,11 @@ import { scrollToSection } from "./../../utils/scrollToSection"
 import NavigationContext from "./../../contexts/navigation.context"
 
 const NavigationBar = props => {
-  const { isNavigationVisible } = useContext(NavigationContext)
+  const { isNavigationVisible, isNavActive, toggleNavActive } = useContext(
+    NavigationContext
+  )
 
-  const [navigationItems, setNavigationItems] = useState([
+  const [navigationItems] = useState([
     { title: "Projects", hash: "#projects" },
     { title: "Skills", hash: "#skills" },
     { title: "About me", hash: "#about" },
@@ -24,10 +26,6 @@ const NavigationBar = props => {
     scrollToSection(hash)
     if (window.innerWidth <= 1020) toggleNavActive()
   }
-
-  const [isNavActive, setIsNavActive] = useState(false)
-
-  const toggleNavActive = () => setIsNavActive(prev => !prev)
 
   return (
     <NavBar

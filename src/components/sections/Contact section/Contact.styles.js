@@ -97,8 +97,8 @@ const Media = styled.div`
     width: 150px;
 
     svg {
-      width: 80px;
-      height: 80px;
+      width: 70px;
+      height: 70px;
     }
   }
 
@@ -498,6 +498,25 @@ const MessageInput = styled.textarea`
 `
 
 const SubmitButton = styled(Button)`
+  font-family: Baloo Thambi, Poppins, Montserrat, Arial, sans-serif;
+  color: ${({ theme }) => theme.color.mediumWhite};
+
+  &::before {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+    border: 2px solid ${({ theme }) => theme.color.lightGreenBlue};
+    transform: translate(-10px, 10px);
+    transition: 0.3s;
+  }
+
+  &:hover::before {
+    transform: translate(10px, -10px) !important;
+  }
+
   margin-top: 100px;
   z-index: 2;
 
@@ -523,7 +542,7 @@ const SubmitButton = styled(Button)`
 
   @media screen and (max-width: 450px) {
     width: 70%;
-    font-size: ${({ theme }) => theme.fSize.miniS};
+    font-size: ${({ theme }) => theme.fSize.XS};
   }
 `
 

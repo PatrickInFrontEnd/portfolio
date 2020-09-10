@@ -4,7 +4,6 @@ import {
   NavigationArrow,
   SliderNavigationWrapper,
   NumberOfSlide,
-  SlidesWrapper,
 } from "./Projects.styles"
 import SliderCounter from "./SliderCounter.component"
 import SliderContext from "../../../contexts/slider.context"
@@ -35,7 +34,6 @@ const SliderContainer = props => {
   const animate = (typeOfDirection = "next") => {
     const wrapper = wrapperRef.current
     const sliderNumber = wrapper.querySelectorAll(`${NumberOfSlide}`)
-    const slidesContainer = wrapper.querySelector(`${SlidesWrapper}`)
 
     const tl = gsap.timeline({
       defaults: {

@@ -8,13 +8,40 @@ const Wrapper = styled.div`
   width: 220px;
   height: 60px;
   background-color: ${({ theme }) => theme.color.primaryBlue};
-  padding: 0 0 0 30px;
+  padding-left: 30px;
+
+  @media screen and (max-width: 1280px) {
+    width: 180px;
+    height: 50px;
+  }
+
+  @media screen and (max-width: 750px) {
+    width: 140px;
+    padding-left: 15px;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 50%;
+    min-width: 220px;
+  }
 `
 
 const IconName = styled.span`
   font: ${({ theme: { fSize, fWeight } }) =>
     `${fWeight.semiBold} ${fSize.S} Montserrat, Poppins, Arial, sans-serif`};
   text-transform: capitalize;
+
+  @media screen and (max-width: 1280px) {
+    font-size: ${({ theme }) => theme.fSize.miniS};
+  }
+
+  @media screen and (max-width: 600px) {
+    font-size: ${({ theme }) => theme.fSize.XXS};
+  }
+
+  @media screen and (max-width: 500px) {
+    font-size: ${({ theme }) => theme.fSize.XS};
+  }
 `
 
 const IconWrapper = styled.div`
@@ -29,6 +56,21 @@ const IconWrapper = styled.div`
 
   ${({ bgUrl }) => getBackgroundUrl(bgUrl)};
   background-size: 70% 70%;
+
+  @media screen and (max-width: 1280px) {
+    width: 65px;
+    height: 65px;
+  }
+
+  @media screen and (max-width: 750px) {
+    left: -35px;
+    width: 60px;
+    height: 60px;
+  }
+
+  @media screen and (max-width: 380px) {
+    left: -25px;
+  }
 `
 
 export { Wrapper, IconName, IconWrapper }

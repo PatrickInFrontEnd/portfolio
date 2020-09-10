@@ -10,9 +10,14 @@ const NotStretchingStyles = css`
   display: inline-block;
 `
 
+const addMargin = margin => css`
+  margin: ${margin};
+`
+
 const TriangleHeader = styled.header`
   ${TriangleTitleStyles};
   ${({ noStretch }) => (noStretch ? NotStretchingStyles : "")};
+  ${({ extraMargin }) => addMargin(extraMargin)};
 `
 
 const TriangleBorder = styled(TriangleIcon)`

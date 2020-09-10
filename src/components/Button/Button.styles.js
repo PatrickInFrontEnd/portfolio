@@ -1,37 +1,77 @@
 import React from "react"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { flexCenter } from "./../mixins/mixins"
 import { Link } from "gatsby"
 
+const getBorderColor = (bgColor, theme) => css`
+  & > span {
+    color: ${bgColor ? bgColor : theme.color.lightGreenBlue};
+  }
+`
+
+const getAlignment = alignment => {
+  switch (alignment) {
+    case "space-around": {
+      return css`
+        justify-content: space-around;
+      `
+    }
+    case "space-between": {
+      return css`
+        justify-content: space-between;
+      `
+    }
+
+    case "start": {
+      return css`
+        justify-content: flex-start;
+      `
+    }
+
+    case "end": {
+      return css`
+        justify-content: flex-end;
+      `
+    }
+    default: {
+      return css`
+        justify-content: center;
+      `
+    }
+  }
+}
+
 export const Button = styled.button`
   ${flexCenter};
+  justify-content: space-around;
   position: relative;
-  width: 400px;
-  height: 80px;
+  ${({ justify }) => (justify ? getAlignment(justify) : "")};
+  width: ${({ width }) => (width ? width : "400px")};
+  height: ${({ height }) => (height ? height : "80px")};
   background-color: ${({ theme, bgColor }) =>
     bgColor ? bgColor : theme.color.lightGreenBlue};
   color: ${({ theme }) => theme.color.white};
   font-size: ${({ theme }) => theme.fSize.M};
-  font-family: Baloo Thambi, Montserrat, Poppins, Arial, sans-serif;
+  font-weight: ${({ theme }) => theme.fWeight.bold};
+  font-family: Montserrat, Poppins, Arial, sans-serif;
   border: none;
   cursor: pointer;
 
-  &::before {
+  ${({ bgColor, theme }) => getBorderColor(bgColor, theme)};
+
+  & > span {
     position: absolute;
     left: 0;
     bottom: 0;
     content: "";
     width: 100%;
     height: 100%;
-    border: 2px solid
-      ${({ theme, bgColor }) =>
-        bgColor ? bgColor : theme.color.lightGreenBlue};
+    border: 2px solid;
     transform: translate(-10px, 10px);
-    z-index: 1;
     transition: 0.3s;
   }
 
-  &:hover::before {
+  &:hover > span {
     transform: translate(10px, -10px) !important;
   }
 
@@ -56,6 +96,14 @@ const styledLink = { textDecoration: "none", display: "flex" }
 
 export const ButtonLink = props => (
   <Button as={Link} {...props} style={styledLink}>
+    <span />
+    {props.children}
+  </Button>
+)
+
+export default props => (
+  <Button {...props}>
+    <span />
     {props.children}
   </Button>
 )

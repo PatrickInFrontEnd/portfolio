@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import { flexCenter } from "./../mixins/mixins"
 
 const SectionHeader = styled.span`
   font: ${({ theme: { fWeight, fSize } }) =>

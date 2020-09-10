@@ -6,6 +6,8 @@ import {
   TechnologyIcon,
   TechnologiesWrapper,
 } from "./SkillsSection.styles"
+import { TriangleBorder } from "./../../TriangleHeader/TriangleHeader.styles"
+import { defaults } from "./../../../utils/animationConstants"
 
 export const useSkillsSectionLayout = wrapperRef =>
   useEffect(() => {
@@ -14,6 +16,8 @@ export const useSkillsSectionLayout = wrapperRef =>
     const wrapper = wrapperRef.current
 
     const skillsTitleElement = wrapper.querySelector(`${SkillsTitle}`)
+
+    const headerBorder = wrapper.querySelector(`${TriangleBorder}`)
 
     const technologyIconsWrapper = wrapper.querySelector(
       `${TechnologiesWrapper}`
@@ -28,6 +32,19 @@ export const useSkillsSectionLayout = wrapperRef =>
       autoAlpha: 0,
     })
     gsap.set(laptopIcon, { x: "200px", autoAlpha: 0 })
+
+    const headerTriangleTl = gsap.timeline({
+      defaults,
+      scrollTrigger: {
+        trigger: headerBorder,
+        start: "top 60%",
+      },
+    })
+    headerTriangleTl.from(headerBorder, {
+      x: "-50px",
+      rotate: "360deg",
+      autoAlpha: 0,
+    })
 
     const skillsTitleTl = gsap.timeline({
       scrollTrigger: {
@@ -71,7 +88,7 @@ export const useSkillsSectionLayout = wrapperRef =>
       technologyContainerTl.to(technologyIcons, {
         x: 0,
         autoAlpha: 1,
-        stagger: 0.3,
+        stagger: 0.1,
       })
     }
   }, [wrapperRef])

@@ -8,6 +8,10 @@ const NavigationProvider = ({ children }) => {
   const [currentY, setCurrentY] = useState(0)
   const debouncedCurrY = useDebouncedState(currentY, 200)
 
+  const [isNavActive, setIsNavActive] = useState(false)
+
+  const toggleNavActive = () => setIsNavActive(prev => !prev)
+
   useScrollPosition(({ prevPos, currPos }) => {
     const isVisible = currPos.y > prevPos.y
     if (isNavVisible !== isVisible && currentY >= 60) {
@@ -22,6 +26,8 @@ const NavigationProvider = ({ children }) => {
       value={{
         isNavigationVisible: isNavVisible,
         currentY: debouncedCurrY,
+        isNavActive,
+        toggleNavActive
       }}
     >
       {children}

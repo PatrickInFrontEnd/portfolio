@@ -2,7 +2,7 @@ import React from "react"
 import { TriangleHeader, TriangleBorder } from "./TriangleHeader.styles"
 
 const TriangleHeaderComponent = props => (
-  <TriangleHeader noStretch={props.noStretch}>
+  <TriangleHeader {...props}>
     <TriangleBorder />
     {props.children}
   </TriangleHeader>

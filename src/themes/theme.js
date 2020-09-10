@@ -13,6 +13,7 @@ const theme = {
     mediumWhite: "rgba(248, 248, 248, 1)",
     grey: "rgba(149, 165, 166,1.0)",
     darkGrey: "rgba(31, 39, 55, 1)",
+    darkGreyMediumAlpha: "rgba(31, 39, 55, 0.6)",
     lightGrey: "rgba(52, 52, 52, 1)",
   },
   fSize: {

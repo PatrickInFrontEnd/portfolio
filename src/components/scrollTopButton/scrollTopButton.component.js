@@ -9,14 +9,14 @@ const ScrollTopButton = props => {
 
   useEffect(() => {
     setDocumentHeight(document.documentElement.scrollHeight)
-  })
+  }, [])
 
   return (
     <ElipseWrapper
       isButtonVisible={
         typeof window !== "undefined" &&
         currentY >= 100 &&
-        currentY + window.innerHeight < documentHeight - 200 &&
+        currentY + window.innerHeight < documentHeight - 400 &&
         isNavigationVisible
       }
       onClick={() => scrollToSection("#introduction", 80)}
