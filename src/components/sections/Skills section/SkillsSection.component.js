@@ -1,15 +1,14 @@
 import React, { useRef } from "react"
 import {
   SkillsSectionWrapper,
-  SkillsTitle,
   IconsWrapper,
   WaveIcon,
 } from "./SkillsSection.styles"
 import TechnologiesContainer from "./Technologies.container"
 import SkillsDescriptionBar from "./SkillsDescription.component"
-import SectionHeader from "./../../SectionHeader/SectionHeader.component"
-import SkillsIcon from "./../../../assets/images/icon_skills.svg"
+import { SectionDividerSecondaryColor } from "../../SectionDivider/SectionDivider.component"
 import { useSkillsSectionLayout } from "./useSkillsSectionLayout"
+import SectionHeader from "./../../SectionHeader/SectionHeader.component"
 
 const SkillsSection = props => {
   const wrapperRef = useRef(null)
@@ -18,22 +17,12 @@ const SkillsSection = props => {
 
   return (
     <>
-      <SectionHeader id="skills">
-        Skills
-        <SkillsIcon
-          style={{
-            width: "60px",
-            height: "60px",
-            right: "-120%",
-            top: "50%",
-
-            transform: "translate(0, -50%)",
-          }}
-        />
-      </SectionHeader>
+      <SectionDividerSecondaryColor id="skills" />
 
       <SkillsSectionWrapper ref={wrapperRef}>
-        <SkillsTitle>my skillset</SkillsTitle>
+        <SectionHeader noStretch extraMargin="0 0 40px">
+          My skillset
+        </SectionHeader>
         <IconsWrapper>
           <WaveIcon />
           <TechnologiesContainer />

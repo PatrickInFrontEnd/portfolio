@@ -35,7 +35,7 @@ const ElipseWrapper = styled.div`
   position: fixed;
   z-index: 1000000;
   right: 50px;
-  bottom: 90px;
+  bottom: 50px;
   width: 60px;
   height: 60px;
   cursor: pointer;
@@ -56,6 +56,7 @@ const ElipseWrapper = styled.div`
 
   @media screen and (max-width: 720px) {
     right: 20px;
+    bottom: 20px;
   }
 `
 

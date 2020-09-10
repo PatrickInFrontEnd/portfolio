@@ -3,7 +3,7 @@ import ScrollToPlugin from "gsap/ScrollToPlugin"
 
 gsap.registerPlugin(ScrollToPlugin)
 
-export const scrollToSection = (hash, offset = 80) => () => {
+export const scrollToSection = (hash, offset = 80) => {
   if (!hash || typeof hash !== "string") return
 
   const target = document.querySelector(hash)
@@ -29,8 +29,6 @@ function getScrollTargetProps(target, offset = 80) {
   const positionY = target.getBoundingClientRect().top
 
   targetProps = positionY < 0 ? { y: target, offsetY: offset } : { y: target }
-
-  if (window.innerWidth <= 1020) targetProps = { y: target }
 
   return targetProps || undefined
 }

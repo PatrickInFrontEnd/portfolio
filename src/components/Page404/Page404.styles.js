@@ -6,13 +6,16 @@ import ArrowLeftIcon from "./../../assets/images/icon_arrow_left.svg"
 
 const Wrapper = styled.div`
   ${flexCenter};
+  position: absolute;
+  top: 0;
+  left: 0;
   flex-direction: column;
   justify-content: space-around;
   width: 100%;
   height: 100vh;
   min-height: 100vh;
   background-color: ${({ theme }) => theme.color.navyBlue};
-  z-index: 1000000;
+  z-index: 1000000000000000;
   padding: 0 20px;
 
   @media screen and (max-width: 650px) and (orientation: landscape) {

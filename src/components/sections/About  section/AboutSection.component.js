@@ -1,53 +1,25 @@
 import React, { useRef } from "react"
-import { AboutMeWrapper } from "./About.styles"
-import PhotosContainer from "./PhotosContainer.component"
+import { AboutMeWrapper, AboutSectionIcon } from "./About.styles"
 import DescriptionContainer from "./DescriptionContainer.component"
-import { graphql, useStaticQuery } from "gatsby"
+import { SectionDividerPrimaryColor } from "../../SectionDivider/SectionDivider.component"
 import SectionHeader from "./../../SectionHeader/SectionHeader.component"
-import AboutIcon from "./../../../assets/images/icon_user.svg"
 import { useAboutSectionLayout } from "./useAboutSectionLayout"
 
-const queryForImg = graphql`
-  {
-    file(relativePath: { eq: "about_me_section.jpg" }) {
-      childImageSharp {
-        fluid(quality: 100) {
-          src
-        }
-      }
-    }
-  }
-`
-
 const AboutMeSection = props => {
-  const { file } = useStaticQuery(queryForImg)
-
   const wrapperRef = useRef(null)
   useAboutSectionLayout(wrapperRef)
+
   return (
-    <>
-      <SectionHeader id="about">
-        About me
-        <AboutIcon
-          style={{
-            width: "50px",
-            height: "50px",
-            right: "-85%",
-            top: "50%",
-
-            transform: "translate(-50%, -50%)",
-          }}
-        />
-      </SectionHeader>
-
-      <AboutMeWrapper
-        ref={wrapperRef}
-        backgroundUrl={file.childImageSharp.fluid.src}
-      >
-        <PhotosContainer />
+    <div ref={wrapperRef}>
+      <SectionDividerPrimaryColor id="about" />
+      <AboutMeWrapper>
+        <SectionHeader noStretch extraMargin="0 0 20px">
+          About me
+        </SectionHeader>
+        <AboutSectionIcon />
         <DescriptionContainer />
       </AboutMeWrapper>
-    </>
+    </div>
   )
 }
 export default AboutMeSection

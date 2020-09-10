@@ -2,15 +2,16 @@ import styled from "styled-components"
 import { flexCenter } from "../../mixins/mixins"
 import ArrowSVG from "./../../../assets/images/icon_arrow_white.svg"
 import WaveSVG from "./../../../assets/images/wave_bgc.svg"
+import { Button } from "./../../Button/Button.styles"
 
 const SkillsSectionWrapper = styled.section`
   width: 100%;
   min-height: 100vh;
-  padding: 60px 0;
+  padding: 120px 0 80px;
   background-color: ${({ theme }) => theme.color.mediumDarkBlue};
 
   @media screen and (max-width: 1200px) {
-    padding: 60px 0 0;
+    padding: 80px 0 0;
   }
 `
 
@@ -64,9 +65,13 @@ const IconsWrapper = styled.div`
   width: 100%;
   min-height: 900px;
   padding: 150px 300px;
-  margin-bottom: 100px;
+  margin: 60px 0 100px;
   ${flexCenter};
   justify-content: space-around;
+
+  @media screen and (max-width: 1700px) {
+    margin: 0 0 100px;
+  }
 
   @media screen and (max-width: 1500px) {
     margin-bottom: 0;
@@ -157,9 +162,9 @@ const TechnologyIcon = styled.img`
     margin-right: 0;
   }
 
-  @media screen and (max-width: 1100px) {
+  @media screen and (max-width: 1300px) {
     width: 80px;
-    height: 80%;
+    height: 80px;
   }
 
   @media screen and (max-width: 500px) {
@@ -168,9 +173,14 @@ const TechnologyIcon = styled.img`
     margin-right: 20px;
   }
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 450px) {
     width: 60px;
     height: 60px;
+  }
+
+  @media screen and (max-width: 350px) {
+    width: 50px;
+    height: 50px;
   }
 `
 
@@ -180,14 +190,22 @@ const LaptopPNG = styled.img`
   height: 80%;
   z-index: 1;
 
+  @media screen and (max-width: 1300px) {
+    width: 400px;
+    height: 60%;
+    margin-left: 100px;
+  }
+
   @media screen and (max-width: 1100px) {
     width: 400px;
     height: 60%;
+    margin-left: 50px;
   }
 
   @media screen and (max-width: 1000px) {
     width: 400px;
     height: 400px;
+    margin-left: 20px;
   }
 
   @media screen and (max-width: 900px) {
@@ -198,53 +216,61 @@ const LaptopPNG = styled.img`
 const SkillsDescriptionBar = styled.div`
   ${flexCenter};
   justify-content: space-around;
+  flex-direction: column;
   width: 100%;
-  height: 400px;
   background-color: ${({ theme }) => theme.color.mediumDarkBlue};
-  padding: 30px 30px 0 30px;
+  padding: 20px 30px 60px;
   border-top: 4px solid ${({ theme }) => theme.color.white};
 
   @media screen and (max-width: 1200px) {
-    flex-direction: column;
-    height: unset;
     min-height: 400px;
-    padding: 40px 0;
+    padding: 40px 0 120px;
     border-top: none;
+  }
+
+  @media screen and (max-width: 750px) {
+    padding: 40px 0 120px;
   }
 `
 const Paragraph = styled.p`
   font-size: ${({ theme }) => theme.fSize.XXS};
   font-weight: ${({ theme }) => theme.fWeight.bold};
   text-align: justify;
-  line-height: 180%;
+  text-align-last: center;
+  line-height: 200%;
   width: 60%;
-  margin: 0 100px 0 0px;
-
-  @media screen and (max-width: 1500px) {
-    line-height: 150%;
-  }
-
-  @media screen and (max-width: 1400px) {
-    line-height: 130%;
-  }
+  margin: 50px auto 100px;
 
   @media screen and (max-width: 1500px) {
     font-size: ${({ theme }) => theme.fSize.XXXS};
     font-weight: ${({ theme }) => theme.fWeight.semibold};
     line-height: 150%;
-    width: 100%;
-    margin: 0 60px 0 10px;
+    width: 70%;
+    margin: 50px auto 80px;
   }
 
   @media screen and (max-width: 1200px) {
-    margin: 0px 20px 40px;
+    width: 85%;
     padding: 0 40px 20px;
     text-align-last: center;
+  }
+
+  @media screen and (max-width: 850px) {
+    font-size: ${({ theme }) => theme.fSize.miniXS};
+    width: 90%;
+  }
+  @media screen and (max-width: 750px) {
+    margin: 20px auto 80px;
+    width: 100%;
   }
 
   @media screen and (max-width: 700px) {
     font-size: ${({ theme }) => theme.fSize.miniXS};
     padding: 0 30px 20px;
+  }
+
+  @media screen and (max-width: 500px) {
+    margin: 0px auto 20px;
   }
 `
 const DetailsWrapper = styled.div`
@@ -259,11 +285,20 @@ const DetailsWrapper = styled.div`
 `
 
 const LinkedInTitle = styled.p`
+  margin-top: 15px;
   font-size: ${({ theme }) => theme.fSize.XXS};
   font-weight: ${({ theme }) => theme.fWeight.bold};
   text-align: center;
 
   @media screen and (max-width: 400px) {
+    font-size: ${({ theme }) => theme.fSize.XXS};
+  }
+
+  @media screen and (max-width: 360px) {
+    font-size: ${({ theme }) => theme.fSize.XXXS};
+  }
+
+  @media screen and (max-width: 330px) {
     font-size: ${({ theme }) => theme.fSize.miniS};
   }
 `
@@ -293,68 +328,45 @@ const ArrowIcon = styled(ArrowSVG)`
   }
 `
 
-const LinkTitle = styled.span`
-  ${flexCenter};
-  width: 70%;
-  height: 100%;
-  color: ${({ theme }) => theme.color.mediumDarkBlue};
-  font-size: ${({ theme }) => theme.fSize.S};
-  font-weight: ${({ theme }) => theme.fWeight.bold};
+const ButtonLink = styled(Button)`
+  width: 400px;
+  height: 100px;
+  text-decoration: none;
 
-  ~ svg {
-    width: 50px;
-    height: 50px;
-    fill: ${({ theme }) => theme.color.mediumDarkBlue};
+  svg {
+    width: 55px;
+    height: 55px;
+    fill: ${({ theme }) => theme.color.mediumWhite};
   }
 
-  @media screen and (max-width: 500px) {
-    font-size: ${({ theme }) => theme.fSize.XXS};
+  @media screen and (max-width: 1080px) {
+    width: 350px;
+    font-size: ${({ theme }) => theme.fSize.S};
 
-    ~ svg {
+    svg {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  @media screen and (max-width: 750px) {
+    width: 300px;
+    height: 80px;
+    font-size: ${({ theme }) => theme.fSize.S};
+    svg {
       width: 40px;
       height: 40px;
     }
   }
-`
 
-const LinkWrapper = styled.a`
-  ${flexCenter};
-  justify-content: space-between;
-  width: 360px;
-  height: 90px;
-  background-color: ${({ theme }) => theme.color.mediumWhite};
-  border-radius: 20px;
-  padding-right: 40px;
-  text-decoration: none;
-
-  &,
-  & svg,
-  & ${LinkTitle} {
-    transition: 0.3s;
-  }
-
-  &:hover {
-    background-color: ${({ theme }) => theme.color.black};
-
-    ${LinkTitle} {
-      color: ${({ theme }) => theme.color.white};
-    }
-
-    svg {
-      fill: ${({ theme }) => theme.color.white};
-    }
-  }
-
-  @media screen and (max-width: 500px) {
-    width: 280px;
-    height: 80px;
-    padding-right: 30px;
-  }
-
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 600px) {
     width: 250px;
-    height: 70px;
-    border-radius: 15px;
+    height: 60px;
+    font-size: ${({ theme }) => theme.fSize.S};
+    svg {
+      width: 30px;
+      height: 30px;
+    }
   }
 `
 
@@ -370,8 +382,7 @@ export {
   Paragraph,
   DetailsWrapper,
   LinkedInTitle,
-  LinkWrapper,
-  LinkTitle,
   ArrowIcon,
   WaveIcon,
+  ButtonLink,
 }

@@ -1,8 +1,8 @@
 import React, { useRef } from "react"
-import { HobbyContainer } from "./Hobbies.styles"
-import SectionHeader from "./../../SectionHeader/SectionHeader.component"
-import HobbiesIcon from "./../../../assets/images/icon_camera.svg"
 import HobbyPanelsContainer from "./HobbyPanels.container"
+import SectionHeader from "./../../SectionHeader/SectionHeader.component"
+import { HobbyContainer } from "./Hobbies.styles"
+import { SectionDividerSecondaryColor } from "../../SectionDivider/SectionDivider.component"
 import { useHobbiesSectionLayout } from "./useHobbiesSectionLayout"
 
 const MyHobbiesSection = props => {
@@ -11,18 +11,9 @@ const MyHobbiesSection = props => {
 
   return (
     <HobbyContainer ref={wrapperRef}>
-      <SectionHeader id="hobbies">
+      <SectionDividerSecondaryColor id="hobbies" />
+      <SectionHeader style={{ margin: "100px 0 50px" }} noStretch>
         My hobbies
-        <HobbiesIcon
-          style={{
-            width: "55px",
-            height: "55px",
-            right: "-65%",
-            top: "50%",
-
-            transform: "translate(0, -50%)",
-          }}
-        />
       </SectionHeader>
       <HobbyPanelsContainer />
     </HobbyContainer>

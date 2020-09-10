@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components"
-import { getBackgroundUrl, flexCenter } from "./../../mixins/mixins"
+import { flexCenter } from "./../../mixins/mixins"
 
 const HobbyContainer = styled.div``
 
@@ -9,9 +9,7 @@ const HobbyWrapper = styled.div`
   ${flexCenter};
   justify-content: space-around;
   ${({ reversed }) => (reversed ? reverseHobbyPanel() : "")};
-
-  ${({ backgroundUrl }) => getBackgroundUrl(backgroundUrl)};
-  background-size: cover;
+  background-color: ${({ theme }) => theme.color.darkBlue};
 
   &:last-of-type {
     border-bottom: none;
@@ -22,6 +20,10 @@ const HobbyWrapper = styled.div`
     height: unset;
     min-height: 520px;
     padding: 40px 0;
+  }
+
+  @media screen and (max-width: 600px) {
+    min-height: 450px;
   }
 `
 
@@ -45,6 +47,13 @@ const IconWrapper = styled.span`
     width: 200px;
     height: 200px;
   }
+
+  @media screen and (max-width: 600px) {
+    min-width: 150px;
+    min-height: 150px;
+    width: 100px;
+    height: 100px;
+  }
 `
 
 const Icon = styled.img`
@@ -56,31 +65,29 @@ const Icon = styled.img`
 const DescriptionWrapper = styled.div`
   ${flexCenter};
   flex-direction: column;
+  height: 80%;
   min-width: 650px;
   max-width: 650px;
-  height: 80%;
-  margin: auto 0;
 
   @media screen and (max-width: 1100px) {
     min-width: unset;
     max-width: unset;
     padding: 0 50px;
   }
+
+  @media screen and (max-width: 600px) {
+    margin: 0 auto;
+  }
 `
 
 const Title = styled.h2`
-  font-size: ${({ theme }) => theme.fSize.XXXL};
-  font-weight: ${({ theme }) => theme.fWeight.regular};
-  font-family: Baloo Thambi, Montserrat, Poppins, Arial, sans-serif;
+  font-size: ${({ theme }) => theme.fSize.XL};
+  font-weight: ${({ theme }) => theme.fWeight.semiBold};
+  font-family: Montserrat, Poppins, Arial, sans-serif;
   text-align: center;
-  margin-bottom: 40px;
-
-  @media screen and (max-width: 1400px) {
-    font-size: ${({ theme }) => theme.fSize.XXL};
-  }
 
   @media screen and (max-width: 1100px) {
-    margin: 20px 0 40px;
+    font-size: ${({ theme }) => theme.fSize.L};
   }
 `
 

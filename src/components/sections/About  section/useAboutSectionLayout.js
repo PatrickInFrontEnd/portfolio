@@ -1,122 +1,124 @@
 import { useEffect } from "react"
 import {
-  ShadowElement,
-  Photo,
-  PhotosWrapper,
-  DescriptionHeader,
   P,
+  NumberOfParagraphWrapper,
+  AboutSectionIcon,
+  ParagraphsWrapper,
 } from "./About.styles"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { defaults } from "./../../../utils/animationConstants"
+import { TriangleBorder } from "./../../TriangleHeader/TriangleHeader.styles"
 
 export const useAboutSectionLayout = wrapperRef =>
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
 
-    const defaultVars = { duration: 0.6, ease: "power2.easeInOut" }
-
     const wrapper = wrapperRef.current
-    const shadowElement = wrapper.querySelector(`${ShadowElement}`)
-    const photosWrapper = wrapper.querySelectorAll(`${PhotosWrapper}`)
-    const photoElements = wrapper.querySelectorAll(`${Photo}`)
-    const descriptionHeader = wrapper.querySelector(`${DescriptionHeader}`)
+    const pWrapper = wrapper.querySelectorAll(`${ParagraphsWrapper}`)
     const pElements = wrapper.querySelectorAll(`${P}`)
 
-    if (window.innerWidth > 1600) handlePcLayout()
-    else handleMobileLayout()
+    const numberWrappers = wrapper.querySelectorAll(
+      `${NumberOfParagraphWrapper}`
+    )
 
-    function handlePcLayout() {
-      //NOTE: setting basic styles before animation
-      gsap.set(photoElements, {
+    const triangleBorder = wrapper.querySelector(`${TriangleBorder}`)
+
+    const icon = wrapper.querySelector(`${AboutSectionIcon}`)
+    const iconHuman = wrapper.querySelector(`#aboutme_icon_human`)
+    const iconLaptop = wrapper.querySelector(`#introduction_icon_laptop`)
+    const iconApple = wrapper.querySelector(`#aboutme_icon_apple`)
+    const iconFloor = wrapper.querySelector(`#aboutme_icon_floor`)
+    const iconBookShelfs = wrapper.querySelector(`#aboutme_icon_shelfs`)
+    const iconFirstShelf = wrapper.querySelector(`#aboutme_icon_firstshelf`)
+    const iconSecondShelf = wrapper.querySelector(`#aboutme_icon_secondshelf`)
+    const iconThirdShelf = wrapper.querySelector(`#aboutme_icon_thirdshelf`)
+
+    if (window.innerWidth <= 900) {
+      handleMobileLayout()
+    } else {
+      handlePcLayout()
+    }
+
+    function setIconTimeline() {
+      const tlIcon = gsap.timeline({
+        defaults,
+        scrollTrigger: {
+          trigger: icon,
+          start: "top 50%",
+        },
+      })
+
+      tlIcon
+        .from(iconFloor, { x: "-100px", autoAlpha: 0 })
+        .from(iconBookShelfs, { x: "-100px", autoAlpha: 0 })
+        .from([iconFirstShelf, iconSecondShelf, iconThirdShelf], {
+          y: "-100px",
+          autoAlpha: 0,
+          stagger: 0.2,
+        })
+        .from(iconHuman, { y: "-100px", x: "100px", z: "40px", autoAlpha: 0 })
+        .from(iconLaptop, { y: "-100px", autoAlpha: 0 })
+        .from(iconApple, { x: "100px", autoAlpha: 0 })
+    }
+
+    function setHeaderTimeline() {
+      const tlHeader = gsap.timeline({
+        defaults,
+        scrollTrigger: {
+          trigger: triangleBorder,
+          start: "top 60%",
+        },
+      })
+
+      tlHeader.from(triangleBorder, {
+        x: "-50px",
+        rotate: "360deg",
         autoAlpha: 0,
       })
+    }
 
-      const photosTimeline = gsap.timeline({
+    function setStaticTimelines() {
+      setHeaderTimeline()
+      setIconTimeline()
+    }
+
+    function handlePcLayout() {
+      setStaticTimelines()
+
+      const tl = gsap.timeline({
+        defaults,
         scrollTrigger: {
-          trigger: wrapper,
-          start: "10% center",
+          trigger: pWrapper,
+          start: "top 50%",
         },
-        defaults: defaultVars,
       })
 
-      photosTimeline
-        .from(shadowElement, { y: "150%", autoAlpha: 0 })
-        .fromTo(
-          photoElements,
-          { x: "-200%", autoAlpha: 0 },
-          { x: "0%", autoAlpha: 1, delay: 0.3 }
-        )
-
-      setDescriptionTimeline()
+      tl.from(numberWrappers, {
+        y: "100px",
+        x: "100px",
+        autoAlpha: 0,
+        stagger: 0.2,
+      })
     }
 
     function handleMobileLayout() {
-      //NOTE: initial styles before animating
-
-      gsap.set(photoElements, { autoAlpha: 0 })
-      gsap.set(photoElements[1], { y: "30%" })
-      gsap.set(photoElements[0], { y: "-30%" })
-
-      setDescriptionTimeline()
-
-      const photosTimeline = gsap.timeline({
-        defaults: defaultVars,
-        scrollTrigger: {
-          trigger: photosWrapper,
-          start: "20% center",
-        },
-      })
-
-      photosTimeline
-        .from(shadowElement, { x: "-150%", autoAlpha: 0 })
-        .to(photoElements, { y: "0%", autoAlpha: 1, delay: 0.2 })
-    }
-
-    function setDescriptionTimeline() {
-      gsap.set(descriptionHeader, {
-        x: "-150%",
-        autoAlpha: 0,
-        scale: 0.1,
-        borderBottom: "4px solid transparent",
-      })
-      const descriptionHeaderTl = gsap.timeline({
-        defaults: defaultVars,
-        scrollTrigger: {
-          trigger: descriptionHeader,
-          start: "top 80%",
-        },
-      })
-
-      descriptionHeaderTl
-        .to(descriptionHeader, {
-          x: "0%",
-          autoAlpha: 1,
-        })
-        .to(descriptionHeader, {
-          scale: 1,
-        })
-        .to(descriptionHeader, { borderBottom: "4px solid #fff" })
+      setStaticTimelines()
 
       pElements.forEach((el, i) => {
-        const valueFrom = i % 2 === 0 ? "-150px" : "150px"
+        const valueFrom = i % 2 === 0 ? "-100px" : "100px"
 
-        gsap.fromTo(
-          el,
-          {
-            x: valueFrom,
-            autoAlpha: 0,
-            duration: 0.4,
-            ease: "power2.easeInOut",
+        const tl = gsap.timeline({
+          defaults,
+          scrollTrigger: {
+            trigger: el,
+            start: "top 60%",
           },
-          {
-            x: "0",
-            autoAlpha: 1,
-            scrollTrigger: {
-              trigger: el,
-              start: "top 80%",
-            },
-          }
-        )
+        })
+
+        const numberWrapper = el.querySelector(`${NumberOfParagraphWrapper}`)
+
+        tl.from(numberWrapper, { x: valueFrom, autoAlpha: 0 })
       })
     }
   }, [wrapperRef])
