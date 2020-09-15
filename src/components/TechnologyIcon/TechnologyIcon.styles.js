@@ -16,13 +16,13 @@ const Wrapper = styled.div`
   }
 
   @media screen and (max-width: 750px) {
-    width: 140px;
+    width: 160px;
     padding-left: 15px;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 520px) {
     width: 50%;
-    min-width: 220px;
+    min-width: 200px;
   }
 `
 

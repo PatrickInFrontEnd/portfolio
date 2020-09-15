@@ -70,8 +70,8 @@ const ContactFormContainer = props => {
 
   return (
     <ContactFormWrapper>
+      <Header>Send me a message</Header>
       <LeftBarWrapper>
-        <Header>Send me a message</Header>
         <PersonMessageIcon />
       </LeftBarWrapper>
       <Form name="contact" onSubmit={handleSubmit}>

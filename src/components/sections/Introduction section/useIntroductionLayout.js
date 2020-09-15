@@ -20,25 +20,21 @@ export const useIntroductionSectionLayout = wrapperRef =>
     const iconBorder = wrapper.querySelector(`#introduction_icon_border`)
     const iconMarks = wrapper.querySelector(`#introduction_icon_marks`)
 
-    const handlePcLayout = () => {
-      const tl = gsap.timeline({ defaults })
+    const tl = gsap.timeline({ defaults })
 
-      tl.from(introductionHeader, {
-        x: "100%",
+    tl.from(introductionHeader, {
+      x: "100%",
+      autoAlpha: 0,
+    })
+      .from(introductionTriangleBorder, { x: "-50px", autoAlpha: 0 })
+      .from(iconBorder, {
+        x: "100px",
         autoAlpha: 0,
       })
-        .from(introductionTriangleBorder, { x: "-50px", autoAlpha: 0 })
-        .from(iconBorder, {
-          x: "100px",
-          autoAlpha: 0,
-        })
-        .from(iconMarks, { scale: 0.1, autoAlpha: 0 })
-        .from(iconHuman, {
-          x: "100px",
-          y: "-100px",
-          autoAlpha: 0,
-        })
-    }
-
-    handlePcLayout()
+      .from(iconMarks, { scale: 0.1, autoAlpha: 0 })
+      .from(iconHuman, {
+        x: "100px",
+        y: "-100px",
+        autoAlpha: 0,
+      })
   }, [wrapperRef])

@@ -166,7 +166,7 @@ const NavBar = styled.nav`
   height: 80px;
   min-height: 80px;
   padding: 0 50px;
-  background-color: ${({ theme }) => theme.color.darkBlue};
+  background-color: ${({ theme }) => theme.color.lightBlue};
   border-bottom: 1px solid ${({ theme }) => theme.color.white};
   transition: 0.8s;
   opacity: 1;

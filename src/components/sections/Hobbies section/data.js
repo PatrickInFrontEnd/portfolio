@@ -9,7 +9,7 @@ const hobbiesData = [
     panelType: "reversed",
     title: "Singing",
     description:
-      "Since my childhood when I was sad or miserable I used to sing - it helped me and still helps to improve my mood.",
+      "When I was having some bad moments in my life, I used to sing - it helped me and still helps to improve my mood.",
   },
   {
     panelType: "normal",

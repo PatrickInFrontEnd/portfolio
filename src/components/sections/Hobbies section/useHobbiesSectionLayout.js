@@ -3,7 +3,6 @@ import { HobbyWrapper, IconWrapper, DescriptionWrapper } from "./Hobbies.styles"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { defaults } from "./../../../utils/animationConstants"
-import { TriangleBorder } from "./../../TriangleHeader/TriangleHeader.styles"
 
 export const useHobbiesSectionLayout = wrapperRef =>
   useEffect(() => {
@@ -11,22 +10,6 @@ export const useHobbiesSectionLayout = wrapperRef =>
 
     const wrapper = wrapperRef.current
     const panels = wrapper.querySelectorAll(`${HobbyWrapper}`)
-
-    const headerBorder = wrapper.querySelector(`${TriangleBorder}`)
-
-    const headerTriangleTl = gsap.timeline({
-      defaults,
-      scrollTrigger: {
-        trigger: headerBorder,
-        start: "top 60%",
-      },
-    })
-
-    headerTriangleTl.from(headerBorder, {
-      x: "-50px",
-      rotate: "360deg",
-      autoAlpha: 0,
-    })
 
     panels.forEach((panel, i) => {
       const iconElement = panel.querySelector(`${IconWrapper}`)

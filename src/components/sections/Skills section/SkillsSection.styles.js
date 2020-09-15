@@ -7,11 +7,15 @@ import { Button } from "./../../Button/Button.styles"
 const SkillsSectionWrapper = styled.section`
   width: 100%;
   min-height: 100vh;
-  padding: 120px 0 80px;
+  padding: 80px 0 20px;
   background-color: ${({ theme }) => theme.color.mediumDarkBlue};
 
+  @media screen and (max-width: 1300px) {
+    padding: 50px 0 20px;
+  }
+
   @media screen and (max-width: 1200px) {
-    padding: 80px 0 0;
+    padding: 50px 0 0;
   }
 `
 
@@ -64,26 +68,26 @@ const IconsWrapper = styled.div`
   position: relative;
   width: 100%;
   min-height: 900px;
-  padding: 150px 300px;
-  margin: 60px 0 100px;
+  padding: 40px 350px 150px;
+  margin: 60px 0 0;
   ${flexCenter};
   justify-content: space-around;
 
   @media screen and (max-width: 1700px) {
-    margin: 0 0 100px;
+    margin: 0;
   }
 
-  @media screen and (max-width: 1500px) {
-    margin-bottom: 0;
+  @media screen and (max-width: 1300px) {
+    background-color: ${({ theme }) => theme.color.mediumWhite};
+    padding: 60px;
+    min-height: unset;
+    height: 80vh;
   }
 
   @media screen and (max-width: 1100px) {
+    min-height: 680px;
     justify-content: space-between;
-    padding: 150px 100px;
-  }
-
-  @media screen and (max-width: 1200px) {
-    background-color: ${({ theme }) => theme.color.mediumWhite};
+    padding: 0 100px;
   }
 
   @media screen and (max-width: 1000px) {
@@ -99,11 +103,12 @@ const IconsWrapper = styled.div`
   }
 
   @media screen and (max-width: 500px) {
-    height: 550px;
+    height: 400px;
+    min-height: unset;
   }
 
   @media screen and (max-width: 400px) {
-    height: 450px;
+    height: 380px;
   }
 `
 
@@ -113,15 +118,11 @@ const WaveIcon = styled(WaveSVG)`
   top: -50px;
   transform: translateX(-50%);
   width: 100%;
-  height: 1000px;
+  height: 900px;
   z-index: 0;
   fill: ${({ theme }) => theme.color.mediumWhite};
 
   @media screen and (max-width: 1300px) {
-    width: 120%;
-  }
-
-  @media screen and (max-width: 1200px) {
     display: none;
   }
 `
@@ -136,15 +137,19 @@ const TechnologiesWrapper = styled.div`
 const TechnologyPanel = styled.div`
   ${flexCenter};
   width: 100%;
-  height: 100px;
+  height: 90px;
   margin-bottom: 50px;
 
   &:last-of-type {
     margin-bottom: 0;
   }
 
+  @media screen and (max-width: 1500px) {
+    height: 80px;
+  }
+
   @media screen and (max-width: 500px) {
-    margin-bottom: 20px;
+    margin-bottom: 0;
   }
 
   @media screen and (max-width: 400px) {
@@ -154,28 +159,33 @@ const TechnologyPanel = styled.div`
 
 const TechnologyIcon = styled.img`
   display: block;
-  width: 100px;
-  height: 100%;
+  width: 90px;
+  height: 90px;
   margin-right: 30px;
 
   &:last-of-type {
     margin-right: 0;
   }
 
-  @media screen and (max-width: 1300px) {
+  @media screen and (max-width: 1500px) {
     width: 80px;
     height: 80px;
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 1100px) {
     width: 70px;
     height: 70px;
+  }
+
+  @media screen and (max-width: 500px) {
+    width: 60px;
+    height: 60px;
     margin-right: 20px;
   }
 
   @media screen and (max-width: 450px) {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
   }
 
   @media screen and (max-width: 350px) {
@@ -190,7 +200,7 @@ const LaptopPNG = styled.img`
   height: 80%;
   z-index: 1;
 
-  @media screen and (max-width: 1300px) {
+  @media screen and (max-width: 1500px) {
     width: 400px;
     height: 60%;
     margin-left: 100px;
@@ -222,7 +232,7 @@ const SkillsDescriptionBar = styled.div`
   padding: 20px 30px 60px;
   border-top: 4px solid ${({ theme }) => theme.color.white};
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1300px) {
     min-height: 400px;
     padding: 40px 0 120px;
     border-top: none;

@@ -8,9 +8,23 @@ const AboutMeWrapper = styled.div`
   ${flexCenter};
   flex-direction: column;
   background-color: ${({ theme }) => theme.color.lightBlue};
+  margin-bottom: 40px;
 
   @media screen and (max-width: 1600px) {
     padding: 0;
+    margin-bottom: 100px;
+  }
+
+  @media screen and (max-width: 900px) {
+    margin-bottom: 60px;
+  }
+
+  @media screen and (max-width: 670px) {
+    margin-bottom: 50px;
+  }
+
+  @media screen and (max-width: 550px) {
+    margin-bottom: 20px;
   }
 `
 
@@ -27,7 +41,8 @@ const DescriptionWrapper = styled.div`
 `
 
 const AboutSectionIcon = styled(AboutIcon)`
-  margin: 100px auto 0;
+  width: 700px;
+  margin: 50px auto 0;
 
   @media screen and (max-width: 1300px) {
     width: 80%;
@@ -49,7 +64,7 @@ const AboutSectionIcon = styled(AboutIcon)`
 `
 
 const ParagraphsWrapper = styled.div`
-  padding: 50px 80px;
+  padding: 20px 80px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: minmax(200px, 1fr);
@@ -87,7 +102,7 @@ const P = styled.p`
   ${flexCenter};
   position: relative;
   font-weight: ${({ theme }) => theme.fWeight.medium};
-  font-size: ${({ theme }) => theme.fSize.S};
+  font-size: ${({ theme }) => theme.fSize.XXS};
   width: 400px;
   text-align: justify;
   line-height: 160%;
@@ -103,18 +118,22 @@ const P = styled.p`
   }
 
   @media screen and (max-width: 1500px) {
-    font-size: ${({ theme }) => theme.fSize.XS};
+    font-size: ${({ theme }) => theme.fSize.XXXS};
   }
 
   @media screen and (max-width: 1100px) {
     padding: 20px;
-    font-size: ${({ theme }) => theme.fSize.XXS};
+    font-size: ${({ theme }) => theme.fSize.miniS};
+  }
+
+  @media screen and (max-width: 750px) {
+    padding: 20px;
+    font-size: ${({ theme }) => theme.fSize.XXXS};
   }
 
   @media screen and (max-width: 450px) {
     padding: 15px 10px;
     width: 90%;
-    font-size: ${({ theme }) => theme.fSize.XS};
   }
 
   @media screen and (max-width: 350px) {
@@ -142,7 +161,7 @@ const NumberOfParagraphWrapper = styled.span`
     right: 50%;
     bottom: unset;
     top: -40px;
-    transform: translateX(50%);
+    transform: translateX(50%) !important;
   }
 `
 

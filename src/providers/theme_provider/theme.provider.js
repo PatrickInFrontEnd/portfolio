@@ -28,7 +28,7 @@ const GlobalStyle = createGlobalStyle`
         font-size: ${({ theme }) => theme.fSize.XXS};
         font-family : Montserrat, Poppins, Arial, Helvetica, sans-serif;
         font-weight: ${({ theme }) => theme.fWeight.medium};
-        background-color: ${({ theme }) => theme.color.darkBlue};
+        background-color: ${({ theme }) => theme.color.lightBlue};
         color: ${({ theme }) => theme.color.white};
     }
 `

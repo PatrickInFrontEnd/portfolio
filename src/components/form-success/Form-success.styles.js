@@ -56,7 +56,7 @@ const Header = styled(H2)`
   }
 
   @media screen and (max-width: 420px) {
-    font-size: ${({ theme }) => theme.fSize.XXS};
+    font-size: ${({ theme }) => theme.fSize.XS};
   }
 `
 

@@ -1,28 +1,15 @@
 import { useEffect } from "react"
-import {
-  P,
-  NumberOfParagraphWrapper,
-  AboutSectionIcon,
-  ParagraphsWrapper,
-} from "./About.styles"
+import { P, NumberOfParagraphWrapper, AboutSectionIcon } from "./About.styles"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { defaults } from "./../../../utils/animationConstants"
-import { TriangleBorder } from "./../../TriangleHeader/TriangleHeader.styles"
 
 export const useAboutSectionLayout = wrapperRef =>
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
 
     const wrapper = wrapperRef.current
-    const pWrapper = wrapper.querySelectorAll(`${ParagraphsWrapper}`)
     const pElements = wrapper.querySelectorAll(`${P}`)
-
-    const numberWrappers = wrapper.querySelectorAll(
-      `${NumberOfParagraphWrapper}`
-    )
-
-    const triangleBorder = wrapper.querySelector(`${TriangleBorder}`)
 
     const icon = wrapper.querySelector(`${AboutSectionIcon}`)
     const iconHuman = wrapper.querySelector(`#aboutme_icon_human`)
@@ -62,48 +49,12 @@ export const useAboutSectionLayout = wrapperRef =>
         .from(iconApple, { x: "100px", autoAlpha: 0 })
     }
 
-    function setHeaderTimeline() {
-      const tlHeader = gsap.timeline({
-        defaults,
-        scrollTrigger: {
-          trigger: triangleBorder,
-          start: "top 60%",
-        },
-      })
-
-      tlHeader.from(triangleBorder, {
-        x: "-50px",
-        rotate: "360deg",
-        autoAlpha: 0,
-      })
-    }
-
-    function setStaticTimelines() {
-      setHeaderTimeline()
+    function handlePcLayout() {
       setIconTimeline()
     }
 
-    function handlePcLayout() {
-      setStaticTimelines()
-
-      const tl = gsap.timeline({
-        defaults,
-        scrollTrigger: {
-          trigger: pWrapper,
-          start: "top 50%",
-        },
-      })
-
-      tl.from(numberWrappers, {
-        y: "100px",
-        x: "100px",
-        autoAlpha: 0,
-        stagger: 0.2,
-      })
-    }
-
     function handleMobileLayout() {
-      setStaticTimelines()
+      setIconTimeline()
 
       pElements.forEach((el, i) => {
         const valueFrom = i % 2 === 0 ? "-100px" : "100px"

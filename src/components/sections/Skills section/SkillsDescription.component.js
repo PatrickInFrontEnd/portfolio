@@ -22,8 +22,8 @@ const DescriptionBar = props => {
         than it was three years ago. In my projects I often use React or Gatsby.
         Styled-components help me to create styles for my applications in modern
         and efficient way using pre-processors such as SASS. More informations
-        about my technology stack you can find on my LinkedIn profile in "About"
-        bookmark.
+        about my technology stack you can find on my LinkedIn profile in "Skills
+        & Endorsements" bookmark.
       </Paragraph>
       <DetailsWrapper>
         <TriangleHeader>

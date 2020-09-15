@@ -5,21 +5,16 @@ const HobbyContainer = styled.div``
 
 const HobbyWrapper = styled.div`
   width: 100%;
-  height: 520px;
+  min-height: 520px;
   ${flexCenter};
   justify-content: space-around;
   ${({ reversed }) => (reversed ? reverseHobbyPanel() : "")};
-  background-color: ${({ theme }) => theme.color.darkBlue};
-
-  &:last-of-type {
-    border-bottom: none;
-  }
+  background-color: ${({ theme }) => theme.color.lightBlue};
 
   @media screen and (max-width: 1100px) {
     flex-direction: column;
-    height: unset;
     min-height: 520px;
-    padding: 40px 0;
+    padding: 0;
   }
 
   @media screen and (max-width: 600px) {
@@ -33,19 +28,21 @@ const reverseHobbyPanel = () => css`
 
 const IconWrapper = styled.span`
   ${flexCenter};
-  min-width: 300px;
-  min-height: 300px;
   width: 300px;
   height: 300px;
   border-radius: 50%;
   border: 2px solid ${({ theme }) => theme.color.black};
   background-color: ${({ theme }) => theme.color.mediumWhite};
 
+  @media screen and (max-width: 1600px) {
+    width: 250px;
+    height: 250px;
+  }
+
   @media screen and (max-width: 1100px) {
-    min-width: 200px;
-    min-height: 200px;
     width: 200px;
     height: 200px;
+    margin-top: 40px;
   }
 
   @media screen and (max-width: 600px) {
@@ -81,10 +78,24 @@ const DescriptionWrapper = styled.div`
 `
 
 const Title = styled.h2`
+  position: relative;
+  margin-bottom: 40px;
   font-size: ${({ theme }) => theme.fSize.XL};
   font-weight: ${({ theme }) => theme.fWeight.semiBold};
   font-family: Montserrat, Poppins, Arial, sans-serif;
   text-align: center;
+
+  &::before {
+    content: "";
+    width: 40%;
+    height: 110%;
+    position: absolute;
+    top: 50%;
+    left: -10px;
+    transform: translateY(-50%);
+    background-color: ${({ theme }) => theme.color.primaryBlue};
+    z-index: -1;
+  }
 
   @media screen and (max-width: 1100px) {
     font-size: ${({ theme }) => theme.fSize.L};

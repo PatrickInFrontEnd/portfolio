@@ -7,7 +7,7 @@ const theme = {
     extraLightBlue: "rgba(88, 188, 255,1)",
     darkGreenBlue: "rgba(0, 96, 152, 1)",
     lightGreenBlue: "rgba(36, 137, 188, 1)",
-    lightRed: "rgba(255, 77, 77, 1)",
+    lightRed: "rgba(255, 30, 30, 1)",
     black: "rgba(0, 0, 0, 1)",
     white: "rgba(255, 255, 255, 1)",
     mediumWhite: "rgba(248, 248, 248, 1)",

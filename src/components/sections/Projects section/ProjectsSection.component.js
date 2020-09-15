@@ -1,8 +1,7 @@
 import React, { useRef } from "react"
 import { ProjectsSectionWrapper, ProjectsIcon } from "./Projects.styles"
-import { SectionDividerPrimaryColor } from "../../SectionDivider/SectionDivider.component"
 import SectionHeader from "./../../SectionHeader/SectionHeader.component"
-import Slider from "./Slider.component"
+import Sliders from "./Sliders.component"
 import SliderProvider from "./../../../providers/slider_provider/slider_provider"
 import { useProjectsSectionLayout } from "./useProjectsSectionLayout"
 
@@ -12,18 +11,15 @@ const ProjectsSection = props => {
   useProjectsSectionLayout(wrapperRef)
 
   return (
-    <>
-      <SectionDividerPrimaryColor id="projects" />
-
+    <div id="projects">
       <ProjectsSectionWrapper ref={wrapperRef}>
         <SectionHeader noStretch>My projects</SectionHeader>
         <ProjectsIcon />
-
         <SliderProvider>
-          <Slider />
+          <Sliders />
         </SliderProvider>
       </ProjectsSectionWrapper>
-    </>
+    </div>
   )
 }
 export default ProjectsSection

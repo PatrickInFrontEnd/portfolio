@@ -11,7 +11,7 @@ const IntroductionSectionWrapper = styled.section`
   min-height: calc(100vh - 80px);
   width: 100%;
   padding-top: 20px;
-  background-color: ${({ theme }) => theme.color.darkBlue};
+  background-color: ${({ theme }) => theme.color.lightBlue};
   background-attachment: fixed;
 
   @media screen and (max-width: 1130px) {
@@ -86,6 +86,7 @@ const LeftBarWrapper = styled.div`
 `
 
 const IntroductionIcon = styled(IntroductionSVG)`
+  width: 750px;
   margin-top: 80px;
 
   @media screen and (max-width: 1570px) {
@@ -219,11 +220,12 @@ const IntroductionContent = styled.div`
   }
 
   @media screen and (max-width: 670px) {
-    padding: 0 50px;
+    padding: 0 50px 100px;
+    min-height: unset;
   }
 
   @media screen and (max-width: 560px) {
-    padding: 0 20px;
+    padding: 0 20px 100px;
   }
 `
 

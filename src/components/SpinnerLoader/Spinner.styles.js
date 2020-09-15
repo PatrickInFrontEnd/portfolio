@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   top: 0;
   left: 0;
   right: 0;
-  background-color: ${({ theme }) => theme.color.darkBlue};
+  background-color: ${({ theme }) => theme.color.lightBlue};
 `
 
 const SpinnerWrapper = styled(SpinnerIcon)`

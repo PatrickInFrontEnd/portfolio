@@ -16,7 +16,7 @@ const FooterWrapper = styled.div`
   }
 
   @media screen and (max-width: 450px) {
-    padding: 40px 20px 90px;
+    padding: 40px 20px;
     height: unset;
     min-height: 300px;
   }
@@ -70,6 +70,12 @@ const DirectorLink = styled.a`
       width: 60px;
       height: 60px;
       right: -80px;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    svg {
+      display: none;
     }
   }
 

@@ -1,5 +1,4 @@
 import { useEffect } from "react"
-import { TriangleBorder } from "./../../TriangleHeader/TriangleHeader.styles"
 import { ProjectsIcon } from "./Projects.styles"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
@@ -10,7 +9,6 @@ export const useProjectsSectionLayout = wrapperRef =>
     gsap.registerPlugin(ScrollTrigger)
 
     const wrapper = wrapperRef.current
-    const headerBorder = wrapper.querySelector(`${TriangleBorder}`)
 
     const icon = wrapper.querySelector(`${ProjectsIcon}`)
     const iconHuman = wrapper.querySelector(`#projects_icon_human`)
@@ -19,16 +17,6 @@ export const useProjectsSectionLayout = wrapperRef =>
     const iconCircle = wrapper.querySelector(`#blue_circle`)
     const iconBlueTile = wrapper.querySelector(`#blue_tile`)
     const iconBlueTileBorder = wrapper.querySelector(`#border_blue_tile`)
-
-    const tlHeader = gsap.timeline({
-      defaults,
-      scrollTrigger: {
-        trigger: headerBorder,
-        start: "top 60%",
-      },
-    })
-
-    tlHeader.from(headerBorder, { x: "-50px", rotate: "360deg", autoAlpha: 0 })
 
     const tlProjectsIcon = gsap.timeline({
       defaults: { ...defaults, autoAlpha: 0 },

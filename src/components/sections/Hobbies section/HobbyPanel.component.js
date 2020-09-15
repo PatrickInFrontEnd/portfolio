@@ -7,7 +7,6 @@ import {
   Title,
   P,
 } from "./Hobbies.styles"
-import TriangleHeader from "./../../TriangleHeader/TriangleHeader.component"
 
 const HobbyPanel = ({ reversed, iconSrc, title, description }) => {
   return (
@@ -16,10 +15,7 @@ const HobbyPanel = ({ reversed, iconSrc, title, description }) => {
         <Icon src={iconSrc} alt={`${title} icon`} />
       </IconWrapper>
       <DescriptionWrapper>
-        <TriangleHeader extraMargin="20px 0 40px">
-          <Title>{title}</Title>
-        </TriangleHeader>
-
+        <Title>{title}</Title>
         <P>{description}</P>
       </DescriptionWrapper>
     </HobbyWrapper>

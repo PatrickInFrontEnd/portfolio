@@ -81,15 +81,14 @@ export const Button = styled.button`
   }
 
   @media screen and (max-width: 450px) {
-    font-size: ${({ theme }) => theme.fSize.XXXS};
+    font-size: ${({ theme }) => theme.fSize.XS};
     height: 60px;
     width: 300px;
   }
 
   @media screen and (max-width: 350px) {
     font-size: ${({ theme }) => theme.fSize.XXXS};
-    height: 60px;
-    width: 260px;
+    width: 240px;
   }
 `
 const styledLink = { textDecoration: "none", display: "flex" }

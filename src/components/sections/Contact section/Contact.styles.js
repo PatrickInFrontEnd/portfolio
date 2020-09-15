@@ -80,15 +80,15 @@ const Media = styled.div`
   }
 
   svg {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     fill: ${({ theme }) => theme.color.primaryBlue};
   }
 
   @media screen and (max-width: 800px) {
     svg {
-      width: 90px;
-      height: 90px;
+      width: 80px;
+      height: 80px;
     }
   }
 
@@ -119,18 +119,24 @@ const ContactFormWrapper = styled.div`
   width: 100%;
   background-color: ${({ theme }) => theme.color.darkGrey};
   font-family: Baloo Thambi, Montserrat, Poppins, Arial, sans-serif;
+  padding: 150px 30px 0;
 
   * {
     z-index: 1;
   }
 
   @media screen and (max-width: 1580px) {
-    flex-direction: column;
     align-items: flex-start;
     padding: 150px 0 0;
   }
 
-  @media screen and (max-width: 1150px) {
+  @media screen and (max-width: 1300px) {
+    align-items: center;
+    padding: 50px 0 0;
+  }
+
+  @media screen and (max-width: 1180px) {
+    flex-direction: column;
     align-items: center;
     padding: 0;
   }
@@ -138,35 +144,36 @@ const ContactFormWrapper = styled.div`
 
 const LeftBarWrapper = styled.div`
   ${flexCenter};
-  flex-direction: column;
   align-items: flex-start;
   margin-top: 100px;
-  min-width: 900px;
-  min-height: 900px;
+  min-width: 800px;
+  min-height: 800px;
   width: 50vw;
   height: 60vh;
+  overflow: hidden;
 
   @media screen and (max-width: 1580px) {
     position: absolute;
-    top: -10%;
-    right: -10%;
+    top: 0%;
+    right: 0%;
   }
 
   @media screen and (max-width: 1480px) {
-    right: -15%;
+    right: -8%;
   }
 
   @media screen and (max-width: 1300px) {
     top: -15%;
+    right: -15%;
   }
 
-  @media screen and (max-width: 1150px) {
+  @media screen and (max-width: 1180px) {
     position: relative;
     top: unset;
     left: unset;
     right: unset;
     bottom: unset;
-    margin: 0 0 50px;
+    margin: 0 auto;
     width: 100%;
     height: 450px;
     min-width: unset;
@@ -194,8 +201,9 @@ const CirclesIcon = styled(CirclesSVG)`
   position: absolute;
 
   &:nth-of-type(1) {
-    left: 40px;
-    top: -30px;
+    left: 40%;
+    top: -50px;
+    transform: translateX(-50%);
   }
 
   &:nth-of-type(2) {
@@ -211,51 +219,6 @@ const CirclesIcon = styled(CirclesSVG)`
   }
 
   @media screen and (max-width: 1580px) {
-    &:nth-of-type(1) {
-      left: 80px;
-    }
-
-    &:nth-of-type(2) {
-      display: none;
-    }
-  }
-
-  @media screen and (max-width: 1150px) {
-    &:nth-of-type(1) {
-      left: 80px;
-      top: unset;
-      bottom: 20px;
-    }
-
-    &:nth-of-type(2) {
-      display: block;
-      right: 80px;
-      bottom: 20px;
-      transform: rotateX(180deg);
-    }
-  }
-
-  @media screen and (max-width: 850px) {
-    &:nth-of-type(1) {
-      left: 60px;
-    }
-
-    &:nth-of-type(2) {
-      right: 60px;
-    }
-  }
-
-  @media screen and (max-width: 750px) {
-    &:nth-of-type(1) {
-      left: 20px;
-    }
-
-    &:nth-of-type(2) {
-      right: 20px;
-    }
-  }
-
-  @media screen and (max-width: 650px) {
     &:nth-of-type(1),
     &:nth-of-type(2) {
       display: none;
@@ -279,7 +242,13 @@ const PersonMessageIcon = styled(PersonMessageSVG)`
     margin: 50px 0 0;
   }
 
-  @media screen and (max-width: 1150px) {
+  @media screen and (max-width: 1300px) {
+    width: 80%;
+    height: 80%;
+    margin: 80px 0 0;
+  }
+
+  @media screen and (max-width: 1180px) {
     position: absolute;
     width: 100%;
     min-width: 1000px;
@@ -308,15 +277,31 @@ const PersonMessageIcon = styled(PersonMessageSVG)`
 `
 
 const Header = styled(H2)`
-  margin-left: 150px;
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
 
-  @media screen and (max-width: 1150px) {
-    margin: 0 auto;
+  @media screen and (max-width: 1580px) {
+    top: 0px;
+  }
+
+  @media screen and (max-width: 1300px) {
+    top: -60px;
+  }
+
+  @media screen and (max-width: 1180px) {
+    top: -20px;
+    width: 100%;
     text-align: center;
   }
 
   @media screen and (max-width: 940px) {
     font-size: ${({ theme }) => theme.fSize.L};
+  }
+
+  @media screen and (max-width: 700px) {
+    top: 20px;
   }
 
   @media screen and (max-width: 450px) {
@@ -326,11 +311,11 @@ const Header = styled(H2)`
 `
 
 const Form = styled.form`
-  width: 600px;
-  height: 900px;
-  padding: 100px 0 0;
-  margin: 0 0 100px 150px;
-  background-color: ${({ theme }) => theme.color.darkGreenBlue};
+  width: 500px;
+  height: 650px;
+  padding: 90px 0 0;
+  margin: 0 0 0 150px;
+  background-color: ${({ theme }) => theme.color.lightBlue};
   ${flexCenter};
   flex-direction: column;
   justify-content: flex-start;
@@ -340,20 +325,15 @@ const Form = styled.form`
   }
 
   @media screen and (max-width: 1580px) {
-    margin-left: 200px;
+    margin-left: 300px;
   }
 
   @media screen and (max-width: 1370px) {
-    margin-left: 100px;
+    margin-left: 200px;
   }
 
-  @media screen and (max-width: 1300px) {
-    width: 500px;
-    height: 750px;
-  }
-
-  @media screen and (max-width: 1150px) {
-    margin: 0 0 100px 0;
+  @media screen and (max-width: 1180px) {
+    margin: 0 0 30px;
   }
 
   @media screen and (max-width: 650px) {
@@ -398,7 +378,7 @@ const Border = styled.span`
 
   @media screen and (max-width: 1300px) {
     &#message_border {
-      height: 140px;
+      height: 120px;
     }
   }
 `
@@ -408,24 +388,13 @@ const InputWrapper = styled.div`
   flex-direction: column;
   position: relative;
   z-index: 1;
-  width: 470px;
-  height: 80px;
-  margin-bottom: 90px;
+  width: 70%;
+  height: 50px;
+  margin-bottom: 80px;
 
   &:last-of-type {
     margin-bottom: 0;
-    margin-top: 40px;
-    height: 150px;
-  }
-
-  @media screen and (max-width: 1300px) {
-    height: 60px;
-    width: 75%;
-
-    &:last-of-type {
-      margin-top: 30px;
-      height: 140px;
-    }
+    height: 120px;
   }
 
   @media screen and (max-width: 500px) {
@@ -435,13 +404,14 @@ const InputWrapper = styled.div`
 
 const Label = styled.label`
   position: absolute;
-  top: -60px;
+  top: -45px;
   left: -10px;
-  font-size: ${({ theme }) => theme.fSize.M};
+  font-family: Montserrat, Poppins, Arial, sans-serif;
+  font-size: ${({ theme }) => theme.fSize.XS};
+  font-weight: ${({ theme }) => theme.fWeight.semiBold};
 
   @media screen and (max-width: 1300px) {
-    font-size: ${({ theme }) => theme.fSize.S};
-    top: -50px;
+    font-size: ${({ theme }) => theme.fSize.XXS};
   }
 
   @media screen and (max-width: 650px) {
@@ -449,18 +419,20 @@ const Label = styled.label`
   }
 
   @media screen and (max-width: 450px) {
-    font-size: ${({ theme }) => theme.fSize.XXXS};
+    top: -40px;
+    font-size: ${({ theme }) => theme.fSize.XXS};
   }
 `
 
 const inputStyles = css`
   width: 100%;
   height: 100%;
-  padding: 0 40px;
+  padding: 0 20px;
   background-color: ${({ theme }) => theme.color.darkGrey};
   color: ${({ theme }) => theme.color.white};
-  font-size: ${({ theme }) => theme.fSize.XXS};
-  font-family: Baloo Thambi, Montserrat, Poppins, Arial, sans-serif;
+  font-size: ${({ theme }) => theme.fSize.miniS};
+  font-weight: ${({ theme }) => theme.fWeight.medium};
+  font-family: Montserrat, Poppins, Arial, sans-serif;
   outline: none;
   border: none;
 
@@ -484,9 +456,12 @@ const Input = styled.input`
 const MessageInput = styled.textarea`
   ${inputStyles};
   padding: 20px 40px;
-  line-height: 100%;
+  line-height: 140%;
   overflow: auto;
   resize: none;
+  height: unset;
+  min-height: 100%;
+  max-height: 400px;
 
   &:focus ~ ${Border} {
     transform: translate(10px, -10px) !important;
@@ -498,8 +473,15 @@ const MessageInput = styled.textarea`
 `
 
 const SubmitButton = styled(Button)`
-  font-family: Baloo Thambi, Poppins, Montserrat, Arial, sans-serif;
+  width: 65%;
+  height: 70px;
+  font-size: ${({ theme }) => theme.fSize.XS};
+  font-weight: ${({ theme }) => theme.fWeight.bold};
+  font-family: Montserrat, Poppins, Arial, sans-serif;
   color: ${({ theme }) => theme.color.mediumWhite};
+  background-color: ${({ theme }) => theme.color.primaryBlue};
+  margin-top: 60px;
+  z-index: 2;
 
   &::before {
     position: absolute;
@@ -508,7 +490,7 @@ const SubmitButton = styled(Button)`
     content: "";
     width: 100%;
     height: 100%;
-    border: 2px solid ${({ theme }) => theme.color.lightGreenBlue};
+    border: 2px solid ${({ theme }) => theme.color.primaryBlue};
     transform: translate(-10px, 10px);
     transition: 0.3s;
   }
@@ -516,9 +498,6 @@ const SubmitButton = styled(Button)`
   &:hover::before {
     transform: translate(10px, -10px) !important;
   }
-
-  margin-top: 100px;
-  z-index: 2;
 
   &:focus::before {
     transform: translate(10px, -10px) !important;
