@@ -119,7 +119,7 @@ const ContactFormWrapper = styled.div`
   width: 100%;
   background-color: ${({ theme }) => theme.color.darkGrey};
   font-family: Baloo Thambi, Montserrat, Poppins, Arial, sans-serif;
-  padding: 150px 30px 0;
+  padding: 150px 0 0;
 
   * {
     z-index: 1;
@@ -228,7 +228,7 @@ const CirclesIcon = styled(CirclesSVG)`
 
 const PersonMessageIcon = styled(PersonMessageSVG)`
   position: relative;
-  left: -15%;
+  left: -17%;
   width: 100%;
   height: 100%;
   margin: 100px 50px 30px;
@@ -407,8 +407,8 @@ const Label = styled.label`
   top: -45px;
   left: -10px;
   font-family: Montserrat, Poppins, Arial, sans-serif;
-  font-size: ${({ theme }) => theme.fSize.XS};
-  font-weight: ${({ theme }) => theme.fWeight.semiBold};
+  font-size: ${({ theme }) => theme.fSize.XXS};
+  font-weight: ${({ theme }) => theme.fWeight.bold};
 
   @media screen and (max-width: 1300px) {
     font-size: ${({ theme }) => theme.fSize.XXS};
