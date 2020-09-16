@@ -11,6 +11,7 @@
 <p >Project created for job purposes - showing my skillset.</p>
 
 <h1 >💻 Used technologies :</h1>
+
 <ul>
   <li>Gatsby</li>
   <li>React</li>
