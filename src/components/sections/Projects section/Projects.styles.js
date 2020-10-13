@@ -6,6 +6,7 @@ const ProjectsSectionWrapper = styled.div`
   min-height: 100vh;
   width: 100%;
   background-color: ${({ theme }) => theme.color.lightBlue};
+  padding-top: 40px;
 `
 
 const ProjectsIcon = styled(ProjectsSVG)`

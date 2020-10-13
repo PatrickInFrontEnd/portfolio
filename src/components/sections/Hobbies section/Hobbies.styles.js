@@ -1,7 +1,9 @@
 import styled, { css } from "styled-components"
 import { flexCenter } from "./../../mixins/mixins"
 
-const HobbyContainer = styled.div``
+const HobbyContainer = styled.div`
+  padding-top: 40px;
+`
 
 const HobbyWrapper = styled.div`
   width: 100%;
