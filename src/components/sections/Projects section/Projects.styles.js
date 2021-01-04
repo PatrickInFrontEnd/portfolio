@@ -58,8 +58,8 @@ const SliderCounterWrapper = styled.div`
   position: absolute;
   bottom: 40px;
   right: 40px;
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   background-color: ${({ theme }) => theme.color.primaryBlue};
 
   @media screen and (max-width: 750px) {
@@ -79,7 +79,7 @@ const NumberOfSlide = styled.span`
   height: 100%;
 
   @media screen and (max-width: 750px) {
-    font-size: ${({ theme }) => theme.fSize.M};
+    font-size: ${({ theme }) => theme.fSize.L};
   }
 `
 

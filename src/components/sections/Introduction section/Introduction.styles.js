@@ -302,15 +302,6 @@ const ContentParagraph = styled.p`
   }
 `
 
-/* @media screen and (max-width: 1220px) {
-    position: absolute;
-    top: 20%;
-    right: -25%;
-    transform: translateY(-50%);
-    flex-direction: column;
-    justify-content: space-between;
-  } NOTE: FOR INTRODUCTIONLINKSWRAPPER */
-
 const IntroductionLinksWrapper = styled.div`
   height: 80px;
   width: 100%;

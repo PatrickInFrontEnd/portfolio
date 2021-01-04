@@ -11,16 +11,11 @@ const GlobalStyle = createGlobalStyle`
     }
 
     html{
-      font-size:9px;
+      font-size:8px;
 
         @media screen and (max-width: 750px) {
-          font-size: 8px;
-        }
-        
-        @media screen and (max-width: 500px) {
           font-size: 7px;
         }
-    }
 
     body{
         width:100%;
