@@ -212,20 +212,26 @@ const IntroductionContent = styled.div`
   @media screen and (max-width: 1130px) {
     max-width: 800px;
     align-items: center;
+    padding: 45px 45px 0 45px;
   }
 
   @media screen and (max-width: 800px) {
     align-items: center;
     text-align: center;
+    padding: 45px 45px 55px 45px;
   }
 
   @media screen and (max-width: 670px) {
-    padding: 0 50px 100px;
+    padding: 0 50px 80px;
     min-height: unset;
   }
 
   @media screen and (max-width: 560px) {
-    padding: 0 20px 100px;
+    padding: 0 20px 120px;
+  }
+
+  @media screen and (max-width: 380px) {
+    padding: 0 20px 80px;
   }
 `
 
@@ -323,18 +329,17 @@ const IntroductionLinksWrapper = styled.div`
   }
 
   @media screen and (max-width: 800px) {
-  }
-
-  @media screen and (max-width: 800px) {
     flex-direction: row;
     justify-content: space-around;
     padding: 0 20px;
+    margin-top: 80px;
     margin-bottom: 50px;
   }
 
   @media screen and (max-width: 560px) {
     justify-content: space-around;
     padding: 0;
+    margin-top: 60px;
     margin-bottom: 0;
   }
 `

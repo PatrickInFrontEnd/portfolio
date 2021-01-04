@@ -2,7 +2,15 @@ import styled, { css } from "styled-components"
 import { flexCenter } from "./../../mixins/mixins"
 
 const HobbyContainer = styled.div`
-  padding-top: 40px;
+  padding: 40px 0 0;
+
+  @media screen and (max-width: 1100px) {
+    padding: 40px 0 60px;
+  }
+
+  @media screen and (max-width: 500px) {
+    padding: 40px 0 20px;
+  }
 `
 
 const HobbyWrapper = styled.div`

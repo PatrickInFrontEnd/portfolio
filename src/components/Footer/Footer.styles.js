@@ -6,30 +6,21 @@ const FooterWrapper = styled.div`
   position: relative;
   padding: 40px;
   width: 100%;
-  height: 300px;
+  min-height: 250px;
   background-color: ${({ theme }) => theme.color.navyBlue};
   ${flexCenter};
   flex-direction: column;
 
-  @media screen and (max-width: 650px) {
-    padding: 20px 40px 20px;
-  }
-
-  @media screen and (max-width: 450px) {
-    padding: 40px 20px;
-    height: unset;
-    min-height: 300px;
+  @media screen and (max-width: 1100px) {
+    min-height: 200px;
+    padding: 30px 20px 20px;
   }
 `
 
 const FooterTitle = styled.h3`
-  font-size: ${({ theme }) => theme.fSize.M};
+  font-size: ${({ theme }) => theme.fSize.S};
   font-weight: ${({ theme }) => theme.fWeight.medium};
   text-align: center;
-
-  @media screen and (max-width: 1100px) {
-    font-size: ${({ theme }) => theme.fSize.S};
-  }
 
   @media screen and (max-width: 920px) {
     font-size: ${({ theme }) => theme.fSize.XS};
@@ -97,14 +88,14 @@ const DirectorLink = styled.a`
 `
 
 const LicenseRights = styled.a`
-  font-size: ${({ theme }) => theme.fSize.XS};
+  font-size: ${({ theme }) => theme.fSize.XXXS};
   font-weight: ${({ theme }) => theme.fWeight.medium};
   margin: 50px 0;
   text-decoration: none !important;
   color: ${({ theme }) => theme.color.white} !important;
 
   @media screen and (max-width: 1100px) {
-    font-size: ${({ theme }) => theme.fSize.XXXS};
+    margin: 30px 0;
   }
 
   @media screen and (max-width: 920px) {

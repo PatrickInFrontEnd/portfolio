@@ -15,15 +15,8 @@ const AboutMeWrapper = styled.div`
     margin-bottom: 100px;
   }
 
-  @media screen and (max-width: 900px) {
-    margin-bottom: 60px;
-  }
-
-  @media screen and (max-width: 670px) {
-    margin-bottom: 50px;
-  }
-
-  @media screen and (max-width: 550px) {
+  @media screen and (max-width: 1100px) {
+    padding: 0;
     margin-bottom: 20px;
   }
 `

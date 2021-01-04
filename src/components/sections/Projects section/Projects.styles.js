@@ -7,6 +7,10 @@ const ProjectsSectionWrapper = styled.div`
   width: 100%;
   background-color: ${({ theme }) => theme.color.lightBlue};
   padding-top: 40px;
+
+  @media screen and (max-width: 1300px) {
+    padding-top: 0;
+  }
 `
 
 const ProjectsIcon = styled(ProjectsSVG)`
@@ -245,10 +249,6 @@ const SlideWrapper = styled.div`
   flex-direction: column;
   transition: 0.3s;
   background-color: ${({ theme }) => theme.color.lightBlue};
-
-  &:hover {
-    background-color: ${({ theme }) => theme.color.darkBlue};
-  }
 
   @media screen and (max-width: 1550px) {
     padding: 0 0 100px;
