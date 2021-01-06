@@ -6,7 +6,7 @@
   "author": "Patryk Płuciennik",
   "dependencies": {
     "@n8tb1t/use-scroll-position": "^1.0.43",
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "babel-plugin-styled-components": "^1.11.1",
     "formik": "^2.1.5",
     "gatsby": "^2.29.3",
