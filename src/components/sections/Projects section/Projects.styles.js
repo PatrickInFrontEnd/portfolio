@@ -134,7 +134,7 @@ const TechnologiesContainer = styled.div`
   width: 50%;
   min-width: 800px;
   margin-right: 40px;
-  padding: 80px 0;
+  padding: 40px 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(200px, 250px));
   grid-auto-rows: 80px;
@@ -209,6 +209,7 @@ const ImagePreviewWrapper = styled.div`
 const ImagePreview = styled.div`
   width: 100%;
   height: 100%;
+  border-radius: 2px;
 
   ${({ bgUrl }) => getBackgroundUrl(bgUrl)};
   background-size: cover;

@@ -73,6 +73,11 @@ const IconsWrapper = styled.div`
   ${flexCenter};
   justify-content: space-around;
 
+  @media screen and (min-width: 2100px) {
+    margin: 60px auto 0 auto;
+    max-width: 1500px;
+  }
+
   @media screen and (max-width: 1700px) {
     margin: 0;
   }

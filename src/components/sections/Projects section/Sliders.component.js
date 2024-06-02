@@ -74,28 +74,28 @@ const SliderContainer = props => {
                 ))}
               </TechnologiesContainer>
               <ImagePreviewWrapper>
-                <a href={liveUrl} target="_blank" rel="noreferrer">
+                {liveUrl ? <a href={liveUrl} target="_blank" rel="noreferrer">
                   <ImagePreview bgUrl={bgUrl} />
-                </a>
+                </a> :  <ImagePreview bgUrl={bgUrl} />}
 
                 <ButtonsWrapper>
-                  <a target="_blank" rel="noreferrer" href={liveUrl}>
+                  {liveUrl ? <a target="_blank" rel="noreferrer" href={liveUrl}>
                     <LinkIcon>
                       <span>Live link</span>
                       <LiveIcon />
                     </LinkIcon>
-                  </a>
+                  </a> : null}
 
-                  <a target="_blank" rel="noreferrer" href={codeUrl}>
+                  {codeUrl ? <a target="_blank" rel="noreferrer" href={codeUrl}>
                     <LinkIcon>
                       <span>Code link</span>
                       <CodeIcon />
                     </LinkIcon>
-                  </a>
+                  </a>: null}
                 </ButtonsWrapper>
               </ImagePreviewWrapper>
             </ContentWrapper>
-            <SlideCounter slideNumber={id < 10 ? `0${id}` : id} />
+            <SlideCounter slideNumber={id} />
           </SlideWrapper>
         )
       })}
