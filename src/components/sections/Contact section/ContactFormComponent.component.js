@@ -17,14 +17,25 @@ import {
 import { useFormik } from "formik"
 import axios from "axios"
 import { navigate } from "@reach/router"
+import { CONSTANTS } from "./../../../utils/constants"
 
 const ContactFormContainer = props => {
-  const CLOUD_URL =
-    "https://us-central1-portfolio-forms-b1509.cloudfunctions.net/sendEmail"
+  const onSubmit = ({ name, email, message }) => {
+    const data = {
+      service_id: CONSTANTS.EMAILJS_SERVICE_ID,
+      template_id: CONSTANTS.EMAILJS_TEMPLATE_ID,
+      user_id: CONSTANTS.EMAILJS_API_KEY,
+      template_params: {
+        from_email: email,
+        from_name: name,
+        message,
+      },
+    }
 
-  const onSubmit = (values, { setSubmitting }) => {
+    console.log({ data })
+
     axios
-      .post(CLOUD_URL, values)
+      .post(CONSTANTS.EMAILJS_API_URL, data)
       .then(res => {
         navigate("/form-success")
       })
