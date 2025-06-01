@@ -1,7 +1,7 @@
+import { Link } from "gatsby"
 import React from "react"
 import styled, { css } from "styled-components"
 import { flexCenter } from "./../mixins/mixins"
-import { Link } from "gatsby"
 
 const getBorderColor = (bgColor, theme) => css`
   & > span {
@@ -100,9 +100,11 @@ export const ButtonLink = props => (
   </Button>
 )
 
-export default props => (
+const ButtonComponent = props => (
   <Button {...props}>
     <span />
     {props.children}
   </Button>
 )
+
+export default ButtonComponent

@@ -9,7 +9,6 @@ module.exports = {
     author: `Patryk Płuciennik`,
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,

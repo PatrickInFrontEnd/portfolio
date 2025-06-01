@@ -1,13 +1,13 @@
 import React, { useRef } from "react"
-import { Wrapper, FormSuccessIcon, Header } from "./Form-success.styles"
-import { ButtonLink } from "./../Button/Button.styles"
-import { useFormSuccessLayout } from "./useContactFormLayout"
 import { useTheme } from "styled-components"
+import { ButtonLink } from "./../Button/Button.styles"
+import { FormSuccessIcon, Header, Wrapper } from "./Form-success.styles"
+import { useContactFormLayout } from "./useContactFormLayout"
 
 const FormSuccessComponent = props => {
   const wrapperRef = useRef(null)
 
-  useFormSuccessLayout(wrapperRef)
+  useContactFormLayout(wrapperRef)
 
   const theme = useTheme()
   return (
