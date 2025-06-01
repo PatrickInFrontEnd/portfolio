@@ -1,10 +1,10 @@
-import React from "react"
-import { TechnologiesWrapper } from "./SkillsSection.styles"
 import { graphql, useStaticQuery } from "gatsby"
-import TechnologyPanel from "./TechnologyPanel.component"
-import LaptopIcon from "./LaptopIcon.component"
-import { getImageNumber } from "./../../../utils/getImageNumber"
+import React from "react"
+import { mapToPNGSource } from "./../../../utils/mapToPNGsource"
 import { sortImagesASC } from "./../../../utils/sort"
+import LaptopIcon from "./LaptopIcon.component"
+import { LaptopIconWrapper, TechnologiesWrapper } from "./SkillsSection.styles"
+import TechnologiesPanel from "./TechnologyPanel.component"
 
 const queryForImgages = graphql`
   query queryForSkillImages {
@@ -17,9 +17,7 @@ const queryForImgages = graphql`
         node {
           relativePath
           childImageSharp {
-            fluid(quality: 100) {
-              src
-            }
+            gatsbyImageData(quality: 100, layout: CONSTRAINED)
           }
         }
       }
@@ -32,12 +30,7 @@ const TechnologiesContainer = props => {
     allFile: { edges },
   } = useStaticQuery(queryForImgages)
 
-  const sources = edges
-    .map(({ node }) => ({
-      src: node.childImageSharp.fluid.src,
-      id: getImageNumber(node.relativePath),
-    }))
-    .sort(sortImagesASC)
+  const sources = edges.map(mapToPNGSource).sort(sortImagesASC)
 
   const firstPanelSrc = sources.filter((el, i) => i < 3)
   const secondPanelSrc = sources.filter((el, i) => i >= 3 && i < 7)
@@ -55,12 +48,12 @@ const TechnologiesContainer = props => {
     <>
       <TechnologiesWrapper>
         {panelSources.map((srcArray, i) => (
-          <TechnologyPanel key={i} sources={srcArray} />
+          <TechnologiesPanel key={i} sources={srcArray} />
         ))}
       </TechnologiesWrapper>
-      <div id="laptopIcon">
+      <LaptopIconWrapper id="laptopIcon">
         <LaptopIcon />
-      </div>
+      </LaptopIconWrapper>
     </>
   )
 }

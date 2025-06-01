@@ -1,12 +1,12 @@
 import React, { useRef } from "react"
 import { IntroductionSectionWrapper } from "./Introduction.styles"
-import IntroductionRightBar from "./RightHeaderBar.component"
 import IntroductionLeftBar from "./LeftBar.component"
-import { useIntroductionSectionLayout } from "./useIntroductionLayout"
+import IntroductionRightBar from "./RightHeaderBar.component"
+import { useIntroductionLayout } from "./useIntroductionLayout"
 
 const IntroductionSection = props => {
   const wrapperRef = useRef(null)
-  useIntroductionSectionLayout(wrapperRef)
+  useIntroductionLayout(wrapperRef)
 
   return (
     <IntroductionSectionWrapper id="introduction" ref={wrapperRef}>

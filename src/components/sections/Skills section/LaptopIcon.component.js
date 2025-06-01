@@ -1,14 +1,12 @@
-import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import { LaptopPNG } from "./SkillsSection.styles"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import React from "react"
 
 const queryForImg = graphql`
   {
     file(relativePath: { eq: "my_skills.png" }) {
       childImageSharp {
-        fluid(quality: 100) {
-          src
-        }
+        gatsbyImageData(quality: 100, layout: CONSTRAINED)
       }
     }
   }
@@ -16,7 +14,19 @@ const queryForImg = graphql`
 
 const LaptopIcon = props => {
   const { file } = useStaticQuery(queryForImg)
+  const image = getImage(file.childImageSharp)
 
-  return <LaptopPNG src={file.childImageSharp.fluid.src} alt="Laptop icon" />
+  return (
+    <GatsbyImage
+      className="laptop-icon-image"
+      image={image}
+      alt="Laptop icon"
+      style={{
+        width: "100%",
+        height: "100%",
+        objectFit: "contain",
+      }}
+    />
+  )
 }
 export default LaptopIcon

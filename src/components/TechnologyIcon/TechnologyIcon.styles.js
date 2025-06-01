@@ -73,4 +73,4 @@ const IconWrapper = styled.div`
   }
 `
 
-export { Wrapper, IconName, IconWrapper }
+export { IconName, IconWrapper, Wrapper }

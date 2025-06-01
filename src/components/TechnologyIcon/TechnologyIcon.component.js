@@ -1,8 +1,8 @@
-import React from "react"
-import { Wrapper, IconName, IconWrapper } from "./TechnologyIcon.styles"
 import { graphql, useStaticQuery } from "gatsby"
-import { getImageName } from "./../../utils/getImageName"
+import React from "react"
 import { filterByName } from "./../../utils/filter"
+import { getImageName } from "./../../utils/getImageName"
+import { IconName, IconWrapper, Wrapper } from "./TechnologyIcon.styles"
 
 const queryForIconImages = graphql`
   {
@@ -15,9 +15,7 @@ const queryForIconImages = graphql`
         node {
           relativePath
           childImageSharp {
-            fluid(quality: 100) {
-              src
-            }
+            gatsbyImageData(quality: 100, layout: CONSTRAINED)
           }
         }
       }
@@ -32,7 +30,7 @@ const TechnologyIcon = ({ name }) => {
 
   const namedImages = edges.map(({ node }) => ({
     name: getImageName(node),
-    src: node.childImageSharp.fluid.src,
+    src: node.childImageSharp.gatsbyImageData.images.fallback.src,
   }))
 
   const [icon] = namedImages.filter(filterByName(name))
