@@ -1,7 +1,8 @@
+import { getImage } from "gatsby-plugin-image"
 import { getImageNumber } from "./getImageNumber"
 
 const mapToPNGSource = ({ node }) => ({
-  src: node.childImageSharp.fluid.src || node.childImageSharp.fixed.src,
+  image: getImage(node.childImageSharp),
   relativePath: node.relativePath,
   id: getImageNumber(node.relativePath),
 })

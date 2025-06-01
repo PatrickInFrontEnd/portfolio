@@ -1,8 +1,8 @@
-import { useEffect } from "react"
-import { HobbyWrapper, IconWrapper, DescriptionWrapper } from "./Hobbies.styles"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useEffect } from "react"
 import { defaults } from "./../../../utils/animationConstants"
+import { DescriptionWrapper, HobbyWrapper, IconWrapper } from "./Hobbies.styles"
 
 export const useHobbiesSectionLayout = wrapperRef =>
   useEffect(() => {

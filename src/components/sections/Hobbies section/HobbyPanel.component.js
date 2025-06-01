@@ -1,18 +1,28 @@
+import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
 import {
+  DescriptionWrapper,
   HobbyWrapper,
   IconWrapper,
-  Icon,
-  DescriptionWrapper,
-  Title,
   P,
+  Title,
 } from "./Hobbies.styles"
 
-const HobbyPanel = ({ reversed, iconSrc, title, description }) => {
+const HobbyPanel = ({ reversed, iconImage, title, description }) => {
   return (
     <HobbyWrapper reversed={reversed}>
       <IconWrapper>
-        <Icon src={iconSrc} alt={`${title} icon`} />
+        {iconImage && (
+          <GatsbyImage
+            image={iconImage}
+            alt={`${title} icon`}
+            style={{
+              width: "60%",
+              height: "60%",
+              objectFit: "contain",
+            }}
+          />
+        )}
       </IconWrapper>
       <DescriptionWrapper>
         <Title>{title}</Title>
@@ -21,4 +31,5 @@ const HobbyPanel = ({ reversed, iconSrc, title, description }) => {
     </HobbyWrapper>
   )
 }
+
 export default HobbyPanel
