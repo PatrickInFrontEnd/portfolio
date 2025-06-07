@@ -12,12 +12,41 @@ const PageWrapper = styled.div`
   overflow-y: auto;
   z-index: 999;
   padding: 60px 250px;
+
+  @media screen and (max-width: 1200px) {
+    padding: 50px 100px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    padding: 40px 60px;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 30px 40px;
+  }
+
+  @media screen and (max-width: 480px) {
+    padding: 20px 20px;
+  }
 `
 
 const HeaderSection = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 20px;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 30px;
+  }
+
+  @media screen and (max-width: 480px) {
+    gap: 15px;
+    margin-bottom: 20px;
+  }
 `
 
 const ProjectTitle = styled.h1`
@@ -29,8 +58,19 @@ const ProjectTitle = styled.h1`
   color: #ffffff;
   margin: 0;
 
+  @media screen and (max-width: 1024px) {
+    font-size: 28px;
+    line-height: 34px;
+  }
+
   @media screen and (max-width: 768px) {
-    font-size: ${({ theme }) => theme.fSize.L};
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 20px;
+    line-height: 26px;
   }
 `
 
@@ -38,7 +78,7 @@ const GoBackButton = styled.button`
   display: flex;
   align-items: center;
   gap: 24px;
-  padding: 3px 0;
+  padding: 12px 0;
   background: transparent;
   border: none;
   color: #ffffff;
@@ -47,6 +87,7 @@ const GoBackButton = styled.button`
   font-size: 18px;
   cursor: pointer;
   transition: opacity 0.3s ease;
+  min-height: 44px; /* Touch target size */
 
   &:hover {
     opacity: 0.8;
@@ -57,13 +98,34 @@ const GoBackButton = styled.button`
     height: 36px;
   }
 
-  @media screen and (max-width: 768px) {
-    font-size: 14px;
+  @media screen and (max-width: 1024px) {
+    font-size: 16px;
     gap: 20px;
 
     svg {
-      width: 18px;
-      height: 21px;
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 16px;
+    gap: 16px;
+    padding: 8px 0;
+
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 14px;
+    gap: 12px;
+
+    svg {
+      width: 24px;
+      height: 24px;
     }
   }
 `
@@ -77,8 +139,16 @@ const SliderSection = styled.div`
   align-items: center;
   justify-content: center;
 
+  @media screen and (max-width: 1024px) {
+    margin: 50px 0;
+  }
+
   @media screen and (max-width: 768px) {
     margin: 40px 0;
+  }
+
+  @media screen and (max-width: 480px) {
+    margin: 30px 0;
   }
 `
 
@@ -91,8 +161,18 @@ const SliderWrapper = styled.div`
   border-radius: 2px 2px 0 0;
   overflow: hidden;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1024px) {
     max-width: 100%;
+    max-height: 500px;
+  }
+
+  @media screen and (max-width: 768px) {
+    max-height: 400px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  @media screen and (max-width: 480px) {
+    max-height: 300px;
   }
 `
 
@@ -112,6 +192,23 @@ const SliderButtonsContainer = styled.div`
   background-color: ${({ theme }) => theme.color.black};
   border-radius: 0 0 2px 2px;
   padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media screen and (max-width: 1024px) {
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 16px;
+    border-radius: 0 0 4px 4px;
+  }
+
+  @media screen and (max-width: 480px) {
+    padding: 12px;
+  }
 `
 
 const SliderButtons = styled.div`
@@ -119,9 +216,18 @@ const SliderButtons = styled.div`
   gap: 15px;
   justify-content: flex-end;
   z-index: 2;
+  margin-left: auto;
+
+  @media screen and (max-width: 1024px) {
+    gap: 12px;
+  }
 
   @media screen and (max-width: 768px) {
-    justify-content: center;
+    gap: 10px;
+  }
+
+  @media screen and (max-width: 480px) {
+    gap: 8px;
   }
 `
 
@@ -152,7 +258,8 @@ const SliderButton = styled.a`
   }
 `
 
-const ArrowButton = styled.button`
+// Outside arrows (original positioning)
+const OutsideArrowButton = styled.button`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -172,27 +279,24 @@ const ArrowButton = styled.button`
     fill: white;
   }
 
-  @media screen and (max-width: 768px) {
-    svg {
-      width: 40px;
-      height: 50px;
-    }
+  @media screen and (max-width: 1200px) {
+    display: none;
   }
 `
 
-const LeftArrow = styled(ArrowButton)`
+const OutsideLeftArrow = styled(OutsideArrowButton)`
   left: calc(50% - 700px - 75px);
 
   @media screen and (max-width: 1600px) {
-    left: 20px;
+    left: calc(60% - 650px - 75px);
   }
 
-  @media screen and (max-width: 768px) {
-    left: 10px;
+  @media screen and (max-width: 1400px) {
+    left: calc(60% - 600px - 75px);
   }
 `
 
-const RightArrow = styled(ArrowButton)`
+const OutsideRightArrow = styled(OutsideArrowButton)`
   right: calc(50% - 700px - 75px);
 
   svg {
@@ -200,11 +304,61 @@ const RightArrow = styled(ArrowButton)`
   }
 
   @media screen and (max-width: 1600px) {
-    right: 20px;
+    right: calc(60% - 650px - 75px);
+  }
+
+  @media screen and (max-width: 1400px) {
+    right: calc(60% - 600px - 75px);
+  }
+`
+
+// Inside arrows (black container positioning)
+const InsideArrowsContainer = styled.div`
+  display: none;
+  gap: 12px;
+
+  @media screen and (max-width: 1200px) {
+    display: flex;
+  }
+`
+
+const InsideArrowButton = styled.button`
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 3;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  svg {
+    width: 40px;
+    height: 48px;
+    fill: white;
   }
 
   @media screen and (max-width: 768px) {
-    right: 10px;
+    svg {
+      width: 32px;
+      height: 38px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    svg {
+      width: 26px;
+      height: 32px;
+    }
+  }
+`
+
+const InsideLeftArrow = styled(InsideArrowButton)``
+
+const InsideRightArrow = styled(InsideArrowButton)`
+  svg {
+    transform: rotate(180deg);
   }
 `
 
@@ -214,8 +368,23 @@ const ContentSection = styled.div`
   border-right: 3px solid ${({ theme }) => theme.color.primaryBlue};
   padding: 0 50px 50px;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1024px) {
+    margin: 60px auto;
     padding: 0 40px 40px;
+  }
+
+  @media screen and (max-width: 768px) {
+    margin: 50px auto;
+    padding: 0 30px 30px;
+    border-left: 2px solid ${({ theme }) => theme.color.primaryBlue};
+    border-right: 2px solid ${({ theme }) => theme.color.primaryBlue};
+  }
+
+  @media screen and (max-width: 480px) {
+    margin: 40px auto;
+    padding: 0 0 20px;
+    border-left: none;
+    border-right: none;
   }
 `
 
@@ -226,6 +395,21 @@ const SectionTitle = styled.h3`
   line-height: 1.219em;
   margin-bottom: 24px;
   color: #ffffff;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 22px;
+    margin-bottom: 18px;
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
 `
 
 const Description = styled.p`
@@ -235,11 +419,41 @@ const Description = styled.p`
   line-height: 1.6;
   margin-bottom: 0;
   color: #ffffff;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 17px;
+    line-height: 1.55;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 15px;
+    line-height: 1.5;
+  }
 `
 
 const ProblemsSection = styled.div`
   margin-top: 48px;
   margin-bottom: 48px;
+
+  @media screen and (max-width: 1024px) {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  @media screen and (max-width: 768px) {
+    margin-top: 36px;
+    margin-bottom: 36px;
+  }
+
+  @media screen and (max-width: 480px) {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
 `
 
 const TechnologiesSection = styled.div``
@@ -251,19 +465,41 @@ const TechnologiesGrid = styled.div`
   margin-top: 40px;
   padding-left: 40px;
   align-items: flex-start;
+
+  @media screen and (max-width: 1024px) {
+    gap: 36px 60px;
+    margin-top: 32px;
+    padding-left: 30px;
+  }
+
+  @media screen and (max-width: 768px) {
+    gap: 30px 50px;
+    margin-top: 28px;
+    padding-left: 20px;
+    justify-content: center;
+  }
+
+  @media screen and (max-width: 480px) {
+    gap: 24px 40px;
+    margin-top: 24px;
+    padding-left: 0;
+    justify-content: center;
+  }
 `
 
 export {
-  ArrowButton,
   ContentSection,
   Description,
   GoBackButton,
   HeaderSection,
-  LeftArrow,
+  InsideArrowsContainer,
+  InsideLeftArrow,
+  InsideRightArrow,
+  OutsideLeftArrow,
+  OutsideRightArrow,
   PageWrapper,
   ProblemsSection,
   ProjectTitle,
-  RightArrow,
   SectionTitle,
   SliderButton,
   SliderButtons,

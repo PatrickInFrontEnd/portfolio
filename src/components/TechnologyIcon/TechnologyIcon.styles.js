@@ -24,6 +24,13 @@ const Wrapper = styled.div`
     width: 50%;
     min-width: 200px;
   }
+
+  @media screen and (max-width: 480px) {
+    width: 40%;
+    min-width: 180px;
+    height: 48px;
+    padding-left: 12px;
+  }
 `
 
 const IconName = styled.span`
@@ -41,6 +48,10 @@ const IconName = styled.span`
 
   @media screen and (max-width: 500px) {
     font-size: ${({ theme }) => theme.fSize.XS};
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: ${({ theme }) => theme.fSize.XXS};
   }
 `
 
@@ -70,6 +81,13 @@ const IconWrapper = styled.div`
 
   @media screen and (max-width: 380px) {
     left: -25px;
+  }
+
+  @media screen and (max-width: 480px) {
+    left: -29px;
+    width: 58px;
+    height: 58px;
+    border-width: 1.6px;
   }
 `
 

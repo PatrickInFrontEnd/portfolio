@@ -8,11 +8,14 @@ import {
   Description,
   GoBackButton,
   HeaderSection,
-  LeftArrow,
+  InsideArrowsContainer,
+  InsideLeftArrow,
+  InsideRightArrow,
+  OutsideLeftArrow,
+  OutsideRightArrow,
   PageWrapper,
   ProblemsSection,
   ProjectTitle,
-  RightArrow,
   SectionTitle,
   SliderButton,
   SliderButtons,
@@ -89,6 +92,18 @@ const ProjectDetailsScreen = ({ projectId }) => {
         </SliderWrapper>
 
         <SliderButtonsContainer>
+          {/* Inside arrows - shown on tablets/mobile when outside arrows are hidden */}
+          {currentProject.images.length > 1 && (
+            <InsideArrowsContainer>
+              <InsideLeftArrow data-left-arrow onClick={handlePrevImage}>
+                <LeftArrowSVG />
+              </InsideLeftArrow>
+              <InsideRightArrow data-right-arrow onClick={handleNextImage}>
+                <LeftArrowSVG />
+              </InsideRightArrow>
+            </InsideArrowsContainer>
+          )}
+
           <SliderButtons>
             {currentProject.liveUrl && (
               <SliderButton
@@ -112,14 +127,15 @@ const ProjectDetailsScreen = ({ projectId }) => {
           </SliderButtons>
         </SliderButtonsContainer>
 
+        {/* Outside arrows - shown on desktop/large screens only */}
         {currentProject.images.length > 1 && (
           <>
-            <LeftArrow data-left-arrow onClick={handlePrevImage}>
+            <OutsideLeftArrow data-left-arrow onClick={handlePrevImage}>
               <LeftArrowSVG />
-            </LeftArrow>
-            <RightArrow data-right-arrow onClick={handleNextImage}>
+            </OutsideLeftArrow>
+            <OutsideRightArrow data-right-arrow onClick={handleNextImage}>
               <LeftArrowSVG />
-            </RightArrow>
+            </OutsideRightArrow>
           </>
         )}
       </SliderSection>
