@@ -1,3 +1,4 @@
+import { navigate } from "gatsby"
 import React, { useContext, useEffect, useRef } from "react"
 import { useTheme } from "styled-components"
 import SliderContext from "../../../contexts/slider.context"
@@ -66,6 +67,10 @@ const SliderContainer = props => {
     initAnimation()
   }, [theme])
 
+  const handleImageClick = projectId => {
+    navigate(`/project/${projectId}`)
+  }
+
   return (
     <SlidesWrapper ref={wrapperRef}>
       {data.map(props => {
@@ -82,13 +87,11 @@ const SliderContainer = props => {
                 ))}
               </TechnologiesContainer>
               <ImagePreviewWrapper>
-                {liveUrl ? (
-                  <a href={liveUrl} target="_blank" rel="noreferrer">
-                    <ImagePreview bgUrl={bgUrl} />
-                  </a>
-                ) : (
-                  <ImagePreview bgUrl={bgUrl} />
-                )}
+                <ImagePreview
+                  bgUrl={bgUrl}
+                  onClick={() => handleImageClick(id)}
+                  style={{ cursor: "pointer" }}
+                />
 
                 <ButtonsWrapper>
                   {liveUrl ? (

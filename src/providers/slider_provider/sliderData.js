@@ -2,7 +2,7 @@ const sliderData = [
   {
     id: 1,
     title: "Get Creative Every Day",
-    bgUrl: "./images/slider_1.png",
+    bgUrl: "/images/slider_1.png",
     isBright: true,
     technologies: [
       { name: "html", id: 1 },
@@ -19,7 +19,7 @@ const sliderData = [
   {
     id: 2,
     title: "Zdrowe Dziecko - magazine site",
-    bgUrl: "./images/slider_2.png",
+    bgUrl: "/images/slider_2.png",
     isBright: false,
     technologies: [
       { name: "html", id: 1 },
@@ -36,7 +36,7 @@ const sliderData = [
   {
     id: 3,
     title: "Erasmus project",
-    bgUrl: "./images/slider_3.png",
+    bgUrl: "/images/slider_3.png",
     isBright: false,
     technologies: [
       { name: "html", id: 1 },
@@ -49,7 +49,7 @@ const sliderData = [
   {
     id: 4,
     title: "ZLP tournament",
-    bgUrl: "./images/slider_4.png",
+    bgUrl: "/images/slider_4.png",
     isBright: true,
     technologies: [
       { name: "html", id: 4 },
@@ -64,7 +64,7 @@ const sliderData = [
   {
     id: 5,
     title: "Flappy bird",
-    bgUrl: "./images/slider_5.png",
+    bgUrl: "/images/slider_5.png",
     isBright: false,
     technologies: [
       { name: "html", id: 9 },

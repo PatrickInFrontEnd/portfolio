@@ -1,0 +1,153 @@
+import { navigate } from "gatsby"
+import React, { useEffect, useRef, useState } from "react"
+import LeftArrowSVG from "../../../assets/images/left-arrow.svg"
+import projectDetailsData from "../../../providers/slider_provider/projectDetailsData"
+import TechnologyIcon from "../../TechnologyIcon/TechnologyIcon.component"
+import {
+  ContentSection,
+  Description,
+  GoBackButton,
+  HeaderSection,
+  LeftArrow,
+  PageWrapper,
+  ProblemsSection,
+  ProjectTitle,
+  RightArrow,
+  SectionTitle,
+  SliderButton,
+  SliderButtons,
+  SliderButtonsContainer,
+  SliderImage,
+  SliderSection,
+  SliderWrapper,
+  TechnologiesGrid,
+  TechnologiesSection,
+} from "./ProjectDetailsScreen.styles"
+import { useProjectDetailsLayout } from "./useProjectDetailsLayout"
+
+const ProjectDetailsScreen = ({ projectId }) => {
+  const [currentProject, setCurrentProject] = useState(null)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const wrapperRef = useRef(null)
+
+  // Initialize animations
+  useProjectDetailsLayout(wrapperRef, currentProject)
+
+  useEffect(() => {
+    const parsedProjectId = parseInt(projectId)
+    const project = projectDetailsData[parsedProjectId]
+
+    if (project) {
+      setCurrentProject(project)
+    } else {
+      // If project not found, redirect to home
+      navigate("/")
+    }
+  }, [projectId])
+
+  const handleGoBack = () => {
+    navigate("/")
+  }
+
+  const handlePrevImage = () => {
+    if (currentProject && currentProject.images) {
+      setCurrentImageIndex(prev =>
+        prev === 0 ? currentProject.images.length - 1 : prev - 1
+      )
+    }
+  }
+
+  const handleNextImage = () => {
+    if (currentProject && currentProject.images) {
+      setCurrentImageIndex(prev =>
+        prev === currentProject.images.length - 1 ? 0 : prev + 1
+      )
+    }
+  }
+
+  if (!currentProject) {
+    return (
+      <PageWrapper>
+        <div>Loading...</div>
+      </PageWrapper>
+    )
+  }
+
+  return (
+    <PageWrapper ref={wrapperRef}>
+      <HeaderSection>
+        <ProjectTitle>{currentProject.title}</ProjectTitle>
+        <GoBackButton onClick={handleGoBack}>
+          <LeftArrowSVG />
+          Go back
+        </GoBackButton>
+      </HeaderSection>
+
+      <SliderSection data-slider-section>
+        <SliderWrapper>
+          <SliderImage bgUrl={currentProject.images[currentImageIndex]} />
+        </SliderWrapper>
+
+        <SliderButtonsContainer>
+          <SliderButtons>
+            {currentProject.liveUrl && (
+              <SliderButton
+                href={currentProject.liveUrl}
+                target="_blank"
+                rel="noreferrer"
+                variant="primary"
+              >
+                Go live
+              </SliderButton>
+            )}
+            {currentProject.codeUrl && (
+              <SliderButton
+                href={currentProject.codeUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Code
+              </SliderButton>
+            )}
+          </SliderButtons>
+        </SliderButtonsContainer>
+
+        {currentProject.images.length > 1 && (
+          <>
+            <LeftArrow data-left-arrow onClick={handlePrevImage}>
+              <LeftArrowSVG />
+            </LeftArrow>
+            <RightArrow data-right-arrow onClick={handleNextImage}>
+              <LeftArrowSVG />
+            </RightArrow>
+          </>
+        )}
+      </SliderSection>
+
+      <ContentSection data-content-section>
+        <SectionTitle data-section-title>Description</SectionTitle>
+        <Description data-description>{currentProject.description}</Description>
+
+        <ProblemsSection>
+          <SectionTitle data-section-title>
+            Problems I struggled with
+          </SectionTitle>
+          <Description data-description>{currentProject.problems}</Description>
+        </ProblemsSection>
+
+        <TechnologiesSection>
+          <SectionTitle data-section-title>
+            Technologies used in the project
+          </SectionTitle>
+          <TechnologiesGrid data-technologies-grid>
+            {currentProject.technologies.map(tech => (
+              <TechnologyIcon key={tech.id} name={tech.name} />
+            ))}
+          </TechnologiesGrid>
+        </TechnologiesSection>
+      </ContentSection>
+    </PageWrapper>
+  )
+}
+
+export default ProjectDetailsScreen
