@@ -2,6 +2,7 @@ import { navigate } from "gatsby"
 import React, { useContext, useEffect, useRef } from "react"
 import { useTheme } from "styled-components"
 import SliderContext from "../../../contexts/slider.context"
+import { saveProjectScrollPosition } from "../../../utils/scrollPosition"
 import CodeIcon from "./../../../assets/images/icon_code_github.svg"
 import LiveIcon from "./../../../assets/images/icon_live.svg"
 import TechnologyIcon from "./../../TechnologyIcon/TechnologyIcon.component"
@@ -68,6 +69,8 @@ const SliderContainer = props => {
   }, [theme])
 
   const handleImageClick = projectId => {
+    // Save the current scroll position and project ID before navigating
+    saveProjectScrollPosition(projectId)
     navigate(`/project/${projectId}`)
   }
 
@@ -77,7 +80,7 @@ const SliderContainer = props => {
         const { id, title, bgUrl, technologies, liveUrl, codeUrl } = props
 
         return (
-          <SlideWrapper key={id}>
+          <SlideWrapper key={id} data-project-id={id}>
             <SlideTitle>{title}</SlideTitle>
             <ContentWrapper>
               <TechnologiesContainer>

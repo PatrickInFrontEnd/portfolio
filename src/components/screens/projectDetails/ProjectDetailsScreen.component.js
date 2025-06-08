@@ -2,6 +2,7 @@ import { navigate } from "gatsby"
 import React, { useEffect, useRef, useState } from "react"
 import LeftArrowSVG from "../../../assets/images/left-arrow.svg"
 import projectDetailsData from "../../../providers/slider_provider/projectDetailsData"
+import { clearProjectScrollPosition } from "../../../utils/scrollPosition"
 import TechnologyIcon from "../../TechnologyIcon/TechnologyIcon.component"
 import {
   ContentSection,
@@ -42,6 +43,12 @@ const ProjectDetailsScreen = ({ projectId }) => {
 
     if (project) {
       setCurrentProject(project)
+
+      // If someone navigated directly to this page (e.g., via URL or refresh),
+      // clear any existing scroll position to prevent unwanted scrolling when going back
+      if (typeof window !== "undefined" && window.history.length === 1) {
+        clearProjectScrollPosition()
+      }
     } else {
       // If project not found, redirect to home
       navigate("/")
@@ -50,6 +57,8 @@ const ProjectDetailsScreen = ({ projectId }) => {
 
   const handleGoBack = () => {
     navigate("/")
+    // Note: The scroll restoration will be handled by the home page component
+    // when it detects there's a stored scroll position
   }
 
   const handlePrevImage = () => {
