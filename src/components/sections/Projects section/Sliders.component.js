@@ -5,14 +5,17 @@ import SliderContext from "../../../contexts/slider.context"
 import { saveProjectScrollPosition } from "../../../utils/scrollPosition"
 import CodeIcon from "./../../../assets/images/icon_code_github.svg"
 import LiveIcon from "./../../../assets/images/icon_live.svg"
+import LeftArrowSVG from "./../../../assets/images/left-arrow.svg"
 import TechnologyIcon from "./../../TechnologyIcon/TechnologyIcon.component"
 import {
   ButtonsWrapper,
   ContentWrapper,
   Description,
+  HoverOverlay,
   ImagePreview,
   ImagePreviewWrapper,
   LinkIcon,
+  ProjectDetailsButton,
   SlideTitle,
   SlideWrapper,
   SlidesWrapper,
@@ -94,7 +97,20 @@ const SliderContainer = props => {
                   bgUrl={bgUrl}
                   onClick={() => handleImageClick(id)}
                   style={{ cursor: "pointer" }}
-                />
+                >
+                  <HoverOverlay>
+                    <ProjectDetailsButton
+                      bgColor="black"
+                      width="250px"
+                      height="70px"
+                      justify="space-around"
+                    >
+                      <span />
+                      Project details
+                      <LeftArrowSVG />
+                    </ProjectDetailsButton>
+                  </HoverOverlay>
+                </ImagePreview>
 
                 <ButtonsWrapper>
                   {liveUrl ? (
