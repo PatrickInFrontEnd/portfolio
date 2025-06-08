@@ -156,23 +156,22 @@ const SliderWrapper = styled.div`
   position: relative;
   width: 100%;
   max-width: 1400px;
-  max-height: 600px;
-  aspect-ratio: 16 / 9;
+  height: 600px;
   border-radius: 2px 2px 0 0;
   overflow: hidden;
 
   @media screen and (max-width: 1024px) {
     max-width: 100%;
-    max-height: 500px;
+    height: 500px;
   }
 
   @media screen and (max-width: 768px) {
-    max-height: 400px;
+    height: 400px;
     border-radius: 4px 4px 0 0;
   }
 
   @media screen and (max-width: 480px) {
-    max-height: 300px;
+    height: 300px;
   }
 `
 
@@ -180,10 +179,15 @@ const SliderImage = styled.div`
   width: 100%;
   height: 100%;
   background-image: url(${props => props.bgUrl});
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  position: relative;
+  background-color: ${({ theme }) => theme.color.mediumWhite};
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform, opacity, filter;
+  transform-origin: center center;
 `
 
 const SliderButtonsContainer = styled.div`
@@ -278,8 +282,13 @@ const OutsideArrowButton = styled.button`
   z-index: 3;
   transition: opacity 0.3s ease;
 
-  &:hover {
+  &:hover:not(:disabled) {
     opacity: 0.8;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 
   svg {
@@ -344,8 +353,13 @@ const InsideArrowButton = styled.button`
   z-index: 3;
   transition: opacity 0.3s ease;
 
-  &:hover {
+  &:hover:not(:disabled) {
     opacity: 0.8;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 
   svg {
@@ -545,11 +559,93 @@ const TechnologiesGrid = styled.div`
   }
 `
 
+const ImageIndicators = styled.div`
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 4;
+
+  @media screen and (max-width: 768px) {
+    bottom: 15px;
+    gap: 6px;
+  }
+
+  @media screen and (max-width: 480px) {
+    bottom: 10px;
+    gap: 4px;
+  }
+`
+
+const ImageIndicator = styled.button`
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid ${({ theme }) => theme.color.white};
+  background-color: ${({ active, theme }) =>
+    active ? theme.color.primaryBlue : "transparent"};
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+
+  &:hover:not(:disabled) {
+    background-color: ${({ theme }) => theme.color.primaryBlue};
+    transform: scale(1.1);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 10px;
+    height: 10px;
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 8px;
+    height: 8px;
+  }
+`
+
+const ImageCounter = styled.div`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: ${({ theme }) => theme.color.white};
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 4;
+
+  @media screen and (max-width: 768px) {
+    top: 15px;
+    right: 15px;
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  @media screen and (max-width: 480px) {
+    top: 10px;
+    right: 10px;
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+`
+
 export {
   ContentSection,
   Description,
   GoBackButton,
   HeaderSection,
+  ImageCounter,
+  ImageIndicator,
+  ImageIndicators,
   InsideArrowsContainer,
   InsideLeftArrow,
   InsideRightArrow,

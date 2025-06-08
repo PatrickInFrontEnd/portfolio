@@ -1,14 +1,18 @@
-import { navigate } from "gatsby"
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef } from "react"
 import LeftArrowSVG from "../../../assets/images/left-arrow.svg"
-import projectDetailsData from "../../../providers/slider_provider/projectDetailsData"
-import { clearProjectScrollPosition } from "../../../utils/scrollPosition"
+import { isMobileImage } from "../../../utils/projectUtils"
 import TechnologyIcon from "../../TechnologyIcon/TechnologyIcon.component"
+import { useImageNavigation } from "./parts/useImageNavigation"
+import { useImageTransition } from "./parts/useImageTransition"
+import { useProjectData } from "./parts/useProjectData"
 import {
   ContentSection,
   Description,
   GoBackButton,
   HeaderSection,
+  ImageCounter,
+  ImageIndicator,
+  ImageIndicators,
   InsideArrowsContainer,
   InsideLeftArrow,
   InsideRightArrow,
@@ -32,66 +36,79 @@ import {
 import { useProjectDetailsLayout } from "./useProjectDetailsLayout"
 
 const ProjectDetailsScreen = ({ projectId }) => {
-  const [currentProject, setCurrentProject] = useState(null)
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const wrapperRef = useRef(null)
+
+  // Custom hooks for different concerns
+  const {
+    currentProject,
+    projectNavigation,
+    handleGoBack,
+    isLoading,
+  } = useProjectData(projectId)
+  const {
+    imageRef,
+    secondImageRef,
+    activeImageRef,
+    isAnimating,
+    animateImageTransition,
+  } = useImageTransition()
+  const {
+    currentImageIndex,
+    handlePrevImage,
+    handleNextImage,
+    handleImageIndicatorClick,
+  } = useImageNavigation(
+    currentProject,
+    isAnimating,
+    animateImageTransition,
+    handleGoBack
+  )
 
   // Initialize animations
   useProjectDetailsLayout(wrapperRef, currentProject)
 
+  // Handle initial image load when project loads
   useEffect(() => {
-    const parsedProjectId = parseInt(projectId)
-    const project = projectDetailsData[parsedProjectId]
-
-    if (project) {
-      setCurrentProject(project)
-
-      // If someone navigated directly to this page (e.g., via URL or refresh),
-      // clear any existing scroll position to prevent unwanted scrolling when going back
-      if (typeof window !== "undefined" && window.history.length === 1) {
-        clearProjectScrollPosition()
-      }
-    } else {
-      // If project not found, redirect to home
-      navigate("/")
+    if (
+      currentProject &&
+      currentProject.images &&
+      currentProject.images[0] &&
+      imageRef.current
+    ) {
+      // Set initial image directly without animation
+      imageRef.current.style.backgroundImage = `url(${currentProject.images[0]})`
+      imageRef.current.style.opacity = "1"
     }
-  }, [projectId])
+  }, [currentProject])
 
-  const handleGoBack = () => {
-    navigate("/")
-    // Note: The scroll restoration will be handled by the home page component
-    // when it detects there's a stored scroll position
-  }
-
-  const handlePrevImage = () => {
-    if (currentProject && currentProject.images) {
-      setCurrentImageIndex(prev =>
-        prev === 0 ? currentProject.images.length - 1 : prev - 1
-      )
-    }
-  }
-
-  const handleNextImage = () => {
-    if (currentProject && currentProject.images) {
-      setCurrentImageIndex(prev =>
-        prev === currentProject.images.length - 1 ? 0 : prev + 1
-      )
-    }
-  }
-
-  if (!currentProject) {
+  if (isLoading) {
     return (
       <PageWrapper>
-        <div>Loading...</div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+            fontSize: "18px",
+          }}
+        >
+          Loading project details...
+        </div>
       </PageWrapper>
     )
   }
+
+  const hasMultipleImages =
+    currentProject.images && currentProject.images.length > 1
+  const currentImagePath = currentProject.images[currentImageIndex]
+  const isCurrentImageMobile = isMobileImage(currentImagePath)
 
   return (
     <PageWrapper ref={wrapperRef}>
       <HeaderSection>
         <ProjectTitle>{currentProject.title}</ProjectTitle>
-        <GoBackButton onClick={handleGoBack}>
+        <GoBackButton onClick={handleGoBack} title="Go back to projects (ESC)">
           <LeftArrowSVG />
           Go back
         </GoBackButton>
@@ -99,17 +116,72 @@ const ProjectDetailsScreen = ({ projectId }) => {
 
       <SliderSection data-slider-section>
         <SliderWrapper>
-          <SliderImage bgUrl={currentProject.images[currentImageIndex]} />
+          <SliderImage
+            ref={imageRef}
+            bgUrl={currentImagePath}
+            isMobile={isCurrentImageMobile}
+            title={`${currentProject.title} - Image ${
+              currentImageIndex + 1
+            } of ${currentProject.images.length}`}
+          />
+          <SliderImage
+            ref={secondImageRef}
+            bgUrl=""
+            isMobile={isCurrentImageMobile}
+            style={{ opacity: 0 }}
+            title={`${currentProject.title} - Image ${
+              currentImageIndex + 1
+            } of ${currentProject.images.length}`}
+          />
+
+          {/* Image counter */}
+          {hasMultipleImages && (
+            <ImageCounter>
+              {currentImageIndex + 1} / {currentProject.images.length}
+            </ImageCounter>
+          )}
+
+          {/* Image indicators */}
+          {hasMultipleImages && (
+            <ImageIndicators>
+              {currentProject.images.map((imagePath, index) => (
+                <ImageIndicator
+                  key={index}
+                  active={index === currentImageIndex}
+                  onClick={() => handleImageIndicatorClick(index)}
+                  title={`Go to image ${index + 1}${
+                    isMobileImage(imagePath) ? " (Mobile)" : ""
+                  }`}
+                  aria-label={`Go to image ${index + 1}${
+                    isMobileImage(imagePath) ? " (Mobile)" : ""
+                  }`}
+                  disabled={isAnimating}
+                />
+              ))}
+            </ImageIndicators>
+          )}
         </SliderWrapper>
 
         <SliderButtonsContainer>
           {/* Inside arrows - shown on tablets/mobile when outside arrows are hidden */}
-          {currentProject.images.length > 1 && (
+          {hasMultipleImages && (
             <InsideArrowsContainer>
-              <InsideLeftArrow data-left-arrow onClick={handlePrevImage}>
+              <InsideLeftArrow
+                data-left-arrow
+                onClick={handlePrevImage}
+                title="Previous image (←)"
+                aria-label="Previous image"
+                disabled={isAnimating}
+              >
                 <LeftArrowSVG />
               </InsideLeftArrow>
-              <InsideRightArrow data-right-arrow onClick={handleNextImage}>
+              <InsideRightArrow
+                data-right-arrow
+                onClick={handleNextImage}
+                title="Next image (→)"
+                aria-label="Next image"
+                disabled={isAnimating}
+              >
                 <LeftArrowSVG />
               </InsideRightArrow>
             </InsideArrowsContainer>
@@ -122,6 +194,7 @@ const ProjectDetailsScreen = ({ projectId }) => {
                 target="_blank"
                 rel="noreferrer"
                 variant="primary"
+                title="View live project"
               >
                 Go live
               </SliderButton>
@@ -131,6 +204,7 @@ const ProjectDetailsScreen = ({ projectId }) => {
                 href={currentProject.codeUrl}
                 target="_blank"
                 rel="noreferrer"
+                title="View source code"
               >
                 Code
               </SliderButton>
@@ -146,6 +220,7 @@ const ProjectDetailsScreen = ({ projectId }) => {
               target="_blank"
               rel="noreferrer"
               variant="primary"
+              title="View live project"
             >
               Go live
             </SliderButton>
@@ -155,6 +230,7 @@ const ProjectDetailsScreen = ({ projectId }) => {
               href={currentProject.codeUrl}
               target="_blank"
               rel="noreferrer"
+              title="View source code"
             >
               Code
             </SliderButton>
@@ -162,12 +238,24 @@ const ProjectDetailsScreen = ({ projectId }) => {
         </MobileButtonsContainer>
 
         {/* Outside arrows - shown on desktop/large screens only */}
-        {currentProject.images.length > 1 && (
+        {hasMultipleImages && (
           <>
-            <OutsideLeftArrow data-left-arrow onClick={handlePrevImage}>
+            <OutsideLeftArrow
+              data-left-arrow
+              onClick={handlePrevImage}
+              title="Previous image (←)"
+              aria-label="Previous image"
+              disabled={isAnimating}
+            >
               <LeftArrowSVG />
             </OutsideLeftArrow>
-            <OutsideRightArrow data-right-arrow onClick={handleNextImage}>
+            <OutsideRightArrow
+              data-right-arrow
+              onClick={handleNextImage}
+              title="Next image (→)"
+              aria-label="Next image"
+              disabled={isAnimating}
+            >
               <LeftArrowSVG />
             </OutsideRightArrow>
           </>
