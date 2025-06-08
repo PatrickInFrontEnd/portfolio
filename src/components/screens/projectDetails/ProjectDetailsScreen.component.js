@@ -12,6 +12,7 @@ import {
   InsideArrowsContainer,
   InsideLeftArrow,
   InsideRightArrow,
+  MobileButtonsContainer,
   OutsideLeftArrow,
   OutsideRightArrow,
   PageWrapper,
@@ -24,6 +25,7 @@ import {
   SliderImage,
   SliderSection,
   SliderWrapper,
+  SolutionSection,
   TechnologiesGrid,
   TechnologiesSection,
 } from "./ProjectDetailsScreen.styles"
@@ -136,6 +138,29 @@ const ProjectDetailsScreen = ({ projectId }) => {
           </SliderButtons>
         </SliderButtonsContainer>
 
+        {/* Mobile buttons container - shown below black box on small screens */}
+        <MobileButtonsContainer>
+          {currentProject.liveUrl && (
+            <SliderButton
+              href={currentProject.liveUrl}
+              target="_blank"
+              rel="noreferrer"
+              variant="primary"
+            >
+              Go live
+            </SliderButton>
+          )}
+          {currentProject.codeUrl && (
+            <SliderButton
+              href={currentProject.codeUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Code
+            </SliderButton>
+          )}
+        </MobileButtonsContainer>
+
         {/* Outside arrows - shown on desktop/large screens only */}
         {currentProject.images.length > 1 && (
           <>
@@ -154,11 +179,18 @@ const ProjectDetailsScreen = ({ projectId }) => {
         <Description data-description>{currentProject.description}</Description>
 
         <ProblemsSection>
-          <SectionTitle data-section-title>
-            Problems I struggled with
-          </SectionTitle>
-          <Description data-description>{currentProject.problems}</Description>
+          <SectionTitle data-section-title>Challenges</SectionTitle>
+          <Description data-description>
+            {currentProject.challenges}
+          </Description>
         </ProblemsSection>
+
+        <SolutionSection>
+          <SectionTitle data-section-title>Solution & Impact</SectionTitle>
+          <Description data-description>
+            {currentProject.solutionAndImpact}
+          </Description>
+        </SolutionSection>
 
         <TechnologiesSection>
           <SectionTitle data-section-title>

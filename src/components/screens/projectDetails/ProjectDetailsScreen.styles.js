@@ -209,6 +209,11 @@ const SliderButtonsContainer = styled.div`
   @media screen and (max-width: 480px) {
     padding: 12px;
   }
+
+  @media screen and (max-width: 420px) {
+    justify-content: space-between;
+    padding: 4px 8px;
+  }
 `
 
 const SliderButtons = styled.div`
@@ -228,6 +233,10 @@ const SliderButtons = styled.div`
 
   @media screen and (max-width: 480px) {
     gap: 8px;
+  }
+
+  @media screen and (max-width: 420px) {
+    display: none;
   }
 `
 
@@ -320,6 +329,12 @@ const InsideArrowsContainer = styled.div`
   @media screen and (max-width: 1200px) {
     display: flex;
   }
+
+  @media screen and (max-width: 420px) {
+    width: 100%;
+    justify-content: space-around;
+    gap: 0;
+  }
 `
 
 const InsideArrowButton = styled.button`
@@ -362,6 +377,29 @@ const InsideRightArrow = styled(InsideArrowButton)`
   }
 `
 
+const MobileButtonsContainer = styled.div`
+  display: none;
+  width: 100%;
+  max-width: 1400px;
+  padding: 16px 0;
+  justify-content: center;
+  gap: 10px;
+
+  @media screen and (max-width: 420px) {
+    display: flex;
+    gap: 12px;
+  }
+
+  /* Make buttons inside this container stretch to full width on mobile */
+  @media screen and (max-width: 420px) {
+    ${SliderButton} {
+      flex: 1;
+      width: auto;
+      min-width: 0;
+    }
+  }
+`
+
 const ContentSection = styled.div`
   margin: 80px auto;
   border-left: 3px solid ${({ theme }) => theme.color.primaryBlue};
@@ -381,7 +419,7 @@ const ContentSection = styled.div`
   }
 
   @media screen and (max-width: 480px) {
-    margin: 40px auto;
+    margin: 20px auto;
     padding: 0 0 20px;
     border-left: none;
     border-right: none;
@@ -456,6 +494,26 @@ const ProblemsSection = styled.div`
   }
 `
 
+const SolutionSection = styled.div`
+  margin-top: 48px;
+  margin-bottom: 48px;
+
+  @media screen and (max-width: 1024px) {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  @media screen and (max-width: 768px) {
+    margin-top: 36px;
+    margin-bottom: 36px;
+  }
+
+  @media screen and (max-width: 480px) {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+`
+
 const TechnologiesSection = styled.div``
 
 const TechnologiesGrid = styled.div`
@@ -495,6 +553,7 @@ export {
   InsideArrowsContainer,
   InsideLeftArrow,
   InsideRightArrow,
+  MobileButtonsContainer,
   OutsideLeftArrow,
   OutsideRightArrow,
   PageWrapper,
@@ -507,6 +566,7 @@ export {
   SliderImage,
   SliderSection,
   SliderWrapper,
+  SolutionSection,
   TechnologiesGrid,
   TechnologiesSection,
 }
