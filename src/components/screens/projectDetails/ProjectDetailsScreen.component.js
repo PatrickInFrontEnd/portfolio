@@ -5,6 +5,7 @@ import TechnologyIcon from "../../TechnologyIcon/TechnologyIcon.component"
 import { useImageNavigation } from "./parts/useImageNavigation"
 import { useImageTransition } from "./parts/useImageTransition"
 import { useProjectData } from "./parts/useProjectData"
+import { useSwipeNavigation } from "./parts/useSwipeNavigation"
 import {
   ContentSection,
   Description,
@@ -30,6 +31,7 @@ import {
   SliderSection,
   SliderWrapper,
   SolutionSection,
+  SwipeHint,
   TechnologiesGrid,
   TechnologiesSection,
 } from "./ProjectDetailsScreen.styles"
@@ -37,6 +39,7 @@ import { useProjectDetailsLayout } from "./useProjectDetailsLayout"
 
 const ProjectDetailsScreen = ({ projectId }) => {
   const wrapperRef = useRef(null)
+  const sliderWrapperRef = useRef(null)
 
   // Custom hooks for different concerns
   const {
@@ -81,6 +84,18 @@ const ProjectDetailsScreen = ({ projectId }) => {
     }
   }, [currentProject])
 
+  // Add swipe navigation
+  const hasMultipleImages =
+    currentProject?.images && currentProject.images.length > 1
+
+  useSwipeNavigation(
+    sliderWrapperRef,
+    handlePrevImage,
+    handleNextImage,
+    isAnimating,
+    hasMultipleImages
+  )
+
   if (isLoading) {
     return (
       <PageWrapper>
@@ -99,8 +114,6 @@ const ProjectDetailsScreen = ({ projectId }) => {
     )
   }
 
-  const hasMultipleImages =
-    currentProject.images && currentProject.images.length > 1
   const currentImagePath = currentProject.images[currentImageIndex]
   const isCurrentImageMobile = isMobileImage(currentImagePath)
 
@@ -115,7 +128,7 @@ const ProjectDetailsScreen = ({ projectId }) => {
       </HeaderSection>
 
       <SliderSection data-slider-section>
-        <SliderWrapper>
+        <SliderWrapper ref={sliderWrapperRef}>
           <SliderImage
             ref={imageRef}
             bgUrl={currentImagePath}
@@ -160,6 +173,9 @@ const ProjectDetailsScreen = ({ projectId }) => {
               ))}
             </ImageIndicators>
           )}
+
+          {/* Swipe hint for touch devices */}
+          {hasMultipleImages && <SwipeHint>Swipe to navigate images</SwipeHint>}
         </SliderWrapper>
 
         <SliderButtonsContainer>

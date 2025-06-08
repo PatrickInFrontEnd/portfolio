@@ -159,6 +159,16 @@ const SliderWrapper = styled.div`
   height: 600px;
   border-radius: 2px 2px 0 0;
   overflow: hidden;
+  user-select: none;
+  touch-action: pan-y pinch-zoom;
+
+  @media (hover: none) and (pointer: coarse) {
+    cursor: grab;
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
 
   @media screen and (max-width: 1024px) {
     max-width: 100%;
@@ -638,6 +648,40 @@ const ImageCounter = styled.div`
   }
 `
 
+const SwipeHint = styled.div`
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: ${({ theme }) => theme.color.white};
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 400;
+  z-index: 4;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  display: none;
+
+  @media (hover: none) and (pointer: coarse) {
+    display: block;
+  }
+
+  @media screen and (max-width: 768px) {
+    bottom: 50px;
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+
+  @media screen and (max-width: 480px) {
+    bottom: 40px;
+    font-size: 10px;
+    padding: 4px 10px;
+  }
+`
+
 export {
   ContentSection,
   Description,
@@ -663,6 +707,7 @@ export {
   SliderSection,
   SliderWrapper,
   SolutionSection,
+  SwipeHint,
   TechnologiesGrid,
   TechnologiesSection,
 }
