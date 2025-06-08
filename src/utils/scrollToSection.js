@@ -1,10 +1,24 @@
-import gsap, { Power4 } from "gsap"
-import ScrollToPlugin from "gsap/ScrollToPlugin"
+export const scrollToSection = async (hash, offset = 80) => {
+  // Only run on client-side
+  if (typeof window === "undefined") return
 
-gsap.registerPlugin(ScrollToPlugin)
+  const gsap = (await import("gsap")).default
+  const { Power4 } = await import("gsap")
+  const ScrollToPlugin = (await import("gsap/ScrollToPlugin")).default
 
-export const scrollToSection = (hash, offset = 80) => {
+  gsap.registerPlugin(ScrollToPlugin)
+
   if (!hash || typeof hash !== "string") return
+
+  // Handle "#" - scroll to top of page
+  if (hash === "#") {
+    gsap.to(window, {
+      scrollTo: { y: 0 },
+      duration: 1.5,
+      ease: Power4.easeInOut,
+    })
+    return
+  }
 
   const target = document.querySelector(hash)
 

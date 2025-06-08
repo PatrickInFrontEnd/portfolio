@@ -43,6 +43,7 @@ const IconWrapper = styled.span`
   border-radius: 50%;
   border: 2px solid ${({ theme }) => theme.color.black};
   background-color: ${({ theme }) => theme.color.mediumWhite};
+  overflow: hidden;
 
   @media screen and (max-width: 1600px) {
     width: 250px;
@@ -58,8 +59,8 @@ const IconWrapper = styled.span`
   @media screen and (max-width: 600px) {
     min-width: 150px;
     min-height: 150px;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
   }
 `
 
@@ -134,11 +135,11 @@ const P = styled.p`
   }
 `
 export {
-  HobbyWrapper,
-  IconWrapper,
-  Icon,
   DescriptionWrapper,
-  Title,
-  P,
   HobbyContainer,
+  HobbyWrapper,
+  Icon,
+  IconWrapper,
+  P,
+  Title,
 }

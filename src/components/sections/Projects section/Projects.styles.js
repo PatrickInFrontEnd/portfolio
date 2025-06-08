@@ -1,6 +1,7 @@
 import styled from "styled-components"
-import { flexCenter, getBackgroundUrl } from "./../../mixins/mixins"
 import ProjectsSVG from "./../../../assets/images/projects_icon.svg"
+import { Button } from "./../../Button/Button.styles"
+import { flexCenter, getBackgroundUrl } from "./../../mixins/mixins"
 
 const ProjectsSectionWrapper = styled.div`
   min-height: 100vh;
@@ -206,13 +207,34 @@ const ImagePreviewWrapper = styled.div`
   }
 `
 
+const HoverOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+`
+
 const ImagePreview = styled.div`
+  position: relative;
   width: 100%;
   height: 100%;
   border-radius: 2px;
 
   ${({ bgUrl }) => getBackgroundUrl(bgUrl)};
   background-size: cover;
+
+  &:hover ${HoverOverlay} {
+    opacity: 1;
+  }
 
   @media screen and (max-width: 1550px) {
     min-width: 800px;
@@ -360,19 +382,64 @@ const LinkIcon = styled.span`
   }
 `
 
+const ProjectDetailsButton = styled(Button)`
+  font-size: ${({ theme }) => theme.fSize.S};
+
+  & > span {
+    z-index: -1;
+    border-color: black;
+  }
+
+  svg {
+    width: 32px;
+    height: 32px;
+    transform: rotate(180deg);
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 200px !important;
+    height: 60px !important;
+    font-size: ${({ theme }) => theme.fSize.XS};
+  }
+
+  @media screen and (max-width: 600px) {
+    font-size: ${({ theme }) => theme.fSize.XXS};
+    width: 180px !important;
+    height: 50px !important;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    font-size: ${({ theme }) => theme.fSize.XXXS};
+    width: 160px !important;
+    height: 45px !important;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+`
+
 export {
-  LinkIcon,
-  ProjectsSectionWrapper,
-  ProjectsIcon,
-  SliderCounterWrapper,
-  NumberOfSlide,
-  SlidesWrapper,
-  SlideWrapper,
-  ImagePreview,
-  SlideTitle,
-  TechnologiesContainer,
   ButtonsWrapper,
   ContentWrapper,
   Description,
+  HoverOverlay,
+  ImagePreview,
   ImagePreviewWrapper,
+  LinkIcon,
+  NumberOfSlide,
+  ProjectDetailsButton,
+  ProjectsIcon,
+  ProjectsSectionWrapper,
+  SliderCounterWrapper,
+  SlidesWrapper,
+  SlideTitle,
+  SlideWrapper,
+  TechnologiesContainer,
 }

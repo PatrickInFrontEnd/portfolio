@@ -1,9 +1,9 @@
-import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import hobbyData from "./data"
-import HobbyPanel from "./HobbyPanel.component"
+import React from "react"
 import { mapToPNGSource } from "./../../../utils/mapToPNGsource"
 import { sortImagesASC } from "./../../../utils/sort"
+import hobbyData from "./data"
+import HobbyPanel from "./HobbyPanel.component"
 
 const queryForImgages = graphql`
   {
@@ -12,9 +12,12 @@ const queryForImgages = graphql`
         node {
           relativePath
           childImageSharp {
-            fluid(maxWidth: 200, maxHeight: 200, quality: 100) {
-              src
-            }
+            gatsbyImageData(
+              width: 200
+              height: 200
+              quality: 100
+              layout: CONSTRAINED
+            )
           }
         }
       }
@@ -29,12 +32,12 @@ const HobbyPanelsContainer = props => {
 
   const sources = edges.map(mapToPNGSource).sort(sortImagesASC)
 
-  return sources.map(({ src, id }, i) => {
+  return sources.map(({ image, id }, i) => {
     return (
       <HobbyPanel
         key={id}
         reversed={id % 2 === 0}
-        iconSrc={src}
+        iconImage={image}
         title={hobbyData[i].title}
         description={hobbyData[i].description}
       />

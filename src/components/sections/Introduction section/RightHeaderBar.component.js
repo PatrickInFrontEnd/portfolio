@@ -1,18 +1,18 @@
 import React from "react"
+import InvertedProjectsIcon from "../../../assets/images/icon_projects_inverted.svg"
+import UserIcon2 from "../../../assets/images/icon_user_2.svg"
+import { scrollToSection } from "../../../utils/scrollToSection"
+import TriangleHeaderComponent from "../../TriangleHeader/TriangleHeader.component"
 import {
-  IntroductionWrapper,
-  IntroductionContent,
-  IntroductionLinksWrapper,
-  IntroductionLinkWrapper,
-  IntroductionLink,
   ContentHeader,
   ContentMiniHeader,
   ContentParagraph,
+  IntroductionContent,
+  IntroductionLink,
+  IntroductionLinksWrapper,
+  IntroductionLinkWrapper,
+  IntroductionWrapper,
 } from "./Introduction.styles"
-import TriangleHeaderComponent from "../../TriangleHeader/TriangleHeader.component"
-import InvertedProjectsIcon from "../../../assets/images/icon_projects_inverted.svg"
-import UserIcon_2 from "../../../assets/images/icon_user_2.svg"
-import { scrollToSection } from "../../../utils/scrollToSection"
 
 const IntroductionHeaderSection = props => (
   <IntroductionWrapper>
@@ -38,7 +38,7 @@ const IntroductionHeaderSection = props => (
         <IntroductionLinkWrapper onClick={() => scrollToSection("#about")}>
           <IntroductionLink>About me</IntroductionLink>
           <span>
-            <UserIcon_2 />
+            <UserIcon2 />
           </span>
         </IntroductionLinkWrapper>
       </IntroductionLinksWrapper>

@@ -132,7 +132,9 @@ const WaveIcon = styled(WaveSVG)`
   }
 `
 
-const TechnologiesWrapper = styled.div`
+const TechnologiesWrapper = styled.div.attrs({
+  className: "technologies-wrapper",
+})`
   display: flex;
   flex-direction: column;
   width: 500px;
@@ -162,7 +164,8 @@ const TechnologyPanel = styled.div`
   }
 `
 
-const TechnologyIcon = styled.img`
+// Style wrapper for technology icons to match original sizing
+const TechnologyIconWrapper = styled.div`
   display: block;
   width: 90px;
   height: 90px;
@@ -199,7 +202,8 @@ const TechnologyIcon = styled.img`
   }
 `
 
-const LaptopPNG = styled.img`
+// Style wrapper for laptop icon to match original sizing
+const LaptopIconWrapper = styled.div`
   display: block;
   width: 500px;
   height: 80%;
@@ -386,18 +390,18 @@ const ButtonLink = styled(Button)`
 `
 
 export {
+  ArrowIcon,
+  ButtonLink,
+  DetailsWrapper,
+  IconsWrapper,
+  LaptopIconWrapper,
+  LinkedInTitle,
+  Paragraph,
+  SkillsDescriptionBar,
   SkillsSectionWrapper,
   SkillsTitle,
-  IconsWrapper,
-  TechnologyPanel,
-  TechnologyIcon,
   TechnologiesWrapper,
-  LaptopPNG,
-  SkillsDescriptionBar,
-  Paragraph,
-  DetailsWrapper,
-  LinkedInTitle,
-  ArrowIcon,
+  TechnologyIconWrapper,
+  TechnologyPanel,
   WaveIcon,
-  ButtonLink,
 }
