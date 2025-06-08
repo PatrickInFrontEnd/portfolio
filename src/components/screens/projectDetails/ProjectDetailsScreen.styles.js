@@ -36,6 +36,11 @@ const HeaderSection = styled.div`
   justify-content: space-between;
   margin-bottom: 20px;
 
+  @media screen and (min-width: 1920px) {
+    max-width: 1400px;
+    margin: 0 auto 20px auto;
+  }
+
   @media screen and (max-width: 768px) {
     flex-direction: column;
     gap: 20px;
@@ -429,6 +434,10 @@ const ContentSection = styled.div`
   border-left: 3px solid ${({ theme }) => theme.color.primaryBlue};
   border-right: 3px solid ${({ theme }) => theme.color.primaryBlue};
   padding: 0 50px 50px;
+
+  @media screen and (min-width: 1920px) {
+    max-width: 1400px;
+  }
 
   @media screen and (max-width: 1024px) {
     margin: 60px auto;
