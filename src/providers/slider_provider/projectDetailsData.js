@@ -3,9 +3,9 @@ const projectDetailsData = {
     title: "Get Creative Every Day",
     overlayText: "GET CREATIVE!",
     images: [
-      "/images/slider_1.png",
-      "/images/slider_1.png",
-      "/images/slider_1.png",
+      "/images/slider/slider_1.png",
+      "/images/slider/slider_1.png",
+      "/images/slider/slider_1.png",
     ],
     description:
       "A creative platform designed to inspire daily creativity and artistic expression. This project features modern UI components and interactive elements to engage users in their creative journey.",
@@ -27,9 +27,9 @@ const projectDetailsData = {
     title: "Zdrowe Dziecko - magazine site",
     overlayText: "ZDROWE DZIECKO",
     images: [
-      "/images/slider_2.png",
-      "/images/slider_2.png",
-      "/images/slider_2.png",
+      "/images/slider/slider_2.png",
+      "/images/slider/slider_2.png",
+      "/images/slider/slider_2.png",
     ],
     description:
       "A comprehensive magazine website focused on child health and wellness. The platform provides valuable information for parents and healthcare professionals with an intuitive content management system.",
@@ -51,9 +51,9 @@ const projectDetailsData = {
     title: "Erasmus project",
     overlayText: "ERASMUS+",
     images: [
-      "/images/slider_3.png",
-      "/images/slider_3.png",
-      "/images/slider_3.png",
+      "/images/slider/slider_3.png",
+      "/images/slider/slider_3.png",
+      "/images/slider/slider_3.png",
     ],
     description:
       "An educational platform designed for the Erasmus+ program, facilitating international student exchange and educational collaboration across European institutions.",
@@ -71,9 +71,9 @@ const projectDetailsData = {
     title: "ZLP tournament",
     overlayText: "WITAJ GRACZU!",
     images: [
-      "/images/slider_4.png",
-      "/images/slider_4.png",
-      "/images/slider_4.png",
+      "/images/slider/slider_4.png",
+      "/images/slider/slider_4.png",
+      "/images/slider/slider_4.png",
     ],
     description:
       "Project designed for school tournament purposes. E-sport platform that takes care of features like: team management, team statistics during the tournament or player account management.",
@@ -93,9 +93,9 @@ const projectDetailsData = {
     title: "Flappy bird",
     overlayText: "FLAPPY BIRD!",
     images: [
-      "/images/slider_5.png",
-      "/images/slider_5.png",
-      "/images/slider_5.png",
+      "/images/slider/slider_5.png",
+      "/images/slider/slider_5.png",
+      "/images/slider/slider_5.png",
     ],
     description:
       "A recreation of the classic Flappy Bird game with modern web technologies. Features responsive controls, smooth animations, and progressive difficulty levels.",
