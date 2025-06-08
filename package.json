@@ -40,7 +40,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "dev:local": "gatsby develop -H 192.168.55.104 -p 8000",
+    "dev:local": "gatsby develop -H 192.168.50.131 -p 8000",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",

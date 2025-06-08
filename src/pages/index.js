@@ -7,6 +7,8 @@ import IntroductionSection from "../components/sections/Introduction section/Int
 import ProjectsSection from "../components/sections/Projects section/ProjectsSection.component"
 import SkillsSection from "../components/sections/Skills section/SkillsSection.component"
 import SEO from "../components/seo"
+import { useScrollRestoration } from "../hooks/useScrollRestoration"
+import { setupBrowserBackHandler } from "../utils/scrollPosition"
 import Footer from "./../components/Footer/Footer.component"
 import MainPageWrapper from "./../components/MainPageWrapper.styles"
 import SpinnerLoader from "./../components/SpinnerLoader/Spinner.component"
@@ -17,6 +19,15 @@ const IndexPage = props => {
 
   useEffect(() => {
     setDOMstatus(true)
+  }, [])
+
+  // Handle scroll restoration when coming back from project details
+  useScrollRestoration(isDOMLoaded)
+
+  // Setup browser back button handler
+  useEffect(() => {
+    const cleanup = setupBrowserBackHandler()
+    return cleanup
   }, [])
 
   return (

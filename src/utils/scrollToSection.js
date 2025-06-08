@@ -10,6 +10,16 @@ export const scrollToSection = async (hash, offset = 80) => {
 
   if (!hash || typeof hash !== "string") return
 
+  // Handle "#" - scroll to top of page
+  if (hash === "#") {
+    gsap.to(window, {
+      scrollTo: { y: 0 },
+      duration: 1.5,
+      ease: Power4.easeInOut,
+    })
+    return
+  }
+
   const target = document.querySelector(hash)
 
   if (!target) {
