@@ -187,7 +187,6 @@ const ProjectDetailsScreen = ({ projectId }) => {
                 onClick={handlePrevImage}
                 title="Previous image (←)"
                 aria-label="Previous image"
-                disabled={isAnimating}
               >
                 <LeftArrowSVG />
               </InsideLeftArrow>
@@ -196,7 +195,6 @@ const ProjectDetailsScreen = ({ projectId }) => {
                 onClick={handleNextImage}
                 title="Next image (→)"
                 aria-label="Next image"
-                disabled={isAnimating}
               >
                 <LeftArrowSVG />
               </InsideRightArrow>
@@ -261,7 +259,6 @@ const ProjectDetailsScreen = ({ projectId }) => {
               onClick={handlePrevImage}
               title="Previous image (←)"
               aria-label="Previous image"
-              disabled={isAnimating}
             >
               <LeftArrowSVG />
             </OutsideLeftArrow>
@@ -270,7 +267,6 @@ const ProjectDetailsScreen = ({ projectId }) => {
               onClick={handleNextImage}
               title="Next image (→)"
               aria-label="Next image"
-              disabled={isAnimating}
             >
               <LeftArrowSVG />
             </OutsideRightArrow>
