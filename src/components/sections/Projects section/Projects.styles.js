@@ -89,17 +89,24 @@ const SlideTitle = styled.h3`
   font-size: ${({ theme }) => theme.fSize.L};
   font-weight: ${({ theme }) => theme.fWeight.medium};
   font-family: Montserrat, Poppins, Arial, sans-serif;
+  line-height: 1.4;
   margin: 40px auto;
   z-index: 1;
+  padding: 0 30px;
+  text-align: center;
 
-  &::before {
+  & > span {
+    position: relative;
+    display: inline;
+  }
+
+  & > span::before {
     position: absolute;
     content: "";
     width: 60px;
-    height: 110%;
-    top: 50%;
+    height: 1.4em;
+    top: 0;
     left: -10px;
-    transform: translateY(-50%);
     z-index: -1;
     background-color: ${({ theme }) => theme.color.primaryBlue};
   }
@@ -156,17 +163,31 @@ const TechnologiesContainer = styled.div`
     min-width: unset;
     width: auto;
     margin: 0;
-    grid-column-gap: 60px;
-    grid-template-columns: repeat(2, minmax(200px, 250px));
+    grid-column-gap: 20px;
+    grid-template-columns: repeat(3, minmax(140px, 180px));
   }
 
   @media screen and (max-width: 750px) {
-    grid-template-columns: repeat(2, minmax(160px, 180px));
+    grid-template-columns: repeat(3, minmax(120px, 180px));
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
   }
 
   @media screen and (max-width: 520px) {
-    grid-template-columns: repeat(1, minmax(160px, 250px));
+    grid-template-columns: repeat(3, minmax(80px, 120px));
     grid-row-gap: 10px;
+    grid-column-gap: 10px;
+  }
+
+  @media screen and (max-width: 380px) {
+    grid-template-columns: repeat(3, minmax(70px, 120px));
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+    padding: 20px 10px;
+
+    & > * {
+      margin: 0 auto 0 15px;
+    }
   }
 `
 
@@ -383,7 +404,7 @@ const LinkIcon = styled.span`
 `
 
 const ProjectDetailsButton = styled(Button)`
-  font-size: ${({ theme }) => theme.fSize.S};
+  font-size: ${({ theme }) => theme.fSize.XXXS};
 
   & > span {
     z-index: -1;
@@ -399,11 +420,9 @@ const ProjectDetailsButton = styled(Button)`
   @media screen and (max-width: 768px) {
     width: 200px !important;
     height: 60px !important;
-    font-size: ${({ theme }) => theme.fSize.XS};
   }
 
   @media screen and (max-width: 600px) {
-    font-size: ${({ theme }) => theme.fSize.XXS};
     width: 180px !important;
     height: 50px !important;
 
