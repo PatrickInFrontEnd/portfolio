@@ -29,6 +29,19 @@ const SliderContainer = props => {
   const wrapperRef = useRef(null)
   const theme = useTheme()
 
+  // Helper function to wrap the first word in a span
+  const formatTitle = title => {
+    const words = title.split(" ")
+    if (words.length === 1) {
+      return <span>{words[0]}</span>
+    }
+    return (
+      <>
+        <span>{words[0]}</span> {words.slice(1).join(" ")}
+      </>
+    )
+  }
+
   useEffect(() => {
     // Only run on client-side
     if (typeof window === "undefined") return
@@ -84,7 +97,7 @@ const SliderContainer = props => {
 
         return (
           <SlideWrapper key={id} data-project-id={id}>
-            <SlideTitle>{title}</SlideTitle>
+            <SlideTitle>{formatTitle(title)}</SlideTitle>
             <ContentWrapper>
               <TechnologiesContainer>
                 <Description>Used technologies</Description>

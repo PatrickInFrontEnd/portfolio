@@ -434,6 +434,7 @@ const ContentSection = styled.div`
   border-left: 3px solid ${({ theme }) => theme.color.primaryBlue};
   border-right: 3px solid ${({ theme }) => theme.color.primaryBlue};
   padding: 0 50px 50px;
+  text-align: justify;
 
   @media screen and (min-width: 1920px) {
     max-width: 1400px;
