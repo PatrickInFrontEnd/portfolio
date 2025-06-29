@@ -54,7 +54,7 @@ const Wrapper = styled.div`
 
 const IconName = styled.span`
   font: ${({ theme: { fSize, fWeight } }) =>
-    `${fWeight.medium} ${fSize.miniS} Montserrat, Poppins, Arial, sans-serif`};
+    `${fWeight.medium} ${fSize.static[4]} Montserrat, Poppins, Arial, sans-serif`};
   text-transform: capitalize;
   text-align: center;
   word-break: break-word;

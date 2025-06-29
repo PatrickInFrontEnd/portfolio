@@ -30,6 +30,14 @@ const theme = {
     miniXS: "1.6rem",
     miniXXS: "1.4rem",
     miniXXXS: "1.2rem",
+    static: {
+      1: "4px",
+      2: "8px",
+      3: "12px",
+      4: "16px",
+      5: "20px",
+      6: "24px",
+    },
   },
   fWeight: {
     thin: "100",
